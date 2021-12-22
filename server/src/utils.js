@@ -34,6 +34,7 @@ module.exports.createStore = () => {
     storage: './profiles.sqlite'
   });
 
+  // TODO: how exactly does the model differ from the db.model. research it
   const profileModel = db.define('profile', {
     id: {type: INTEGER, primaryKey: true},
     name: STRING,
@@ -46,7 +47,6 @@ module.exports.createStore = () => {
   });
 
   const Profile = db.models.profile;
-  console.log('in createStore ', db);
 
   return { db, Profile }
 };

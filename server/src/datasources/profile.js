@@ -6,24 +6,12 @@ class ProfileAPI extends DataSource {
         this.store = store;
     }
 
-    // initialize(config) {
-    //     this.context = config.context;
-    // }
+    // TODO: do we need to intialize config or nah
 
-    // async findProfile({profileId}) {
-    //     const profile = await this.db.profiles.findAll({
-    //         where: {profileId}
-    //     })
-
-    //     return profile && profile.length > 0;
-    // }
+    // TODO: profilebyID function
 
     async getAllProfiles() {
-        console.log('hi', this.store)
-        const bruh = await this.store.Profile.findAll();
-        console.log('AAA', bruh[0])
-
-        return bruh && bruh.length > 0;
+        return await this.store.Profile.findAll();
     }
 }
 
