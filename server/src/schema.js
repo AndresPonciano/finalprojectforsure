@@ -5,7 +5,8 @@ const typeDefs = gql`
 
     type Query {
         launches: [Launch]!
-        profile: [Profile]
+        profiles: [Profile]
+        profile(id: ID): Profile
     }
 
     type Profile {

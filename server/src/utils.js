@@ -29,6 +29,7 @@ module.exports.paginateResults = ({
 };
 
 module.exports.createStore = () => {
+  // TODO: rename database
   const db = new Sequelize('blog', null, null, {
     dialect: 'sqlite',
     storage: './profiles.sqlite'

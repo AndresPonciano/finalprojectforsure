@@ -8,10 +8,13 @@ class ProfileAPI extends DataSource {
 
     // TODO: do we need to intialize config or nah
 
-    // TODO: profilebyID function
-
     async getAllProfiles() {
         return await this.store.Profile.findAll();
+    }
+
+    async getProfileById({ id }) {
+        const profile = await this.store.Profile.findAll( {where: { id }} )
+        return profile[0];
     }
 }
 
