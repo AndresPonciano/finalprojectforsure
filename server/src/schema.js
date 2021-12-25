@@ -4,8 +4,16 @@ const typeDefs = gql`
     # no need for mutations because we're not modifying data yet
 
     type Query {
-        launches: [Launch]!
-        profiles: [Profile]
+        launches(
+            # number of results to show. default is 20. must be >= 1
+            pageSize: Int
+            # cursor to items after the ones on this launches object
+            after: String
+        ): LaunchConnection!
+        profiles(
+            pageSize: Int
+            after: String
+        ): ProfileConnection!
         profile(id: ID): Profile
     }
 
@@ -37,6 +45,29 @@ const typeDefs = gql`
         mission: Mission
         rocket: Rocket
         isBooked: Boolean!
+    }
+
+    type LaunchConnection {
+        cursor: String!
+        hasMore: Boolean!
+        launches: [Launch]!
+    }
+
+    type ProfileConnection {
+        edges: [Edge]
+        pageInfo: PageInfo!
+    }
+
+    type Edge {
+        # cursor here will be the offset
+        cursor: String!
+        # node will be the list of nodes
+        node: Profile
+    }
+
+    type PageInfo {
+        endCursor: String!
+        hasNextPage: Boolean!
     }
 
     type Rocket {
