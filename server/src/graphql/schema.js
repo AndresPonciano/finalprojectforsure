@@ -2,7 +2,6 @@ const { gql } = require('apollo-server');
 
 const typeDefs = gql`
     # no need for mutations because we're not modifying data yet
-
     type Query {
         launches(
             # number of results to show. default is 20. must be >= 1
@@ -15,6 +14,16 @@ const typeDefs = gql`
             after: String
         ): ProfileConnection!
         profile(id: ID): Profile
+        authors(name: String, topic: String): [Author]
+        publications: [Publication]
+    }
+
+    type Author {
+        id: ID!
+        name: String!
+        scholar_id: String
+        url_picture: String
+        topics: [String!]!
     }
 
     type Profile {
@@ -22,13 +31,7 @@ const typeDefs = gql`
         name: String!
         scholar_id: String
         url_picture: String
-        topics: [Topic]
-    }
-
-    type Topic {
-        id: ID!
-        name: String
-        # author_id: Int
+        # topics: [Topic]
     }
 
     type Publication {

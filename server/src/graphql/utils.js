@@ -41,7 +41,6 @@ module.exports.edgesToReturn = ({allEdges: allEdges, first, after}) => {
     rightSlicedEdges = Object.entries(leftSlicedEdges).slice(0, first);
   }
   
-  console.log('men..', rightSlicedEdges);
   const edges = rightSlicedEdges.map((item) => {
     const intCursor = parseInt(after)+parseInt(item[0])+1
     return {
