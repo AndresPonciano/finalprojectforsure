@@ -33,12 +33,14 @@ module.exports = {
         },
         profile: (_, { id }, { dataSources }) =>
             dataSources.profileAPI.getProfileById({ id: id }),
-        authors: (_, { name = null, topic = null }) => new Promise((resolve, reject) => {
+        authors: (_, { name = null, topic = null, offset = 0, limit = 10 }) => new Promise((resolve, reject) => {
             let schema;
             
             if(!name && topic) {
                 console.log('we no have name')
-                schema ={
+                schema = {
+                    "from": offset,
+                    "size": limit,
                     "query": {
                         "terms": {
                             "topics": [topic]
@@ -48,6 +50,8 @@ module.exports = {
             } else if(!topic && name) {
                 console.log('we no have topic')
                 schema = {
+                    "from": offset,
+                    "size": limit,
                     "query": {
                       "term": {
                         "name": {
@@ -59,6 +63,8 @@ module.exports = {
             } else if(topic && name) {
                 console.log('we have both', name, topic)
                 schema = {
+                    "from": offset,
+                    "size": limit,
                     "query": {
                       "dis_max": {
                         "tie_breaker": 0.7,
@@ -74,6 +80,8 @@ module.exports = {
             } else {
                 console.log('we have no params')
                 schema = { 
+                    "from": offset,
+                    "size": limit,
                     "query": {
                         "match_all": {}
                     }
@@ -87,7 +95,7 @@ module.exports = {
                 let _source = r['hits']['hits'];
                     _source.map((item, i) => _source[i] = item._source);
         
-                console.log(_source.length, 'AAAAAAAAA')
+                console.log(_source.length, 'AAAAAAAAA', total)
                 resolve(_source);
             });
         }),

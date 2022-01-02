@@ -14,7 +14,7 @@ const typeDefs = gql`
             after: String
         ): ProfileConnection!
         profile(id: ID): Profile
-        authors(name: String, topic: String): [Author]
+        authors(name: String, topic: String, offset: Int, limit: Int): [Author]
         publications: [Publication]
     }
 
