@@ -35,7 +35,7 @@ module.exports = {
             dataSources.profileAPI.getProfileById({ id: id }),
         authors: (_, { name = null, topic = null, offset = 0, limit = 10 }) => new Promise((resolve, reject) => {
             let schema;
-            
+            let total;
             if(!name && topic) {
                 console.log('we no have name')
                 schema = {
@@ -92,11 +92,13 @@ module.exports = {
 
             ElasticSearchClient({...schema})
                 .then(r => {
+                total = r['hits']['total']['value'];
                 let _source = r['hits']['hits'];
                     _source.map((item, i) => _source[i] = item._source);
         
                 console.log(_source.length, 'AAAAAAAAA', total)
-                resolve(_source);
+                // resolve(_source);
+                resolve({"totalCount": total, "authors": _source});
             });
         }),
         publications: () => new Promise((resolve, reject) => {

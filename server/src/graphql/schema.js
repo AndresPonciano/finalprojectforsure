@@ -14,7 +14,7 @@ const typeDefs = gql`
             after: String
         ): ProfileConnection!
         profile(id: ID): Profile
-        authors(name: String, topic: String, offset: Int, limit: Int): [Author]
+        authors(name: String, topic: String, offset: Int, limit: Int): AuthorConnection!
         publications: [Publication]
     }
 
@@ -24,6 +24,11 @@ const typeDefs = gql`
         scholar_id: String
         url_picture: String
         topics: [String!]!
+    }
+
+    type AuthorConnection {
+        authors: [Author]!
+        totalCount: Int!
     }
 
     type Profile {

@@ -7,7 +7,7 @@ const Navbar = () => {
                 <ul className='h-full flex items-center'>
                     <li className='ml-16'><Link href='/'>GS.io</Link></li>
                     <li className='ml-8'><Link href='/'>Home</Link></li>                  
-                    <li className='ml-8'><Link href='/profiles'>All Profiles</Link></li>                  
+                    <li className='ml-8'><Link href='/profile/page/0'>All Profiles</Link></li>                  
                     <li className='ml-8'><Link href='/about'>About</Link></li>
                 </ul>                
             </div>

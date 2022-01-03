@@ -7,7 +7,9 @@ const client = new ApolloClient({
         typePolicies: {
             Query: {
                 fields: {
-                    authors: offsetLimitPagination()
+                    authors: {
+                        authors: offsetLimitPagination()
+                    }
                 },
             },
         },
