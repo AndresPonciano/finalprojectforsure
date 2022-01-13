@@ -1,4 +1,5 @@
-import { gql } from "@apollo/client"
+import { gql, useLazyQuery, useQuery } from "@apollo/client"
+import { data } from "autoprefixer"
 import Router from "next/router"
 import { useState } from "react"
 import client from "../../../../apollo-client"
@@ -7,30 +8,106 @@ import ProfileList from "../../../../components/Profilelist"
 import Searchbar from "../../../../components/Searchbar"
 import Topicdropdown from "../../../../components/Topicdropdown"
 
-const profiles = ({profiles, totalCount, offset}) => {
-    const [currentOffset, setCurrentOffset] = useState(parseInt(offset));
+const ALL_PROFILES_QUERY = gql`
+  query AllProfiles( $offset: Int ) {
+    authors(offset: $offset) {
+        totalCount
+        authors {
+            id
+            name
+            url_picture
+            topics
+        }
+    }
+  }
+`;
+
+const SEARCH_PROFILES_QUERY = gql`
+  query SearchProfiles( $name: String, $topic: String ) {
+    authors( name: $name, topic: $topic ) {
+      totalCount
+      authors {
+        id
+        name
+        url_picture
+        topics
+      }
+    }
+  }
+`;
+
+const profiles = () => {
+    // console.log('offset: ', propsOffset)
+    const [currentOffset, setCurrentOffset] = useState(0);
+    const [searchTopic, setSearchTopic] = useState("");
+    const [searchText, setSearchText] = useState("");
+    const [searchStatus, setSearchStatus] = useState("");
+    
+    const { loading: loadingAll, error: errorAll, data: dataAll, refetch } = useQuery(ALL_PROFILES_QUERY, {
+      variables: { offset: currentOffset }
+    });
+
+    const [ getSearchProfiles, { loading: loadingSearch, error: errorSearch, data: dataSearch } ] = useLazyQuery(SEARCH_PROFILES_QUERY, {
+      variables: { name: searchText, topic: searchTopic }
+    });
+
+    function search() {
+      console.log('trying to search')
+      setSearchStatus(true)
+
+      if(searchTopic === "") console.log('we have no topic')
+      if(searchText === "") console.log('we have no text')
+
+      if( searchTopic !== "" && searchText !== "" ) {
+        setCurrentOffset(0);
+        getSearchProfiles({ variables: { name: searchText, topic: searchTopic } })
+      } else {
+        console.log('lets not do anything yet')
+        setSearchStatus(false)
+      }
+    }
+
+    if(errorAll || errorSearch)
+      return <div>Error loading all profiles</div>
+
+    if(loadingAll || loadingSearch)
+      return <div>Loading</div>
+
+    function handleTopicChange(event) {
+      console.log('trying to change topic: ', event.target.value);
+      setSearchTopic(event.target.value);
+    }
 
     function handlePaginationChange(num) {
         const newOffset = (num-1)*10
         setCurrentOffset(newOffset)
-        Router.push(`/profile/page/${newOffset}`)
+        // TODO do refetch according to setSearchStatus as well
+        refetch({ variables: currentOffset })
+        // Router.push(`/profile/page/${newOffset}`)
     }
+
+    console.log('!!: ', dataSearch);
+    console.log('??: ', dataAll);
+    const dataSet = searchStatus && dataSearch ? dataSearch.authors.authors : dataAll.authors.authors;
+    const totalCount = searchStatus && dataSearch ? dataSearch.authors.totalCount : dataAll.authors.totalCount;
+    // searchStatus && dataSearch ? setCurrentOffset(dataSearch.authors.totalCount) : setCurrentOffset(dataAll);
 
     return (
         <div className="flex bg-gray-200 h-screen w-full">
           <div className="ml-16 w-1/5 h-screen overflow-y-auto">
             <h2 className="h-16 mt-4 mr-2 flex items-center text-xl font-semibold border-b-2 border-gray-300"><span>Options</span></h2>
-            <Topicdropdown />
+            <Topicdropdown searchTopic={searchTopic} handleTopicChange={handleTopicChange} />
+            <button className="bg-green-200 rounded-md border-2 border-green-500" onClick={search}>execute search</button>
           </div>
           <div className="w-4/5">
             <div className="p-4 mr-8 mt-2 overflow-y-auto h-screen">
-              <Searchbar />
+              <Searchbar searchText={searchText} setSearchText={setSearchText}/>
 
               <div className="flex justify-end pr-4 mt-4">
                 <span className="font-semibold italic pr-1">{currentOffset}</span> - <span className="font-semibold px-1">{currentOffset+10}</span> of {totalCount} results shown
               </div>
               
-              <ProfileList profiles={profiles}/>
+              <ProfileList profiles={dataSet}/>
               <Pagination totalCount={totalCount} offset={currentOffset} handlePaginationChange={handlePaginationChange} />
             </div>
           </div>
@@ -40,29 +117,29 @@ const profiles = ({profiles, totalCount, offset}) => {
 
 export default profiles;
 
-export async function getServerSideProps(context) {
-    const offset = context.query.page;
-    const { data } = await client.query({
-      query: gql`
-        query Example {
-          authors(offset: ${offset}) {
-              totalCount
-              authors {
-                  id
-                  name
-                  url_picture
-                  topics
-              }
-          }
-        }
-      `,
-    });
+// export async function getServerSideProps(context) {
+//     const offset = context.query.page;
+//     const { data } = await client.query({
+//       query: gql`
+//         query Example {
+//           authors(offset: ${offset}) {
+//               totalCount
+//               authors {
+//                   id
+//                   name
+//                   url_picture
+//                   topics
+//               }
+//           }
+//         }
+//       `,
+//     });
   
-    return {
-      props: {
-        totalCount: data.authors.totalCount,
-        profiles: data.authors.authors,
-        offset: offset,
-      },
-    };
-  }
+//     return {
+//       props: {
+//         totalCount: data.authors.totalCount,
+//         profiles: data.authors.authors,
+//         propsOffset: offset,
+//       },
+//     };
+//   }

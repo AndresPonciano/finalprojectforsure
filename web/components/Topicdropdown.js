@@ -30,28 +30,18 @@ const topics = [
 ]
 
 
-const Topicdropdown = () => {
+const Topicdropdown = ({ searchTopic, handleTopicChange }) => {
     return (
-        <div className='bg-red-200 mt-6'>
-            <Menu>
-                <Menu.Button className={'bg-gray-100 rounded p-2 w-full flex'}>
-                    <h2 className='flex w-4/5'>Topics</h2>
-                    <div className='flex justify-end w-1/5'>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </div>
-                </Menu.Button>
-                <Menu.Items>
-                    {topics.map((topic, index) => {
-                        return (
-                            <Menu.Item as="li" key={index}>
-                                <a>{topic}</a>  
-                            </Menu.Item>
-                        )
-                    })}
-                </Menu.Items>
-            </Menu>
+        <div className='mt-16'>
+            <h3>Topics</h3>
+            <select className='w-full mt-2 p-2 rounded-md' value={searchTopic} onChange={handleTopicChange}>
+                <option value="None">None</option>
+                {topics.map((topic, index) => {
+                    return (
+                        <option key={index} value={topic}>{topic}</option>
+                    )
+                })}
+            </select>
         </div>
     )
 }

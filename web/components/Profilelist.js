@@ -2,6 +2,8 @@ import ProfileItem from "../components/ProfileItem";
 import { useState } from "react";
 
 const ProfileList = ({ profiles }) => {
+  console.log('in profiles', profiles)
+
   return (
     <div className="">
       {profiles.map((profile) => (
