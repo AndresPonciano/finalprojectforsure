@@ -1,13 +1,26 @@
 import Link from 'next/link'
 
-const ProfileItem = ({profile}) => {
+const ProfileItem = ({ profile }) => {
+    // console.log(profile);
+
     return (
         <div className="mt-6">
             <div className="flex w-full items-center bg-gray-100 p-2 rounded-md shadow">
                 <div className="flex items-center">
+                    {/* TODO: change to next/image */}
                     <img className="rounded-full w-24 h-24" src={profile.url_picture} alt="new" />
                     <div>
-                        <h2 className="pl-6 font-bold">{profile.name}</h2>
+                        <Link 
+                            href={{
+                                pathname: "/profile/[id]",
+                                query: {
+                                    profile: JSON.stringify(profile)
+                                }
+                            }} 
+                            as={`/profile/${profile.id}`}
+                        >
+                            <h2 className="pl-6 font-bold">{profile.name}</h2>
+                        </Link>
                         <ul className="flex mt-2 pl-6">
                             {profile.topics.map((topic, index) => {
                                 return (

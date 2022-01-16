@@ -4,35 +4,6 @@ const { ElasticSearchClient, PublicationsElasticSearchClient } = require("../ela
 
 module.exports = {
     Query: {
-        launches: async (_, { pageSize = 20, after }, { dataSources }) => {
-            const allLaunches = await dataSources.launchAPI.getAllLaunches();
-            allLaunches.reverse();
-
-            const launches = paginateResults({
-                after,
-                pageSize,
-                results: allLaunches
-            });
-
-            return {
-                launches,
-                cursor: launches.length ? launches[launches.length - 1].cursor : null,
-                // if the cursor at the end of the paginated results is the same as the
-                // last item in _all_ results, then there are no more results after this
-                hasMore: launches.length
-                    ? launches[launches.length - 1].cursor !==
-                    allLaunches[allLaunches.length - 1].cursor
-                    : false
-            };
-        },
-        profiles: async (_, { pageSize = 20, after }, { dataSources }) => {
-            const allProfiles = await dataSources.profileAPI.getAllProfiles();
-
-            // pageSize is equivalent to "first" in the graphql specs
-            return edgesToReturn({allEdges: allProfiles, first: pageSize, after})
-        },
-        profile: (_, { id }, { dataSources }) =>
-            dataSources.profileAPI.getProfileById({ id: id }),
         authors: (_, { name = null, topic = null, offset = 0, limit = 10 }) => new Promise((resolve, reject) => {
             let schema;
             let total;
@@ -101,13 +72,55 @@ module.exports = {
                 resolve({"totalCount": total, "authors": _source});
             });
         }),
-        publications: () => new Promise((resolve, reject) => {
-            PublicationsElasticSearchClient({...elasticSearchSchema})
+        authorPublications: (_, { id = null }) => new Promise((resolve, reject) => {
+            if(!id) {
+                console.log('this should never run');
+            }
+            
+            const schema = {
+                "query": {
+                    "match": {
+                      "id": id
+                    }
+                }
+            }
+
+            PublicationsElasticSearchClient({...schema})
                 .then(r => {
+                total = r['hits']['total']['value'];
                 let _source = r['hits']['hits'];
                     _source.map((item, i) => _source[i] = item._source);
         
-                resolve(_source);
+                console.log(_source.length, 'AAAAAAAAA', total)
+                // resolve(_source);
+                resolve({"totalCount": total, "publications": _source});
+            });
+        }),
+        publications: (_, { title = null }) => new Promise((resolve, reject) => {
+            let schema;
+            let total;
+
+            if(title) {
+                schema = {
+                    "query": {
+                        "match": {
+                            "title": title
+                        }
+                    }
+                }
+            } else{
+                schema = elasticSearchSchema;
+            }
+
+            PublicationsElasticSearchClient({...schema})
+                .then(r => {
+                total = r['hits']['total']['value'];
+                let _source = r['hits']['hits'];
+                    _source.map((item, i) => _source[i] = item._source);
+        
+                console.log(_source.length, 'AAAAAAAAA', total)
+                // resolve(_source);
+                resolve({"totalCount": total, "publications": _source});
             });
         }),
     }

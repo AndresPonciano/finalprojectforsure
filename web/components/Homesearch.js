@@ -1,13 +1,26 @@
 import Searchbar from "./Searchbar"
 import { useState } from "react";
 import Searchradio from "./Searchradio";
+import { useRouter } from "next/router";
 
 const Homesearch = () => {
-    const [searchText, setSearchText] = useState("");
+    const router = useRouter();
 
-    function handleSubmit() {
-        console.log('submitting homesearch')
+    const [searchText, setSearchText] = useState("");
+    const [searchOption, setSearchOption] = useState("Profiles");
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        if(searchOption === "Profiles") {
+            router.push({
+                pathname: '/profiles',
+                query: { id: searchText }
+            })   
+        }
     }
+
+    console.log('we will search: ', searchText)
+    console.log('we will search: ', searchOption)
 
     return (
         <div>
