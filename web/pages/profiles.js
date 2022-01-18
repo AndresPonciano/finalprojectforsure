@@ -37,13 +37,10 @@ const SEARCH_PROFILES_QUERY = gql`
 
 const profiles = ({ id }) => {
     const router = useRouter();
-    // const {
-    //   query: { id },
-    // } = router;
 
-    console.log('HOME SEARCH PARAM: ', id);
+    // console.log('HOME SEARCH PARAM: ', id);
     useEffect(() => {
-      console.log('this runs once on component mount basically')
+      console.log('this runs once on com  ponent mount basically')
 
       if(id !== undefined) { setSearchStatus(true) }
 
@@ -55,7 +52,8 @@ const profiles = ({ id }) => {
     const [searchTopic, setSearchTopic] = useState("");
     const [searchText, setSearchText] = useState("");
     const [searchStatus, setSearchStatus] = useState("");
-    
+    const [dataSet, setDataSet] = useState([]);
+
     const { loading: loadingAll, error: errorAll, data: dataAll, refetch } = useQuery(ALL_PROFILES_QUERY, {
       variables: { offset: currentOffset }
     });
@@ -92,22 +90,36 @@ const profiles = ({ id }) => {
     }
 
     function handlePaginationChange(num) {
-        const newOffset = (num-1)*10
-        setCurrentOffset(newOffset)
-        // TODO do refetch according to setSearchStatus as well
-        refetch({ variables: currentOffset })
+      console.log('num is: ', num);
+      let newOffset = (num-1)*10
+      
+      if(newOffset < 0) {
+        console.log('we had a negative: ', newOffset)
+        newOffset = 0;
+      } else {
+        console.log('newOff: ', newOffset)
+      }
+
+      setCurrentOffset(newOffset)
+
+      // refetch(newOffset)
+
+      // TODO do refetch according to setSearchStatus as well
+      console.log('in handle pagchange: ', currentOffset)
+      console.log('+++++++++++++++++++')
+
     }
 
-    console.log('!!: ', dataSearch);
+    // console.log('!!: ', dataSearch);
     console.log('??: ', dataAll);
-    const dataSet = searchStatus && dataSearch ? dataSearch.authors.authors : dataAll.authors.authors;
+    const dataSet2 = searchStatus && dataSearch ? dataSearch.authors.authors : dataAll.authors.authors;
     const totalCount = searchStatus && dataSearch ? dataSearch.authors.totalCount : dataAll.authors.totalCount;
     // searchStatus && dataSearch ? setCurrentOffset(dataSearch.authors.totalCount) : setCurrentOffset(dataAll);
 
     return (
         <div className="flex bg-gray-200 h-screen w-full">
           <div className="ml-16 w-1/5 h-screen overflow-y-auto">
-            <h2 className="h-16 mt-4 mr-2 flex items-center text-xl font-semibold border-b-2 border-gray-300"><span>Options</span></h2>
+            <h2 className="h-16 mt-4 mr-2 flex items-center text-xl font-bold border-b-2 border-gray-300"><span>Options</span></h2>
             <Topicdropdown searchTopic={searchTopic} handleTopicChange={handleTopicChange} />
             <button className="bg-green-200 rounded-md border-2 border-green-500" onClick={search}>execute search</button>
           </div>
@@ -119,7 +131,7 @@ const profiles = ({ id }) => {
                 <span className="font-semibold italic pr-1">{currentOffset}</span> - <span className="font-semibold px-1">{currentOffset+10}</span> of {totalCount} results shown
               </div>
               
-              <ProfileList profiles={dataSet}/>
+              <ProfileList profiles={dataSet2}/>
               <Pagination totalCount={totalCount} offset={currentOffset} handlePaginationChange={handlePaginationChange} />
             </div>
           </div>

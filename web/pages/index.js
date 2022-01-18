@@ -10,7 +10,7 @@ export default function Home() {
         <title>Google Scholar IO</title>
         <meta name='keywords' content='test meta tag' />
       </Head>
-      <div className='h-screen bg-gray-600 text-white flex items-center justify-center'>
+      <div className="h-screen bg-hero-pattern text-white flex items-center justify-center">
         {/* <Image className='z-0' src={"/images/homeBackground.png"} width={1100} height={800}/> */}
         <div className='w-2/5 h-32 flex flex-col'>
           <div className='w-2/5'>

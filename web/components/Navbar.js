@@ -18,10 +18,10 @@ const Navbar = () => {
     const router = useRouter();
 
     return (
-        <Disclosure as="nav" className="bg-gray-700">
+        <Disclosure as="nav" className="bg-gray-700 border-b-3 border-gray-900">
             {({open}) => (
                 <>
-                    <div className='mx-16 px-2 sm:px-6 lg:px-8'>
+                    <div className='mx-16'>
                         <div className='relative flex items-center justify-between h-16'>
                             {/* hidden stuff for mobile */}
                             <div className='absolute inset-y-0 left-0 flex items-center sm:hidden'>
