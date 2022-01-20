@@ -14,13 +14,10 @@ const Homesearch = () => {
         if(searchOption === "Profiles") {
             router.push({
                 pathname: '/profiles',
-                query: { id: searchText }
+                query: { homeSearchValue: searchText }
             })   
         }
     }
-
-    console.log('we will search: ', searchText)
-    console.log('we will search: ', searchOption)
 
     return (
         <div>

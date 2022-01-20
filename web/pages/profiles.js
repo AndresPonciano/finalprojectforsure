@@ -1,7 +1,5 @@
 import { gql, useLazyQuery, useQuery } from "@apollo/client"
-import { useRouter } from 'next/router'
 import { useState, useEffect } from "react"
-import client from "../apollo-client"
 import Pagination from "../components/Pagination"
 import ProfileList from "../components/Profilelist"
 import Searchbar from "../components/Searchbar"
@@ -22,8 +20,8 @@ const ALL_PROFILES_QUERY = gql`
 `;
 
 const SEARCH_PROFILES_QUERY = gql`
-  query SearchProfiles( $name: String, $topic: String ) {
-    authors( name: $name, topic: $topic ) {
+  query SearchProfiles( $name: String, $topic: String, $offset: Int ) {
+    authors( name: $name, topic: $topic, offset: $offset ) {
       totalCount
       authors {
         id
@@ -35,24 +33,20 @@ const SEARCH_PROFILES_QUERY = gql`
   }
 `;
 
-const profiles = ({ id }) => {
-    const router = useRouter();
-
-    // console.log('HOME SEARCH PARAM: ', id);
-    useEffect(() => {
-      console.log('this runs once on com  ponent mount basically')
-
-      if(id !== undefined) { setSearchStatus(true) }
-
-      getSearchProfiles({ variables: { name: id, topic: null } })
-    }, [])
-
-    // console.log('offset: ', propsOffset)
+const profiles = ({ homeSearchValue }) => {
     const [currentOffset, setCurrentOffset] = useState(0);
-    const [searchTopic, setSearchTopic] = useState("");
+    const [searchTopic, setSearchTopic] = useState(null);
     const [searchText, setSearchText] = useState("");
-    const [searchStatus, setSearchStatus] = useState("");
+    const [searchStatus, setSearchStatus] = useState(false);
     const [dataSet, setDataSet] = useState([]);
+
+    useEffect(() => {
+      if(homeSearchValue !== undefined) {
+        setSearchStatus(true) 
+      }
+
+      getSearchProfiles({ variables: { name: homeSearchValue, topic: null, offset: 0 } })
+    }, [])
 
     const { loading: loadingAll, error: errorAll, data: dataAll, refetch } = useQuery(ALL_PROFILES_QUERY, {
       variables: { offset: currentOffset }
@@ -66,15 +60,15 @@ const profiles = ({ id }) => {
       console.log('trying to search')
       setSearchStatus(true)
 
-      if(searchTopic === "") console.log('we have no topic')
+      if(searchTopic === null) console.log('we have no topic')
       if(searchText === "") console.log('we have no text')
 
-      if( searchTopic !== "" && searchText !== "" ) {
+      if(searchTopic === null && searchText === "") {
+        console.log('dont do anything and send error message or smth');
+        setSearchStatus(false)
+      } else {
         setCurrentOffset(0);
         getSearchProfiles({ variables: { name: searchText, topic: searchTopic } })
-      } else {
-        console.log('lets not do anything yet')
-        setSearchStatus(false)
       }
     }
 
@@ -85,33 +79,32 @@ const profiles = ({ id }) => {
       return <div>Loading</div>
 
     function handleTopicChange(event) {
-      console.log('trying to change topic: ', event.target.value);
       setSearchTopic(event.target.value);
     }
 
     function handlePaginationChange(num) {
-      console.log('num is: ', num);
+      // console.log('num is: ', num);
       let newOffset = (num-1)*10
       
       if(newOffset < 0) {
-        console.log('we had a negative: ', newOffset)
         newOffset = 0;
       } else {
-        console.log('newOff: ', newOffset)
+        console.log('hi')
       }
 
-      setCurrentOffset(newOffset)
+      setCurrentOffset(newOffset);
 
-      // refetch(newOffset)
-
-      // TODO do refetch according to setSearchStatus as well
-      console.log('in handle pagchange: ', currentOffset)
-      console.log('+++++++++++++++++++')
-
+      // TODO: how to check if they have submitted a request with searchText or no????
+      // USE THE OFFSET FOR THIS MAYBE???
+      if(searchStatus === true && homeSearchValue !== undefined) {
+        getSearchProfiles({ variables: { name: homeSearchValue, topic: searchTopic, offset: newOffset } });
+      } else {
+        getSearchProfiles({ variables: { name: searchText, topic: searchTopic, offset: newOffset } });
+      }
     }
 
-    // console.log('!!: ', dataSearch);
-    console.log('??: ', dataAll);
+    console.log('!!: ', dataSearch);
+    // console.log('??: ', dataAll);
     const dataSet2 = searchStatus && dataSearch ? dataSearch.authors.authors : dataAll.authors.authors;
     const totalCount = searchStatus && dataSearch ? dataSearch.authors.totalCount : dataAll.authors.totalCount;
     // searchStatus && dataSearch ? setCurrentOffset(dataSearch.authors.totalCount) : setCurrentOffset(dataAll);
@@ -128,7 +121,16 @@ const profiles = ({ id }) => {
               <Searchbar searchText={searchText} setSearchText={setSearchText}/>
 
               <div className="flex justify-end pr-4 mt-4">
-                <span className="font-semibold italic pr-1">{currentOffset}</span> - <span className="font-semibold px-1">{currentOffset+10}</span> of {totalCount} results shown
+                <span className="font-semibold italic pr-1">{currentOffset}</span>
+                - 
+                <span className="font-semibold px-1">
+                  {currentOffset+10 > totalCount ? 
+                    totalCount
+                  :
+                    currentOffset+10
+                  }
+                </span>
+                of <span className="font-semibold px-1">{totalCount}</span> results shown
               </div>
               
               <ProfileList profiles={dataSet2}/>
@@ -141,6 +143,6 @@ const profiles = ({ id }) => {
 
 export default profiles;
 
-profiles.getInitialProps = ({ query: { id } }) => {
-  return { id }
+profiles.getInitialProps = ({ query: { homeSearchValue } }) => {
+  return { homeSearchValue }
 }
