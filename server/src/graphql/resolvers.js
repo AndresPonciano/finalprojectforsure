@@ -5,6 +5,8 @@ const { ElasticSearchClient, PublicationsElasticSearchClient } = require("../ela
 module.exports = {
     Query: {
         authors: (_, { name = null, topic = null, offset = 0, limit = 10 }) => new Promise((resolve, reject) => {
+            console.log('limit is: ', limit);    
+        
             let schema;
             let total;
             if(!name && topic) {
@@ -70,6 +72,39 @@ module.exports = {
                 console.log(_source.length, 'AAAAAAAAA', total)
                 // resolve(_source);
                 resolve({"totalCount": total, "authors": _source});
+            });
+        }),
+        author: (_, { id = 3 }) => new Promise((resolve, reject) => {
+            console.log('IM IN RESOLVER: ', id)
+            let schema;
+            if(id === null) {
+                schema = {
+                    "query": {
+                        "term": {
+                            "id": {
+                                "value": id
+                            }
+                        }
+                    }
+                }
+            } else {
+                schema = {
+                    "query": {
+                        "term": {
+                            "id": {
+                                "value": id
+                            }
+                        }
+                    }
+                }
+            }
+
+            ElasticSearchClient({...schema})
+                .then(r => {
+                let _source = r['hits']['hits'];
+                let author = _source[0]._source;    
+
+                resolve(author);
             });
         }),
         authorPublications: (_, { id = null }) => new Promise((resolve, reject) => {

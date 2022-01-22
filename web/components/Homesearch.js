@@ -2,6 +2,7 @@ import Searchbar from "./Searchbar"
 import { useState } from "react";
 import Searchradio from "./Searchradio";
 import { useRouter } from "next/router";
+import { route } from "next/dist/server/router";
 
 const Homesearch = () => {
     const router = useRouter();
@@ -16,14 +17,23 @@ const Homesearch = () => {
                 pathname: '/profiles',
                 query: { homeSearchValue: searchText }
             })   
+        } else if(searchOption === "Publications") {
+            router.push({
+                pathname: '/publications',
+                query: { homeSearchValue: searchText }
+            })
         }
+    }
+
+    function handleRadioChange(event) {
+        setSearchOption(event.target.value)
     }
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
                 <Searchbar searchText={searchText} setSearchText={setSearchText} />
-                <Searchradio />
+                <Searchradio handleRadioChange={handleRadioChange} />
             </form>
         </div>
     )

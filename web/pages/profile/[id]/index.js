@@ -1,5 +1,7 @@
+import { gql } from "@apollo/client"
 import Link from "next/link"
-import { TagCloud } from "react-tagcloud";
+import client from "../../../apollo-client"
+import { TagCloud } from "react-tagcloud"
 
 const data = [
     { value: "JavaScript", count: 38 },
@@ -23,16 +25,17 @@ const options = {
     hue: 'blue',
 }
 
-const profile = ({ propsProfile }) => {
+const profile = ({ profile }) => {
     return (
-        <div className="w-3/4 flex-col">
-            <div className="flex">
-                <div className="w-5/6">
+        <div className="h-screen pt-8 bg-gray-200">
+        <div className="bg-gray-100 mx-16 flex-col">
+             <div className="flex">
+                 <div className="w-5/6">
                     <img 
-                        className="rounded-md w-36 h-36 m-6 float-left"
-                        src={propsProfile.url_picture}
+                        className="rounded-md w-36 h-36 float-left"
+                        src={profile.url_picture}
                     />
-                    <h1 className="mt-6 font-bold text-2xl">{propsProfile.name}</h1>
+                    <h1 className="mt-6 font-bold text-2xl">{profile.name}</h1>
 
                     <p className="m-6">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
@@ -53,7 +56,7 @@ const profile = ({ propsProfile }) => {
                     <Link href="#">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="mr-6 h-12 w-12"
+                            className="h-12 w-12"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -72,7 +75,7 @@ const profile = ({ propsProfile }) => {
             <div>
                 <div className="w-full">
                     <ul className="flex flex-wrap ml-6 mr-6 text-white">
-                        {propsProfile.topics.map((topic, index) => {
+                        {profile.topics.map((topic, index) => {
                             return (
                                 <li className="mr-2 text-blue-500 hover:underline" key={index}>{topic}</li>
                             )
@@ -92,19 +95,58 @@ const profile = ({ propsProfile }) => {
                     </div>
                 </div>
             </div>
-
+        </div>
         </div>
     )
 }
 
-export async function getServerSideProps(context) {
-    console.log('help: ', context.query)
-    console.log('pls work: ', JSON.parse(context.query.profile))
-    const profile = JSON.parse(context.query.profile)
+export async function getStaticPaths() {
+    // TODO: change this to fetch all id's
+    const { data } = await client.query({
+        query: gql`
+            query AllProfiles {
+                authors {
+                    totalCount
+                    authors {
+                        id
+                        name
+                        url_picture
+                        topics
+                    }
+                }
+            }
+        `
+    })
+
+    const paths = data.authors.authors.map((author) => ({
+        params: { id: author.id  }
+    }))
+
+    return {
+        paths,
+        fallback: false
+    }
+}
+
+export async function getStaticProps({ params }) {
+    let id = parseInt(params.id)
+
+    const query = gql`
+        query($id: Int!) {
+            author(id: $id) {
+                id
+                name
+                url_picture
+                topics
+            }
+        }
+    `
+
+    const { loading, error, data } = await client.query({ query: query, variables: { id: id }})
 
     return {
         props: {
-            propsProfile: profile
+            profile: data.author
         }
     }
 }

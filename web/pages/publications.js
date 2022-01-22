@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { gql, useLazyQuery } from "@apollo/client";
 import Searchbar from "../components/Searchbar";
 import Pagination from "../components/Pagination";
@@ -17,13 +17,21 @@ const SEARCH_PUBLICATIONS_QUERY = gql`
     }
 `;
 
-const publications = () => {
+const publications = ({ homeSearchValue }) => {
     const [searchText, setSearchText] = useState("");
 
     const [ getSearchPublications, { loading: loadingSearch, error: errorSearch, data: dataSearch } ] = useLazyQuery(SEARCH_PUBLICATIONS_QUERY, {
         variables: { title: searchText }
       });
 
+
+    useEffect(() => {
+        // if(homeSearchValue !== undefined) {
+        //     setSearchStatus(true) 
+        // }
+
+        getSearchPublications({ variables: { title: homeSearchValue } })
+    }, [])
 
     function search() {
         console.log('trying to search: ', searchText)
@@ -93,3 +101,7 @@ const publications = () => {
 }
 
 export default publications;
+
+publications.getInitialProps = ({ query: { homeSearchValue } }) => {
+    return { homeSearchValue }
+}

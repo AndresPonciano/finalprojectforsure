@@ -13,9 +13,6 @@ const ProfileItem = ({ profile }) => {
                         <Link 
                             href={{
                                 pathname: "/profile/[id]",
-                                query: {
-                                    profile: JSON.stringify(profile)
-                                }
                             }} 
                             as={`/profile/${profile.id}`}
                         >
