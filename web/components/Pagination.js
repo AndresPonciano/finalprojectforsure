@@ -9,7 +9,7 @@ const Pagination = ({totalCount, offset, handlePaginationChange}) => {
     // console.log('rerendering pag comp')
     // TODO: make sure pages list is okay always
     useEffect(() => {
-        // console.log('how many times is this running')
+        console.log('how many times is this running', offset)
 
         if(offset >= 10) { setHasPrevPage(true); }
         if(offset < totalCount - 10) { setHasNextPage(true); }
@@ -34,7 +34,7 @@ const Pagination = ({totalCount, offset, handlePaginationChange}) => {
     }, [offset]);
 
     function PageNums(props) {
-        console.log('currentPage is: ', currentPage)
+        // console.log('currentPage is: ', currentPage)
         const pageNums = props.pages;
         let prevElem = null;
         let nextElem = null;

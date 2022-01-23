@@ -19,7 +19,7 @@ const Homesearch = () => {
             })   
         } else if(searchOption === "Publications") {
             router.push({
-                pathname: '/publications',
+                pathname: '/publications2',
                 query: { homeSearchValue: searchText }
             })
         }

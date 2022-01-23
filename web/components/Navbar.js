@@ -61,7 +61,7 @@ const Navbar = () => {
                             <div className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'>
                                 <Link href="https://github.com/AndresPonciano/finalprojectforsure">
                                     {/* source for icon is Font Awesome */}
-                                    <Image className="bg-gray-300 rounded-full" src={"/images/github-brands.svg"} width={30} height={30}/>
+                                    <Image className="bg-gray-300 text-red-500 rounded-full" src={"/images/github-brands.svg"} width={30} height={30}/>
                                 </Link>
                             </div>
                             {/* end of right navbar */}

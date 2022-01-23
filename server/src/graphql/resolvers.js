@@ -131,12 +131,15 @@ module.exports = {
                 resolve({"totalCount": total, "publications": _source});
             });
         }),
-        publications: (_, { title = null }) => new Promise((resolve, reject) => {
+        publications: (_, { title = null, offset = 0, limit = 10 }) => new Promise((resolve, reject) => {
             let schema;
             let total;
+            console.log('here: ', offset);
 
             if(title) {
                 schema = {
+                    "from": offset,
+                    "size": limit,
                     "query": {
                         "match": {
                             "title": title
