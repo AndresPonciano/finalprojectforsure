@@ -4,7 +4,7 @@ const PublicationItem = ({ publication }) => {
         <div className="mt-6">
             <div className="flex w-full items-center bg-gray-100 p-2 rounded-md shadow">
                 <div className="p-2">
-                    <h2 className="text-blue-500">{publication.title}</h2>
+                    <h2 className="text-blue-500 text-lg">{publication.title}</h2>
                     <h2>authors: TBD {publication.id}</h2>
                     <h2 className="text-gray-500 italic">
                         {publication.abstract.slice(0, 200)}...

@@ -158,7 +158,8 @@ module.exports = {
         
                 console.log(_source.length, 'AAAAAAAAA', total)
                 // resolve(_source);
-                resolve({"totalCount": total, "publications": _source});
+                resolve(_source);
+                // resolve({"totalCount": total, "publications": _source});
             });
         }),
     }

@@ -43,14 +43,11 @@ const profiles = ({ homeSearchValue }) => {
     const [dataSet, setDataSet] = useState([]);
 
     useEffect(() => {
-      console.log('we gotta set searchStatus', homeSearchValue);
       if(homeSearchValue !== undefined) {
         setSearchStatus(true);
       }
 
     }, [homeSearchValue])
-
-    console.log('pain: ', currentOffset, searchText, homeSearchValue)
 
     const { loading: loadingAll, error: errorAll, data: dataAll, refetch } = useQuery(ALL_PROFILES_QUERY, {
       variables: { offset: currentOffset }
@@ -98,7 +95,6 @@ const profiles = ({ homeSearchValue }) => {
     // console.log('??: ', dataAll);
     const dataSet2 = searchStatus && dataTemp ? dataTemp.authors.authors : dataAll.authors.authors;
     const totalCount = searchStatus && dataTemp ? dataTemp.authors.totalCount : dataAll.authors.totalCount;
-    // searchStatus && dataSearch ? setCurrentOffset(dataSearch.authors.totalCount) : setCurrentOffset(dataAll);
 
     return (
         <div className="flex bg-gray-200 h-screen w-full">

@@ -5,18 +5,29 @@ import PublicationList from "../components/PublicationList";
 import Searchbar from "../components/Searchbar";
 import Pagination from "../components/Pagination";
 
+// const SEARCH_PUBLICATIONS_QUERY = gql`
+//     query SearchPublications( $title: String, $offset: Int, $limit: Int ) {
+//         publications( title: $title, offset: $offset, limit: $limit ) {
+//             totalCount
+//             publications {
+//                 id
+//                 title
+//                 abstract
+//                 num_citations
+//             }
+//         }
+//     }
+// `;
+
 const SEARCH_PUBLICATIONS_QUERY = gql`
-    query SearchPublications( $title: String, $offset: Int, $limit: Int ) {
-        publications( title: $title, offset: $offset, limit: $limit ) {
-            totalCount
-            publications {
-                id
-                title
-                abstract
-                num_citations
-            }
-        }
+query NewPubsPag( $title: String, $offset: Int, $limit: Int ) {
+    publications( title: $title, offset: $offset, limit: $limit ) {
+        id
+        title
+        abstract
+        num_citations
     }
+}
 `;
 
 const publications = ({ homeSearchValue }) => {
@@ -56,13 +67,14 @@ const publications = ({ homeSearchValue }) => {
 
 
     // console.log('we got results: ', dataSearch)
-    const dataSet = dataSearch ? dataSearch.publications.publications : [];
+    // const dataSet = dataSearch ? dataSearch.publications.publications : [];
+    const dataSet = dataSearch ? dataSearch.publications : [];
     console.log('dataSet is: ', dataSearch)
 
     // const dataSet = dataSearch ?
 
     return (
-        <div className="flex bg-gray-200 h-screen w-full">
+        <div className="flex bg-gray-200 w-full">
             <div className="ml-16 w-1/5 h-screen">
                 <h2 className="h-16 mt-4 mr-2 flex items-center text-xl font-semibold border-b-2 border-gray-300"><span>Options</span></h2>
                 side stuff
@@ -74,19 +86,14 @@ const publications = ({ homeSearchValue }) => {
             </div>
 
             <div className="w-4/5">
+                <form className="sticky p-4 mr-8" onSubmit={search}>
+                    <Searchbar searchText={searchText} setSearchText={setSearchText}/>
+                </form>
+
                 <div className="p-4 mr-8 mt-2 overflow-y-auto h-screen">
-                    <form onSubmit={search}>
-                        <Searchbar searchText={searchText} setSearchText={setSearchText}/>
-                        {/* <button 
-                            className="bg-blue-500 text-white px-4 rounded-md border-2 border-blue-200"
-                            onClick={search}
-                        >
-                            Search
-                        </button> */}
-                    </form>
 
                     <div className="flex justify-end py-4 mt-4">
-                        offset results go here
+                        <h2>showing 1 - {dataSet.length} results for: <span className="font-semibold italic">{homeSearchValue}</span></h2>
                     </div>
                     <div>
                         {dataSet.length === 0 ?
@@ -94,16 +101,21 @@ const publications = ({ homeSearchValue }) => {
                         :
                             <>
                                 <PublicationList publications={dataSet} />
-                                <button 
-                                    onClick={() => fetchMore({
-                                        variables: {
-                                            offset: dataSet.length
-                                        }
-                                    })} 
-                                    className="bg-blue-700 text-white"
-                                >
-                                    fetch more button
-                                </button>
+                                <div className="flex flex-col items-center justify-center w-full mt-4">
+                                    <h2>showing: 1 - {dataSet.length}</h2>
+                                    <button 
+                                        onClick={() => fetchMore({
+                                            variables: {
+                                                offset: dataSet.length
+                                            }
+                                        })} 
+                                        className="flex items-center justify-center m-4 w-12 h-8 rounded-md bg-gray-300 text-gray-900 hover:bg-gray-700 hover:text-gray-300"
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                </div>
                             </>
                         }
                     </div>
