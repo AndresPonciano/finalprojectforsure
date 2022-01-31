@@ -5,7 +5,7 @@ const typeDefs = gql`
     type Query {
         authors(name: String, topic: String, offset: Int, limit: Int): AuthorConnection!
         author(id: Int): Author!
-        authorPublications(id: Int!): PublicationConnection!
+        authorPublications(id: Int, offset: Int, limit: Int): [Publication!]
         # publications(title: String, offset: Int, limit: Int): PublicationConnection!
         publications(title: String, offset: Int, limit: Int): [Publication!]
         # TODO: make separate query for publications by ID

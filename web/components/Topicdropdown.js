@@ -32,9 +32,8 @@ const topics = [
 
 const Topicdropdown = ({ searchTopic, handleTopicChange }) => {
     return (
-        <div className='mt-16'>
-            <h3 className='font-semibold'>Topics</h3>
-            <select className='w-full mt-2 p-2 rounded-md' value={searchTopic} onChange={handleTopicChange}>
+        <div className=''>
+            <select className='w-full p-2 rounded-md' value={searchTopic} onChange={handleTopicChange}>
                 <option value="None">None</option>
                 {topics.map((topic, index) => {
                     return (

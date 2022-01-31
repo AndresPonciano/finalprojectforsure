@@ -107,12 +107,16 @@ module.exports = {
                 resolve(author);
             });
         }),
-        authorPublications: (_, { id = null }) => new Promise((resolve, reject) => {
+        authorPublications: (_, { id = 979, offset = 0, limit = 10 }) => new Promise((resolve, reject) => {
             if(!id) {
                 console.log('this should never run');
             }
             
+            console.log('are we here', offset, limit);
+
             const schema = {
+                "from": offset,
+                "size": limit,
                 "query": {
                     "match": {
                       "id": id
@@ -126,15 +130,12 @@ module.exports = {
                 let _source = r['hits']['hits'];
                     _source.map((item, i) => _source[i] = item._source);
         
-                console.log(_source.length, 'AAAAAAAAA', total)
-                // resolve(_source);
-                resolve({"totalCount": total, "publications": _source});
+                resolve(_source);
             });
         }),
         publications: (_, { title = null, offset = 0, limit = 10 }) => new Promise((resolve, reject) => {
             let schema;
             let total;
-            console.log('here: ', offset);
 
             if(title) {
                 schema = {
@@ -156,10 +157,7 @@ module.exports = {
                 let _source = r['hits']['hits'];
                     _source.map((item, i) => _source[i] = item._source);
         
-                console.log(_source.length, 'AAAAAAAAA', total)
-                // resolve(_source);
                 resolve(_source);
-                // resolve({"totalCount": total, "publications": _source});
             });
         }),
     }

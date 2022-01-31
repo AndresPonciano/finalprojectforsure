@@ -1,4 +1,5 @@
-import { gql } from "@apollo/client"
+import { useEffect } from "react"
+import { gql, useQuery, useLazyQuery } from "@apollo/client"
 import Link from "next/link"
 import client from "../../../apollo-client"
 import { TagCloud } from "react-tagcloud"
@@ -26,7 +27,33 @@ const options = {
     hue: 'blue',
 }
 
-const profile = ({ profile, publications }) => {
+const GET_AUTHOR_PUBLICATIONS = gql`
+    query AllProfiles( $offset: Int ) {
+        authorPublications(offset: $offset) {
+            id
+            title
+            abstract
+            num_citations
+        }
+    }
+`;
+
+const profile = ({ profile }) => {
+
+    const [ getAuthorPublications, { loading: loadingPubs, error: errorPubs, data: dataPubs, fetchMore } ] = useLazyQuery(GET_AUTHOR_PUBLICATIONS, {
+        variables: { offset: 0 }
+    });
+
+    useEffect(() => {
+        getAuthorPublications({ variables: { offset: 0 } })
+    }, [])
+
+    // const { loading: loadingAll, error: errorAll, data: dataAll } = useQuery(GET_AUTHOR_PUBLICATIONS, {
+    //     variables: { offset: 0 }
+    // });
+
+    console.log('author pubs are: !!!', dataPubs);
+
     return (
         <div className="pt-8 bg-gray-200">
             <div className="bg-gray-100 mx-16 flex-col">
@@ -98,11 +125,30 @@ const profile = ({ profile, publications }) => {
                 </div>
             </div>
             <div className="mx-16 mt-4">
-                <h2>Publications are: </h2>
-                <PublicationList publications={publications} />
-                <button className="bg-orange-400">
-                    fetch more
-                </button>
+                {
+                    dataPubs &&
+                    <>
+                        <div className="mt-8">
+                            <h2 className="text-gray-900 text-lg font-semibold">Author's Publications: </h2>
+                            <h2>showing: 1 - {dataPubs.authorPublications.length}</h2>
+                        </div>
+                        <PublicationList publications={dataPubs.authorPublications} />
+
+                        <div className="flex flex-col items-center justify-center w-full mt-4">
+                            <h2>showing: 1 - {dataPubs.authorPublications.length}</h2>
+                            <button
+                                onClick={() => fetchMore({
+                                    variables: { offset: dataPubs.authorPublications.length }
+                                })}
+                                className="flex items-center justify-center m-4 w-12 h-8 rounded-md bg-gray-300 text-gray-900 hover:bg-gray-700 hover:text-gray-300"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </>
+                }
             </div>
         </div>
     )
@@ -150,30 +196,12 @@ export async function getStaticProps({ params }) {
         }
     `;
 
-    const GET_AUTHOR_PUBLICATIONS = gql`
-        query($id: Int!) {
-            authorPublications(id: $id) {
-                totalCount
-                publications {
-                    id
-                    title
-                    abstract
-                    num_citations
-                }
-            }
-        }
-    `;
-
     const { loading, error, data } = await client.query({ query: GET_AUTHOR_INFO, variables: { id: id }})
-
-    const { loading: loadingPubs, error: errorPubs, data: dataPubs } = await client.query({ query: GET_AUTHOR_PUBLICATIONS, variables: { id: 231 }})
-
-    console.log('dataPubs: ', dataPubs);
 
     return {
         props: {
             profile: data.author,
-            publications: dataPubs.authorPublications.publications
+            // publications: dataPubs.authorPublications.publications
         }
     }
 }

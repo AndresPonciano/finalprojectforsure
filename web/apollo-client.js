@@ -1,10 +1,10 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client"
 import { offsetLimitPagination } from "@apollo/client/utilities";
-import publications from "./pages/publications";
 
 const client = new ApolloClient({
     uri: "http://localhost:9100/graphql",
     cache: new InMemoryCache({
+        dataIdFromObject: o => (o._id ? `${o.__typename}:${o._id}`: null),
         typePolicies: {
             Query: {
                 fields: {
@@ -13,7 +13,7 @@ const client = new ApolloClient({
                     },
                     publications: {
                         keyArgs: false,
-                        merge(existing, incoming, { args: {offset = 0} }) {
+                        merge(existing, incoming, { args: { offset = 0 } }) {
                             // slicing is necessary because data is immutable in dev
                             const merged = existing ? existing.slice(0) : []
                             for(let i = 0; i < incoming.length; ++i) {
@@ -22,7 +22,19 @@ const client = new ApolloClient({
 
                             return merged;
                         }
-                    }
+                    },
+                    authorPublications: {
+                        keyArgs: false,
+                        merge(existing, incoming, { args: { offset = 0 } }) {
+                            // slicing is necessary because data is immutable in dev
+                            const merged = existing ? existing.slice(0) : []
+                            for(let i = 0; i < incoming.length; ++i) {
+                                merged[offset + i] = incoming[i]
+                            }
+
+                            return merged;
+                        }
+                    },
                 },
             },
         },
