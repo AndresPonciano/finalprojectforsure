@@ -18,11 +18,6 @@ function classNames(...classes) {
 
 const Navbar = () => {
     const router = useRouter();
-    const [searchTopic, setSearchTopic] = useState(null);
-
-    function handleTopicChange(event) {
-        setSearchTopic(event.target.value);
-    }
 
     return (
         <Disclosure as="nav" className="bg-gray-700 border-b-3 border-gray-900">
@@ -59,7 +54,6 @@ const Navbar = () => {
                                                 </a>
                                             </Link>
                                         ))}
-                                        <Topicdropdown searchTopic={searchTopic} handleTopicChange={handleTopicChange} />
                                     </div>
                                 </div>
                             </div>

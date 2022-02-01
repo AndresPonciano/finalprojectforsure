@@ -15,7 +15,7 @@ client.ping({
 
 function ElasticSearchClient(body) {
   // perform the actual search passing in the index, the search query and the type
-  return client.search({index: 'profiles', body: body});
+  return client.search({index: 'authors', body: body});
 }
 
 function PublicationsElasticSearchClient(body) {

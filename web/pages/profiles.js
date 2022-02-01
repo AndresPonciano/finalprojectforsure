@@ -21,8 +21,8 @@ const ALL_PROFILES_QUERY = gql`
 `;
 
 const SEARCH_PROFILES_QUERY = gql`
-  query SearchProfiles( $name: String, $topic: String, $offset: Int ) {
-    authors( name: $name, topic: $topic, offset: $offset ) {
+  query SearchProfiles( $name: String, $topic: String, $offset: Int, $sorted: String ) {
+    authors( name: $name, topic: $topic, offset: $offset, sorted: $sorted ) {
       totalCount
       authors {
         id
@@ -40,6 +40,7 @@ const profiles = ({ homeSearchValue }) => {
     const [searchTopic, setSearchTopic] = useState(null);
     const [searchText, setSearchText] = useState("");
     const [searchStatus, setSearchStatus] = useState(false);
+    const [sortedBy, setSortedBy] = useState("")
     const [dataSet, setDataSet] = useState([]);
 
     useEffect(() => {
@@ -58,7 +59,7 @@ const profiles = ({ homeSearchValue }) => {
     // });
 
     const { loading: loadingTemp, error: errorTemp, data: dataTemp } = useQuery(SEARCH_PROFILES_QUERY, {
-      variables: { name: homeSearchValue, topic: searchTopic, offset: currentOffset }
+      variables: { name: homeSearchValue, topic: searchTopic, offset: currentOffset, sorted: sortedBy }
     });
 
     function search(event) {
@@ -78,8 +79,11 @@ const profiles = ({ homeSearchValue }) => {
       setSearchTopic(event.target.value);
     }
 
+    function handleSortedByChange(event) {
+      setSortedBy(event.target.value);
+    }
+
     function handlePaginationChange(num) {
-      // console.log('num is: ', num);
       let newOffset = (num-1)*10
       
       if(newOffset < 0) {
@@ -87,8 +91,6 @@ const profiles = ({ homeSearchValue }) => {
       }
 
       setCurrentOffset(newOffset);
-      // TODO: how to check if they have submitted a request with searchText or no????
-      // USE THE OFFSET FOR THIS MAYBE???
     }
 
     console.log('!!: ', dataTemp, searchStatus);
@@ -98,10 +100,32 @@ const profiles = ({ homeSearchValue }) => {
 
     return (
         <div className="flex bg-gray-200 h-screen w-full">
-          <div className="ml-16 w-1/5 h-screen overflow-y-auto">
-            <h2 className="h-16 mt-4 mr-2 flex items-center text-xl font-bold border-b-2 border-gray-300"><span>Options</span></h2>
-            <Topicdropdown searchTopic={searchTopic} handleTopicChange={handleTopicChange} />
-            <button className="bg-green-200 rounded-md border-2 border-green-500" onClick={search}>execute search</button>
+          <div className="ml-16 w-1/5">
+            <div className="h-32">
+              <h2 className="h-16 mt-4 mr-2 flex items-center text-xl font-bold border-b-2 border-gray-300"><span>Options</span></h2>
+            </div>
+
+            <div className="mt-2">
+              <h2 className="font-semibold mb-2">Filter with topics:</h2>
+              <Topicdropdown searchTopic={searchTopic} handleTopicChange={handleTopicChange} />
+            </div>
+
+            <div className="mt-4">
+              <h3 className="font-semibold mb-2">Sorting</h3>
+              <select className="w-full p-2 rounded-md" value={sortedBy} onChange={handleSortedByChange}>
+                <option value="">None</option>
+                <option value="name">
+                    Names A-Z
+                </option>
+              </select>
+            </div>
+
+            <button
+              className="bg-blue-700 mt-2 p-2 text-white rounded-md border border-3 border-blue-300 hover:bg-blue-300 hover:text-slate-800 hover:border-blue-600"
+              onClick={search}
+            >
+              refetch search
+            </button>
           </div>
           
           <div className="w-4/5">

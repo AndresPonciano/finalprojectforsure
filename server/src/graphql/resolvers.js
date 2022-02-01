@@ -1,15 +1,17 @@
 const { paginateResults, edgesToReturn } = require("./utils");
 const elasticSearchSchema = require("../elasticsearch/schema");
 const { ElasticSearchClient, PublicationsElasticSearchClient } = require("../elasticsearch/server");
+const { size } = require("../elasticsearch/schema");
 
 module.exports = {
     Query: {
-        authors: (_, { name = null, topic = null, offset = 0, limit = 10 }) => new Promise((resolve, reject) => {
+        authors: (_, { name = null, topic = null, offset = 0, limit = 10, sorted = "" }) => new Promise((resolve, reject) => {
             console.log('limit is: ', limit);    
         
             let schema;
             let total;
-            if(!name && topic) {
+
+            if(!name && topic && sorted === "") {
                 console.log('we no have name')
                 schema = {
                     "from": offset,
@@ -20,21 +22,37 @@ module.exports = {
                         }
                     }
                 }
-            } else if(!topic && name) {
+            } else if(!name && topic && sorted === "name") {
                 console.log('we no have topic')
                 schema = {
                     "from": offset,
                     "size": limit,
-                    "query": {
-                      "term": {
-                        "name": {
-                          "value": name
+                    "sort": [
+                        {
+                            "name.raw": {
+                                "order": "asc"
+                            }
                         }
-                      }
+                    ],
+                    "query": {
+                        "terms": {
+                            "topics": [topic]
+                        }
                     }
-                  }
-            } else if(topic && name) {
+                }
+            } else if(name && !topic && sorted === "") {
                 console.log('we have both', name, topic)
+                
+                schema = {
+                    "from": offset,
+                    "size": limit,
+                    "query": {
+                        "match": {
+                            "name": name
+                        }
+                    }
+                }
+            } else if(name && topic && sorted === "") {
                 schema = {
                     "from": offset,
                     "size": limit,
@@ -43,13 +61,34 @@ module.exports = {
                         "tie_breaker": 0.7,
                         "boost": 1.2,
                         "queries": [
-                          {"term": { "name": {"value": name}}},
-                          { "terms": { "topics": [topic]}
-                          }
+                          { "term": { "name": {"value": name} } },
+                          { "terms": { "topics": [topic]} }
                         ]
                       }
                     }
-                  }
+                }
+            } else if(name && topic && sorted == "name") {
+                schema = {
+                    "from": offset,
+                    "size": limit,
+                    "sort": [
+                        {
+                            "name.raw": {
+                                "order": "asc"
+                            }
+                        }
+                    ],
+                    "query": {
+                      "dis_max": {
+                        "tie_breaker": 0.7,
+                        "boost": 1.2,
+                        "queries": [
+                          { "term": { "name": {"value": name} } },
+                          { "terms": { "topics": [topic] } }
+                        ]
+                      }
+                    }
+                }
             } else {
                 console.log('we have no params')
                 schema = { 
@@ -60,6 +99,14 @@ module.exports = {
                     }
                 }
             }
+
+            // name, topic, sorted:
+                // !name && topic && !sorted
+                // !name && topic && sorted
+                // name && !topic && !sorted
+                // name && topic && !sorted
+                // name && topic && sorted
+                // 
 
             console.log('shcema is: ', schema)
 
@@ -107,13 +154,7 @@ module.exports = {
                 resolve(author);
             });
         }),
-        authorPublications: (_, { id = 979, offset = 0, limit = 10 }) => new Promise((resolve, reject) => {
-            if(!id) {
-                console.log('this should never run');
-            }
-            
-            console.log('are we here', offset, limit);
-
+        authorPublications: (_, { id = 979, offset = 0, limit = 10 }) => new Promise((resolve, reject) => {        
             const schema = {
                 "from": offset,
                 "size": limit,
@@ -133,22 +174,40 @@ module.exports = {
                 resolve(_source);
             });
         }),
-        publications: (_, { title = null, offset = 0, limit = 10 }) => new Promise((resolve, reject) => {
+        publications: (_, { searchTerm = null, offset = 0, limit = 10, sorted = "" }) => new Promise((resolve, reject) => {
             let schema;
             let total;
 
-            if(title) {
+            if(searchTerm && sorted === "") {
                 schema = {
                     "from": offset,
                     "size": limit,
                     "query": {
-                        "match": {
-                            "title": title
+                        "multi_match": {
+                            "query": searchTerm,
+                            "fields": ["title", "abstract"]
                         }
                     }
                 }
-            } else{
-                schema = elasticSearchSchema;
+            } else if (searchTerm && sorted === "num_citations") {
+                console.log('did we get here');
+                schema = {
+                    "from": offset,
+                    "size": limit, 
+                    "sort": [
+                    {
+                       "num_citations": {
+                         "order": "asc"
+                       }
+                    }
+                    ]
+                   , "query": {
+                        "multi_match": {
+                            "query": searchTerm,
+                            "fields": ["title", "abstract"]
+                        }
+                   }
+                }
             }
 
             PublicationsElasticSearchClient({...schema})

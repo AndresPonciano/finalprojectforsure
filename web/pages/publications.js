@@ -5,23 +5,9 @@ import PublicationList from "../components/PublicationList";
 import Searchbar from "../components/Searchbar";
 import Pagination from "../components/Pagination";
 
-// const SEARCH_PUBLICATIONS_QUERY = gql`
-//     query SearchPublications( $title: String, $offset: Int, $limit: Int ) {
-//         publications( title: $title, offset: $offset, limit: $limit ) {
-//             totalCount
-//             publications {
-//                 id
-//                 title
-//                 abstract
-//                 num_citations
-//             }
-//         }
-//     }
-// `;
-
 const SEARCH_PUBLICATIONS_QUERY = gql`
-query NewPubsPag( $title: String, $offset: Int, $limit: Int ) {
-    publications( title: $title, offset: $offset, limit: $limit ) {
+query NewPubsPag( $searchTerm: String, $offset: Int, $limit: Int, $sorted: String ) {
+    publications( searchTerm: $searchTerm, offset: $offset, limit: $limit, sorted: $sorted ) {
         id
         title
         abstract
@@ -31,12 +17,14 @@ query NewPubsPag( $title: String, $offset: Int, $limit: Int ) {
 `;
 
 const publications = ({ homeSearchValue }) => {
-    console.log('homesearchval: ', homeSearchValue);
     const router = useRouter();
     const [searchText, setSearchText] = useState("");
+    const [sortedBy, setSortedBy] = useState("");
+
+    console.log('homesearchval: ', homeSearchValue, 'are we sorting: ', sortedBy);
 
     const [ getSearchPublications, { loading: loadingSearch, error: errorSearch, data: dataSearch, fetchMore } ] = useLazyQuery(SEARCH_PUBLICATIONS_QUERY, {
-        variables: { title: searchText }
+        variables: { searchTerm: searchText }
     });
 
     // const { loading: loadingSearch, error: errorSearch, data: dataSearch, fetchMore } = useQuery(SEARCH_PUBLICATIONS_QUERY, {
@@ -49,7 +37,7 @@ const publications = ({ homeSearchValue }) => {
         //     setSearchStatus(true) 
         // }
 
-        getSearchPublications({ variables: { title: homeSearchValue, offset: 0 } })
+        getSearchPublications({ variables: { searchTerm: homeSearchValue, offset: 0 } })
     }, [homeSearchValue])
 
     function search(event) {
@@ -57,6 +45,10 @@ const publications = ({ homeSearchValue }) => {
         event.preventDefault();
 
         router.push(`/publications?homeSearchValue=${searchText}`, undefined);
+    }
+
+    function handleSortedByChange(event) {
+        setSortedBy(event.target.value);
     }
 
     if(errorSearch)
@@ -78,11 +70,37 @@ const publications = ({ homeSearchValue }) => {
             <div className="ml-16 w-1/5 h-screen">
                 <h2 className="h-16 mt-4 mr-2 flex items-center text-xl font-semibold border-b-2 border-gray-300"><span>Options</span></h2>
                 side stuff
-                <h3>search only by title or abstract?</h3>
-                <h3>sorting</h3>
+                <h3 className="mt-2 font-semibold">by title or abstract? (not yet)</h3>
+                <div>
+                    <label>
+                        <input className="mr-2" type="radio" name="searchPubsOption" value="title" />
+                        <span>Title</span>
+                    </label>
+                    <label className="ml-2">
+                        <input className="mr-2" type="radio" name="searchPubsOption" value="abstract" />
+                        <span>Abstract</span>
+                    </label>
+                </div>
+
+
+                <h3 className="mt-2 font-semibold">sorting</h3>
+                <div>
+                    <select className="w-full p-2 rounded-md" value={sortedBy} onChange={handleSortedByChange}>
+                        <option value="">None</option>
+                        <option value="num_citations">
+                            Number of citations
+                        </option>
+                    </select>
+                </div>
+
                 <h3>picking range of citations</h3>
-                <h3>by authors maybe?</h3>
-                <h3>by affiliation if we have time</h3>
+
+                <button 
+                    className="bg-blue-700 mt-2 p-2 text-white rounded-md border border-3 border-blue-300 hover:bg-blue-300 hover:text-slate-800 hover:border-blue-600"
+                    onClick={() => getSearchPublications({ variables: { searchTerm: homeSearchValue, offset: 0, sorted: sortedBy } })}
+                >
+                    refetch search
+                </button>
             </div>
 
             <div className="w-4/5">
