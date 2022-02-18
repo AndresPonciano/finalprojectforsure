@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { gql, useQuery, useLazyQuery } from "@apollo/client"
 import Link from "next/link"
+import Image from 'next/image'
 import client from "../../../apollo-client"
 import { TagCloud } from "react-tagcloud"
 import PublicationList from "../../../components/PublicationList";
@@ -28,12 +29,15 @@ const options = {
 }
 
 const GET_AUTHOR_PUBLICATIONS = gql`
-    query AllProfiles( $offset: Int ) {
+    query AuthorPubs( $offset: Int ) {
         authorPublications(offset: $offset) {
-            id
             title
             abstract
             num_citations
+            pub_authors {
+                id
+                name
+            }
         }
     }
 `;
@@ -55,64 +59,42 @@ const profile = ({ profile }) => {
     console.log('author pubs are: !!!', dataPubs);
 
     return (
-        <div className="pt-8 bg-gray-200">
-            <div className="bg-gray-100 mx-16 flex-col">
-                <div className="flex">
-                    <div className="w-5/6">
-                        <img 
-                            className="rounded-md w-36 h-36 float-left"
-                            src={profile.url_picture}
-                        />
-                        <h1 className="mt-6 font-bold text-2xl">{profile.name}</h1>
-
-                        <p className="m-6">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                            ac eleifend enim. Praesent volutpat mi eu consectetur sagittis. In
-                            vulputate aliquam velit maximus pulvinar. Mauris eget elementum
-                            sapien. Aenean molestie ligula non sem auctor tristique. Sed et
-                            magna arcu. Duis sit amet mattis velit. Integer purus nulla, blandit
-                            sed sapien in, sodales volutpat ex. Mauris ut tortor eget enim
-                            suscipit accumsan sed eu lacus. Vestibulum sed orci urna. Maecenas
-                            porta ultrices libero, et convallis purus posuere ut. Pellentesque
-                            ullamcorper varius nisl vitae lacinia. Nulla eget condimentum neque,
-                            ac lobortis quam. Nulla sapien velit, volutpat ut hendrerit vel,
-                            aliquam a nibh. Morbi in egestas libero. Suspendisse id mollis lacus
-                        </p>
-                    </div>
-
-                    <div className="w-1/6 flex justify-end mt-6">
-                        <Link href="#">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-12 w-12"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"
-                            />
-                            </svg>
-                        </Link>
-                    </div>
+        <div className="bg-gray-200">
+            <div className="bg-gray-100 flex-col">
+                <div className="bg-gray-800 flex h-64 w-full">
                 </div>
-
-                <div>
+                <div className="-mt-32 mx-16 text-gray-200 flex">
+                    <Image className="rounded-full" src={profile.url_picture} alt="profile picture" width={160} height={160} />
+                    <h1 className="ml-8 font-bold text-4xl self-center">{profile.name}</h1>
+                </div>
+                
+                <div className="mt-8 mx-16">
                     <div className="w-full">
-                        <ul className="flex flex-wrap ml-6 mr-6 text-white">
-                            {profile.topics.map((topic, index) => {
-                                return (
-                                    <li className="mr-2 text-blue-500 hover:underline" key={index}>{topic}</li>
-                                )
-                            })}
-                        </ul>
+                        <h2 className="text-xl">
+                            {profile.affiliation}
+                        </h2>
+                        <div className="flex mt-4 text-lg">
+                            <h2 className='font-semibold text-blue-500 mr-2'>topics: </h2>
+                            <ul className="flex flex-wrap">
+                                {profile.topics.map((topic, index) => {
+                                    return (
+                                        <li className="mr-6 text-blue-500 hover:underline" key={index}>{topic}</li>
+                                    )
+                                })}
+                            </ul>
+
+                            <ul className='flex'>
+                                {profile.other_topics.map((topic, index) => {
+                                    return (
+                                        <li className="mr-6 text-gray-400" key={index}>{topic}</li>
+                                    )
+                                })} 
+                            </ul>
+                        </div>
                     </div>
 
-                    <div className="w-full flex justify-center mt-6">
-                        <div className="w-1/2">
+                    <div className="w-full flex justify-center mt-8">
+                        <div className="w-1/2 p-8">
                             <TagCloud
                                 minSize={12}
                                 maxSize={35}
@@ -124,11 +106,12 @@ const profile = ({ profile }) => {
                     </div>
                 </div>
             </div>
+
             <div className="mx-16 mt-4">
                 {
                     dataPubs &&
                     <>
-                        <div className="mt-8">
+                        <div className="mt-8 mb-2">
                             <h2 className="text-gray-900 text-lg font-semibold">Author's Publications: </h2>
                             <h2>showing: 1 - {dataPubs.authorPublications.length}</h2>
                         </div>
@@ -159,13 +142,15 @@ export async function getStaticPaths() {
     const { data } = await client.query({
         query: gql`
             query AllProfiles {
-                authors {
+                authors(limit: 2274) {
                     totalCount
                     authors {
                         id
                         name
                         url_picture
+                        affiliation
                         topics
+                        other_topics
                     }
                 }
             }
@@ -191,7 +176,9 @@ export async function getStaticProps({ params }) {
                 id
                 name
                 url_picture
+                affiliation
                 topics
+                other_topics
             }
         }
     `;

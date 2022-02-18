@@ -6,7 +6,7 @@ const { size } = require("../elasticsearch/schema");
 module.exports = {
     Query: {
         authors: (_, { name = null, topic = null, offset = 0, limit = 10, sorted = "" }) => new Promise((resolve, reject) => {
-            console.log('limit is: ', limit);    
+            // console.log('limit is: ', limit);    
         
             let schema;
             let total;
@@ -116,7 +116,7 @@ module.exports = {
                 let _source = r['hits']['hits'];
                     _source.map((item, i) => _source[i] = item._source);
         
-                console.log(_source.length, 'AAAAAAAAA', total)
+                // console.log(_source.length, 'AAAAAAAAA', total)
                 // resolve(_source);
                 resolve({"totalCount": total, "authors": _source});
             });
@@ -155,12 +155,19 @@ module.exports = {
             });
         }),
         authorPublications: (_, { id = 979, offset = 0, limit = 10 }) => new Promise((resolve, reject) => {        
+            console.log('im here: ', typeof(id), id);
+            
             const schema = {
                 "from": offset,
                 "size": limit,
                 "query": {
-                    "match": {
-                      "id": id
+                    "nested": {
+                      "path": "pub_authors",
+                      "query": {
+                        "match": {
+                          "pub_authors.id": id
+                        }
+                      }
                     }
                 }
             }
@@ -171,6 +178,8 @@ module.exports = {
                 let _source = r['hits']['hits'];
                     _source.map((item, i) => _source[i] = item._source);
         
+                console.log('result is: ', _source);
+
                 resolve(_source);
             });
         }),

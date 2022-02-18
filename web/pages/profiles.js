@@ -14,7 +14,9 @@ const ALL_PROFILES_QUERY = gql`
             id
             name
             url_picture
+            affiliation
             topics
+            other_topics
         }
     }
   }
@@ -28,7 +30,9 @@ const SEARCH_PROFILES_QUERY = gql`
         id
         name
         url_picture
+        affiliation
         topics
+        other_topics
       }
     }
   }

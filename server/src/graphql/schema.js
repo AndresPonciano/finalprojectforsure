@@ -16,7 +16,9 @@ const typeDefs = gql`
         name: String!
         scholar_id: String
         url_picture: String
+        affiliation: String
         topics: [String!]!
+        other_topics: [String]!
     }
 
     type AuthorConnection {
@@ -25,11 +27,15 @@ const typeDefs = gql`
     }
 
     type Publication {
-        id: ID!
         title: String!
         abstract: String!
         num_citations: Int
-        # TODO: add profileList or nah idk how to do relations in graphql
+        pub_authors: [PubAuthor]!
+    }
+
+    type PubAuthor {
+        id: Int
+        name: String
     }
 
     type PublicationConnection {

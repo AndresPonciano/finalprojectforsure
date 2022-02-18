@@ -8,10 +8,13 @@ import Pagination from "../components/Pagination";
 const SEARCH_PUBLICATIONS_QUERY = gql`
 query NewPubsPag( $searchTerm: String, $offset: Int, $limit: Int, $sorted: String ) {
     publications( searchTerm: $searchTerm, offset: $offset, limit: $limit, sorted: $sorted ) {
-        id
         title
         abstract
         num_citations
+        pub_authors {
+            id
+            name
+        }
     }
 }
 `;
