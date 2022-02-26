@@ -178,8 +178,6 @@ module.exports = {
                 let _source = r['hits']['hits'];
                     _source.map((item, i) => _source[i] = item._source);
         
-                console.log('result is: ', _source);
-
                 resolve(_source);
             });
         }),

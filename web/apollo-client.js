@@ -24,7 +24,7 @@ const client = new ApolloClient({
                         }
                     },
                     authorPublications: {
-                        keyArgs: false,
+                        keyArgs: ["id"],
                         merge(existing, incoming, { args: { offset = 0 } }) {
                             // slicing is necessary because data is immutable in dev
                             const merged = existing ? existing.slice(0) : []

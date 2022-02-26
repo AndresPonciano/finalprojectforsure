@@ -2,7 +2,6 @@
 import Link from 'next/link'
 
 const PublicationItem = ({ publication }) => {
-    console.log('pub here: ', publication);
     return (
         <div className="mb-6">
             <div className="flex w-full items-center bg-gray-100 p-2 rounded-md shadow">

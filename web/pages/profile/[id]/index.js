@@ -29,8 +29,8 @@ const options = {
 }
 
 const GET_AUTHOR_PUBLICATIONS = gql`
-    query AuthorPubs( $offset: Int ) {
-        authorPublications(offset: $offset) {
+    query AuthorPubs( $id: Int, $offset: Int ) {
+        authorPublications( id: $id, offset: $offset ) {
             title
             abstract
             num_citations
@@ -45,18 +45,12 @@ const GET_AUTHOR_PUBLICATIONS = gql`
 const profile = ({ profile }) => {
 
     const [ getAuthorPublications, { loading: loadingPubs, error: errorPubs, data: dataPubs, fetchMore } ] = useLazyQuery(GET_AUTHOR_PUBLICATIONS, {
-        variables: { offset: 0 }
+        variables: { id: parseInt(profile.id), offset: 0 }
     });
 
     useEffect(() => {
-        getAuthorPublications({ variables: { offset: 0 } })
+        getAuthorPublications({ variables: { id: parseInt(profile.id), offset: 0 } })
     }, [])
-
-    // const { loading: loadingAll, error: errorAll, data: dataAll } = useQuery(GET_AUTHOR_PUBLICATIONS, {
-    //     variables: { offset: 0 }
-    // });
-
-    console.log('author pubs are: !!!', dataPubs);
 
     return (
         <div className="bg-gray-200">

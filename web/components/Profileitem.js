@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 const ProfileItem = ({ profile }) => {
-    console.log(profile);
     return (
         <div className="mt-6">
             <div className="flex w-full items-center bg-gray-100 p-4 rounded-md shadow">
