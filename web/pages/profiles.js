@@ -5,6 +5,7 @@ import Pagination from "../components/Pagination"
 import ProfileList from "../components/Profilelist"
 import Searchbar from "../components/Searchbar"
 import Topicdropdown from "../components/Topicdropdown"
+import LoadingSpinner from "../components/LoadingSpinner"
 
 const ALL_PROFILES_QUERY = gql`
   query AllProfiles( $offset: Int ) {
@@ -77,7 +78,8 @@ const profiles = ({ homeSearchValue }) => {
       return <div>Error loading all profiles</div>
 
     if(loadingAll || loadingTemp)
-      return <div>Loading</div>
+      return <LoadingSpinner />
+
 
     function handleTopicChange(event) {
       setSearchTopic(event.target.value);
@@ -98,7 +100,7 @@ const profiles = ({ homeSearchValue }) => {
     }
 
     console.log('!!: ', dataTemp, searchStatus);
-    // console.log('??: ', dataAll);
+    console.log('??: ', dataAll);
     const dataSet2 = searchStatus && dataTemp ? dataTemp.authors.authors : dataAll.authors.authors;
     const totalCount = searchStatus && dataTemp ? dataTemp.authors.totalCount : dataAll.authors.totalCount;
 
@@ -118,8 +120,11 @@ const profiles = ({ homeSearchValue }) => {
               <h3 className="font-semibold mb-2">Sorting</h3>
               <select className="w-full p-2 rounded-md" value={sortedBy} onChange={handleSortedByChange}>
                 <option value="">None</option>
-                <option value="name">
+                <option value="name_asc">
                     Names A-Z
+                </option>
+                <option value="name_desc">
+                    Names Z-A
                 </option>
               </select>
             </div>
@@ -154,6 +159,7 @@ const profiles = ({ homeSearchValue }) => {
               
               <ProfileList profiles={dataSet2}/>
               <Pagination totalCount={totalCount} offset={currentOffset} handlePaginationChange={handlePaginationChange} />
+
             </div>
           </div>
         </div>

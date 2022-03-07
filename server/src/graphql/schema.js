@@ -18,6 +18,9 @@ const typeDefs = gql`
         affiliation: String
         topics: [String!]!
         other_topics: [String]!
+        total_citations: Int
+        h_index: Int
+        tag_cloud: [String]
     }
 
     type AuthorConnection {

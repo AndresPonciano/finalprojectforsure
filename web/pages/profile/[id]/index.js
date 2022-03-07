@@ -5,27 +5,12 @@ import Image from 'next/image'
 import client from "../../../apollo-client"
 import { TagCloud } from "react-tagcloud"
 import PublicationList from "../../../components/PublicationList";
-
-const data = [
-    { value: "JavaScript", count: 38 },
-    { value: "React", count: 30 },
-    { value: "Nodejs", count: 28 },
-    { value: "Express.js", count: 25 },
-    { value: "HTML5", count: 33 },
-    { value: "MongoDB", count: 18 },
-    { value: "CSS3", count: 23 },
-    { value: "JAVA", count: 20 },
-    { value: "C", count: 50 },
-    { value: "Software Engineering", count: 24 },
-    { value: "Agile", count: 35 },
-    { value: "Words here", count: 5 },
-    { value: "Some Topic", count: 23 },
-    { value: "Nonono", count: 65 },
-];
+import LoadingSpinner from "../../../components/LoadingSpinner"
+import ScrollToTopButton from "../../../components/ScrollToTopButton"
  
 const options = {
     luminosity: 'dark',
-    hue: 'blue',
+    hue: 'orange',
 }
 
 const GET_AUTHOR_PUBLICATIONS = gql`
@@ -43,7 +28,6 @@ const GET_AUTHOR_PUBLICATIONS = gql`
 `;
 
 const profile = ({ profile }) => {
-
     const [ getAuthorPublications, { loading: loadingPubs, error: errorPubs, data: dataPubs, fetchMore } ] = useLazyQuery(GET_AUTHOR_PUBLICATIONS, {
         variables: { id: parseInt(profile.id), offset: 0 }
     });
@@ -51,6 +35,9 @@ const profile = ({ profile }) => {
     useEffect(() => {
         getAuthorPublications({ variables: { id: parseInt(profile.id), offset: 0 } })
     }, [])
+
+    if(loadingPubs)
+        return <LoadingSpinner />
 
     return (
         <div className="bg-gray-200">
@@ -62,37 +49,47 @@ const profile = ({ profile }) => {
                     <h1 className="ml-8 font-bold text-4xl self-center">{profile.name}</h1>
                 </div>
                 
-                <div className="mt-8 mx-16">
-                    <div className="w-full">
-                        <h2 className="text-xl">
-                            {profile.affiliation}
-                        </h2>
-                        <div className="flex mt-4 text-lg">
-                            <h2 className='font-semibold text-blue-500 mr-2'>topics: </h2>
-                            <ul className="flex flex-wrap">
-                                {profile.topics.map((topic, index) => {
-                                    return (
-                                        <li className="mr-6 text-blue-500 hover:underline" key={index}>{topic}</li>
-                                    )
-                                })}
-                            </ul>
+                <div className="my-8 mx-16">
+                    <div className="flex justify-between w-full">
+                        <div>
+                            <h2 className="text-xl">
+                                {profile.affiliation}
+                            </h2>
+                            <div className="flex mt-4 text-lg">
+                                <h2 className='font-semibold text-blue-500 mr-2'>topics: </h2>
+                                <ul className="flex flex-wrap">
+                                    {profile.topics.map((topic, index) => {
+                                        return (
+                                            <li className="mr-6 text-blue-500 hover:underline" key={index}>{topic}</li>
+                                        )
+                                    })}
+                                </ul>
 
-                            <ul className='flex'>
-                                {profile.other_topics.map((topic, index) => {
-                                    return (
-                                        <li className="mr-6 text-gray-400" key={index}>{topic}</li>
-                                    )
-                                })} 
-                            </ul>
+                                <ul className='flex'>
+                                    {profile.other_topics.map((topic, index) => {
+                                        return (
+                                            <li className="mr-6 text-gray-400" key={index}>{topic}</li>
+                                        )
+                                    })} 
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="bg-gray-200 p-4 rounded">
+                            <h2>
+                                total citations: <span>{profile.total_citations}</span>
+                            </h2>
+                            <h2>
+                                h-index: <span>{profile.h_index}</span>
+                            </h2>
                         </div>
                     </div>
 
-                    <div className="w-full flex justify-center mt-8">
+                    <div className="w-full flex justify-center">
                         <div className="w-1/2 p-8">
                             <TagCloud
                                 minSize={12}
                                 maxSize={35}
-                                tags={data}
+                                tags={profile.tag_cloud.map((element, index) => ({value: element, count: 20-index}))}
                                 colorOptions={options}
                                 onClick={(tag) => alert(`'${tag.value}' was selected!`)}
                             />
@@ -110,14 +107,15 @@ const profile = ({ profile }) => {
                             <h2>showing: 1 - {dataPubs.authorPublications.length}</h2>
                         </div>
                         <PublicationList publications={dataPubs.authorPublications} />
-
+                        <ScrollToTopButton />
+                        
                         <div className="flex flex-col items-center justify-center w-full mt-4">
                             <h2>showing: 1 - {dataPubs.authorPublications.length}</h2>
                             <button
                                 onClick={() => fetchMore({
                                     variables: { offset: dataPubs.authorPublications.length }
                                 })}
-                                className="flex items-center justify-center m-4 w-12 h-8 rounded-md bg-gray-300 text-gray-900 hover:bg-gray-700 hover:text-gray-300"
+                                className="hover:animate-bounce flex items-center justify-center m-4 w-12 h-8 rounded-md bg-gray-300 text-gray-900 hover:bg-gray-700 hover:text-gray-300"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -173,6 +171,9 @@ export async function getStaticProps({ params }) {
                 affiliation
                 topics
                 other_topics
+                h_index
+                total_citations
+                tag_cloud
             }
         }
     `;

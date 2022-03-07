@@ -7,12 +7,13 @@ module.exports = {
     Query: {
         authors: (_, { name = null, topic = null, offset = 0, limit = 10, sorted = "" }) => new Promise((resolve, reject) => {
             // console.log('limit is: ', limit);    
-        
+            console.log('name: ', name, "sorted: ", sorted);
+
             let schema;
             let total;
 
             if(!name && topic && sorted === "") {
-                console.log('we no have name')
+                console.log('case1')
                 schema = {
                     "from": offset,
                     "size": limit,
@@ -22,26 +23,45 @@ module.exports = {
                         }
                     }
                 }
-            } else if(!name && topic && sorted === "name") {
-                console.log('we no have topic')
-                schema = {
-                    "from": offset,
-                    "size": limit,
-                    "sort": [
-                        {
-                            "name.raw": {
-                                "order": "asc"
+            } else if(!name && topic && ( sorted === "name_asc" || sorted === "name_desc" )) {
+                console.log('case2')
+                if( sorted == "name_asc" ) {
+                    schema = {
+                        "from": offset,
+                        "size": limit,
+                        "sort": [
+                            {
+                                "name.raw": {
+                                    "order": "asc"
+                                }
+                            }
+                        ],
+                        "query": {
+                            "terms": {
+                                "topics": [topic]
                             }
                         }
-                    ],
-                    "query": {
-                        "terms": {
-                            "topics": [topic]
+                    }
+                } else if ( sorted == "name_desc" ) {
+                    schema = {
+                        "from": offset,
+                        "size": limit,
+                        "sort": [
+                            {
+                                "name.raw": {
+                                    "order": "desc"
+                                }
+                            }
+                        ],
+                        "query": {
+                            "terms": {
+                                "topics": [topic]
+                            }
                         }
                     }
                 }
             } else if(name && !topic && sorted === "") {
-                console.log('we have both', name, topic)
+                console.log('case3', name, topic)
                 
                 schema = {
                     "from": offset,
@@ -52,7 +72,46 @@ module.exports = {
                         }
                     }
                 }
+            
+            } else if( name && !topic && ( sorted === "name_asc" || sorted === "name_desc" ) ) {
+                console.log('case4')
+                if( sorted === "name_asc" ) {
+                    schema = {
+                        "from": offset,
+                        "size": limit,
+                        "sort": [
+                            {
+                                "name.raw": {
+                                    "order": "asc"
+                                }
+                            }
+                        ],
+                        "query": {
+                            "match": {
+                                "name": name
+                            }
+                        }
+                    }
+                } else if ( sorted === "name_desc" ) {
+                    schema = {
+                        "from": offset,
+                        "size": limit,
+                        "sort": [
+                            {
+                                "name.raw": {
+                                    "order": "desc"
+                                }
+                            }
+                        ],
+                        "query": {
+                            "match": {
+                                "name": name
+                            }
+                        }
+                    }
+                }
             } else if(name && topic && sorted === "") {
+                console.log('case5')
                 schema = {
                     "from": offset,
                     "size": limit,
@@ -67,30 +126,90 @@ module.exports = {
                       }
                     }
                 }
-            } else if(name && topic && sorted == "name") {
-                schema = {
-                    "from": offset,
-                    "size": limit,
-                    "sort": [
-                        {
-                            "name.raw": {
-                                "order": "asc"
+            } else if(name && topic && ( sorted === "name_asc" || sorted === "name_desc" )) {
+                console.log('case6')
+
+                if ( sorted == "name_asc" ) {
+                    schema = {
+                        "from": offset,
+                        "size": limit,
+                        "sort": [
+                            {
+                                "name.raw": {
+                                    "order": "asc"
+                                }
                             }
+                        ],
+                        "query": {
+                        "dis_max": {
+                            "tie_breaker": 0.7,
+                            "boost": 1.2,
+                            "queries": [
+                            { "term": { "name": {"value": name} } },
+                            { "terms": { "topics": [topic] } }
+                            ]
                         }
-                    ],
-                    "query": {
-                      "dis_max": {
-                        "tie_breaker": 0.7,
-                        "boost": 1.2,
-                        "queries": [
-                          { "term": { "name": {"value": name} } },
-                          { "terms": { "topics": [topic] } }
-                        ]
-                      }
+                        }
+                    }
+                } else if ( sorted == "name_desc" ) {
+                    schema = {
+                        "from": offset,
+                        "size": limit,
+                        "sort": [
+                            {
+                                "name.raw": {
+                                    "order": "desc"
+                                }
+                            }
+                        ],
+                        "query": {
+                        "dis_max": {
+                            "tie_breaker": 0.7,
+                            "boost": 1.2,
+                            "queries": [
+                            { "term": { "name": {"value": name} } },
+                            { "terms": { "topics": [topic] } }
+                            ]
+                        }
+                        }
+                    }
+                }
+            } else if(!name && !topic && ( sorted === "name_asc" || sorted === "name_desc" )) {
+                console.log('case7')
+
+                if ( sorted === "name_asc" ) {
+                    schema = { 
+                        "from": offset,
+                        "size": limit,
+                        "sort": [
+                            {
+                                "name.raw": {
+                                    "order": "asc"
+                                }
+                            }
+                        ],
+                        "query": {
+                            "match_all": {}
+                        }
+                    }
+                } else if( sorted === "name_desc" ) {
+                    schema = { 
+                        "from": offset,
+                        "size": limit,
+                        "sort": [
+                            {
+                                "name.raw": {
+                                    "order": "desc"
+                                }
+                            }
+                        ],
+                        "query": {
+                            "match_all": {}
+                        }
                     }
                 }
             } else {
-                console.log('we have no params')
+                console.log('case8')
                 schema = { 
                     "from": offset,
                     "size": limit,
@@ -99,6 +218,8 @@ module.exports = {
                     }
                 }
             }
+
+            // TODO: MISSING CASE WHERE no name and no topic and sorted!!!
 
             // name, topic, sorted:
                 // !name && topic && !sorted
@@ -196,7 +317,7 @@ module.exports = {
                         }
                     }
                 }
-            } else if (searchTerm && sorted === "num_citations") {
+            } else if (searchTerm && sorted === "num_citations_asc") {
                 console.log('did we get here');
                 schema = {
                     "from": offset,
@@ -205,6 +326,63 @@ module.exports = {
                     {
                        "num_citations": {
                          "order": "asc"
+                       }
+                    }
+                    ]
+                   , "query": {
+                        "multi_match": {
+                            "query": searchTerm,
+                            "fields": ["title", "abstract"]
+                        }
+                   }
+                }
+            } else if (searchTerm && sorted === "num_citations_desc") {
+                console.log('did we get here');
+                schema = {
+                    "from": offset,
+                    "size": limit, 
+                    "sort": [
+                    {
+                       "num_citations": {
+                         "order": "desc"
+                       }
+                    }
+                    ]
+                   , "query": {
+                        "multi_match": {
+                            "query": searchTerm,
+                            "fields": ["title", "abstract"]
+                        }
+                   }
+                }
+            } else if (searchTerm && sorted === "title_asc") {
+                console.log('did we get here');
+                schema = {
+                    "from": offset,
+                    "size": limit, 
+                    "sort": [
+                    {
+                       "title.raw": {
+                         "order": "asc"
+                       }
+                    }
+                    ]
+                   , "query": {
+                        "multi_match": {
+                            "query": searchTerm,
+                            "fields": ["title", "abstract"]
+                        }
+                   }
+                }
+            } else if (searchTerm && sorted === "title_desc") {
+                console.log('did we get here');
+                schema = {
+                    "from": offset,
+                    "size": limit, 
+                    "sort": [
+                    {
+                       "title.raw": {
+                         "order": "desc"
                        }
                     }
                     ]

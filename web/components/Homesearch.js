@@ -12,7 +12,7 @@ const Homesearch = () => {
 
     function handleSubmit(event) {
         event.preventDefault();
-        if(searchOption === "Profiles") {
+        if(searchOption === "People") {
             router.push({
                 pathname: '/profiles',
                 query: { homeSearchValue: searchText }

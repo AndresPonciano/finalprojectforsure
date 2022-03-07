@@ -4,6 +4,7 @@ import { useRouter } from "next/router"
 import PublicationList from "../components/PublicationList";
 import Searchbar from "../components/Searchbar";
 import Pagination from "../components/Pagination";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const SEARCH_PUBLICATIONS_QUERY = gql`
 query NewPubsPag( $searchTerm: String, $offset: Int, $limit: Int, $sorted: String ) {
@@ -58,7 +59,7 @@ const publications = ({ homeSearchValue }) => {
       return <div>Error loading publications</div>
 
     if(loadingSearch)
-      return <div>Loading publications</div>
+      return <LoadingSpinner />
 
 
     // console.log('we got results: ', dataSearch)
@@ -90,8 +91,17 @@ const publications = ({ homeSearchValue }) => {
                 <div>
                     <select className="w-full p-2 rounded-md" value={sortedBy} onChange={handleSortedByChange}>
                         <option value="">None</option>
-                        <option value="num_citations">
-                            Number of citations
+                        <option value="num_citations_asc">
+                            Number of citations low-hi
+                        </option>
+                        <option value="num_citations_desc">
+                            Number of citations hi-low
+                        </option>
+                        <option value="title_asc">
+                            Number of citations A-Z
+                        </option>
+                        <option value="title_desc">
+                            Number of citations Z-A
                         </option>
                     </select>
                 </div>
@@ -130,7 +140,7 @@ const publications = ({ homeSearchValue }) => {
                                                 offset: dataSet.length
                                             }
                                         })} 
-                                        className="flex items-center justify-center m-4 w-12 h-8 rounded-md bg-gray-300 text-gray-900 hover:bg-gray-700 hover:text-gray-300"
+                                        className="hover:animate-bounce flex items-center justify-center m-4 w-12 h-8 rounded-md bg-gray-300 text-gray-900 hover:bg-gray-700 hover:text-gray-300"
                                     >
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />

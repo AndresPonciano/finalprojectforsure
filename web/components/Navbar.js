@@ -7,7 +7,7 @@ import Topicdropdown from "./Topicdropdown";
 
 const navigation = [
     { name: 'Home', href: '/', current: true },
-    { name: 'Profiles', href: '/profiles', current: false },
+    { name: 'People', href: '/profiles', current: false },
     { name: 'Publications', href: '/publications', current: false },
     { name: 'About', href: '/about', current: false },
 ]
