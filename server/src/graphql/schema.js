@@ -8,6 +8,7 @@ const typeDefs = gql`
         authorPublications(id: Int, offset: Int, limit: Int): [Publication!]
         # publications(title: String, offset: Int, limit: Int): PublicationConnection!
         publications(searchTerm: String, offset: Int, limit: Int, sorted: String): [Publication!]
+        topPeople(topic: String): [Author]! 
     }
 
     type Author {

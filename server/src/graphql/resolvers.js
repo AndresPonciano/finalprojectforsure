@@ -404,5 +404,43 @@ module.exports = {
                 resolve(_source);
             });
         }),
+        topPeople: (_, { topic = null }) => new Promise((resolve, reject) => {
+            let schema;
+
+            if(topic) {
+                schema = {
+                    "from": 0, 
+                    "size": 15, 
+                    "sort": [
+                        {"total_citations": { "order": "desc"}},
+                        {"h_index": { "order": "desc"}}
+                    ],
+                    "query": { "terms": {
+                        "topics": [ topic ]
+                      }
+                    }
+                }
+            } else {
+                schema = {
+                    "from": 0, 
+                    "size": 15, 
+                    "sort": [
+                        {"total_citations": { "order": "desc"}},
+                        {"h_index": { "order": "desc"}}
+                    ]
+                }
+            }
+
+            ElasticSearchClient({...schema})
+                .then(r => {
+                total = r['hits']['total']['value'];
+                let _source = r['hits']['hits'];
+                    _source.map((item, i) => _source[i] = item._source);
+        
+                // console.log(_source.length, 'AAAAAAAAA', total)
+                // resolve(_source);
+                resolve(_source);
+            });
+        })
     }
 }

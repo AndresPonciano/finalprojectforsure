@@ -2,7 +2,6 @@ import Searchbar from "./Searchbar"
 import { useState } from "react";
 import Searchradio from "./Searchradio";
 import { useRouter } from "next/router";
-import { route } from "next/dist/server/router";
 
 const Homesearch = () => {
     const router = useRouter();
