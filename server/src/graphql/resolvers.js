@@ -404,10 +404,10 @@ module.exports = {
                 resolve(_source);
             });
         }),
-        topPeople: (_, { topic = null }) => new Promise((resolve, reject) => {
+        topPeople: (_, { topic = "None" }) => new Promise((resolve, reject) => {
             let schema;
 
-            if(topic) {
+            if(topic !== "None") {
                 schema = {
                     "from": 0, 
                     "size": 15, 
@@ -437,8 +437,6 @@ module.exports = {
                 let _source = r['hits']['hits'];
                     _source.map((item, i) => _source[i] = item._source);
         
-                // console.log(_source.length, 'AAAAAAAAA', total)
-                // resolve(_source);
                 resolve(_source);
             });
         })

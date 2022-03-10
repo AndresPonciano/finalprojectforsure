@@ -20,7 +20,7 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
+const options = {
   indexAxis: 'x',
   elements: {
     bar: {
@@ -34,80 +34,60 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'Chart.js Horizontal Bar Chart',
+      text: 'People\'s total citations and h-index',
     },
   },
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: labels.map(() => Math.floor(Math.random() * 10)),
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'Dataset 2',
-      data: labels.map(() => Math.floor(Math.random() * 10)),
-      borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
-  ],
-};
-
 const Tagoptions = {
   luminosity: 'dark',
-  hue: 'green',
+  hue: 'blue',
 }
 
-const tagData = [
-  { value: 'Author LastName', count: 12312 },
-  { value: 'FirstName LastName', count: 1245 },
-  { value: 'Author3 LastName', count: 7654 },
-  { value: 'THOMAS LastName', count: 5432 },
-  { value: 'Kim LastName', count: 623 },
-  { value: 'RADHIKA LastName', count: 2252 },
-  { value: 'LI something', count: 97 },
-  { value: 'LEE SAI PECK', count: 23162 },
-  { value: 'BArRY BOEHM', count: 753642 },
-  { value: 'ANNE THOMAS', count: 235213 },
-  { value: 'SONIA HAIDUC', count: 1235 },
-  { value: 'IKD A NAME', count: 5632 },
-  { value: 'ANOTHER NAME', count: 6432 },
-  { value: 'AAAAA PLEAE', count: 26423 },
-]
+const TopProfileData = ({ topPeople, topic, handleTopicChange }) => {
 
-const TopProfileData = ({ topPeople }) => {
-    console.log(topPeople[0])
+    const graphData = {
+      labels: topPeople.map((element) => (element.name)),
+      datasets: [
+        {
+          label: 'total citations',
+          data: topPeople.map((element) => (element.total_citations)),
+          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        },
+        {
+          label: 'h_index',
+          data: topPeople.map((element) => (element.h_index)),
+          borderColor: 'rgb(53, 162, 235)',
+          backgroundColor: 'rgba(53, 162, 235, 0.5)',
+        },
+      ],
+    };
+
     return (
-        <div className="flex flex-col items-center bg-gray-200 mx-16">
-            top authors are here
-          <div className="flex justify-between w-full">
-            <h2 className="text-2xl bold p-4">Our most prominent authors</h2>
+        <div className="flex flex-col items-center mx-16">
+          <div className="flex justify-between w-full bg-gray-600 rounded">
+            <h2 className="my-auto p-8 text-3xl font-bold p-4 text-white">Our most prominent authors</h2>
             <div className="p-4">
-              <h2>Filter by topic:</h2>
-              <Topicdropdown />
-
+              <h2 className="text-white mb-2">Filter by topic:</h2>
+              <Topicdropdown searchTopic={topic} handleTopicChange={handleTopicChange}/>
             </div>
           </div>
 
-          <div className="justify-self-center h-1/2 w-1/2">
-            <div className="mt-4">
-              <Bar options={options} data={data} />
+          <div className="flex flex-col items-center h-1/2 w-full bg-gray-100">
+            <div className="mt-8 border-4 rounded p-4 w-9/12">
+              <Bar options={options} data={graphData} />
             </div>
 
-            <TagCloud
-              minSize={12}
-              maxSize={35}
-            //   tags={topPeople.map((element) => ({value: element.name, count: element.total_citations+element.h_index}))}
-              tags={tagData}
-              colorOptions={Tagoptions}
-              onClick={(tag) => alert(`'${tag.value}' was selected!`)}
-            />
+            <div className="w-1/2 p-4 my-8">
+              <TagCloud
+                minSize={20}
+                maxSize={42}
+                tags={topPeople.map((element) => ({value: element.name, count: element.total_citations+element.h_index}))}
+                colorOptions={Tagoptions}
+                onClick={(tag) => alert(`'${tag.value}' was selected!`)}
+              />
+            </div>
           </div>
         </div>
     )
