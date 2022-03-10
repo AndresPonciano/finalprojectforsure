@@ -1,7 +1,8 @@
 import { ApolloProvider } from '@apollo/client';
 import Layout from '../components/Layout'
 import client from '../apollo-client';
-import 'tailwindcss/tailwind.css'
+import 'tailwindcss/tailwind.css';
+import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
   return (

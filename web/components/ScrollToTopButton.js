@@ -28,7 +28,7 @@ const ScrollToTopButton = () => {
 
     return (
         <div 
-        className={ visible ? 'inline bg-green-500 fixed z-10' : 'block' }
+        className={ visible ? 'inline bg-green-500 sticky z-10' : 'block' }
         onClick={scrollToTop}
         >
             scroll to top button

@@ -107,7 +107,6 @@ const profile = ({ profile }) => {
                             <h2>showing: 1 - {dataPubs.authorPublications.length}</h2>
                         </div>
                         <PublicationList publications={dataPubs.authorPublications} />
-                        <ScrollToTopButton />
                         
                         <div className="flex flex-col items-center justify-center w-full mt-4">
                             <h2>showing: 1 - {dataPubs.authorPublications.length}</h2>
@@ -125,6 +124,8 @@ const profile = ({ profile }) => {
                     </>
                 }
             </div>
+            <ScrollToTopButton />
+
         </div>
     )
 }
