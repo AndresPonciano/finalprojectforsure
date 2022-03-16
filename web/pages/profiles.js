@@ -6,6 +6,7 @@ import ProfileList from "../components/Profilelist"
 import Searchbar from "../components/Searchbar"
 import Topicdropdown from "../components/Topicdropdown"
 import LoadingSpinner from "../components/LoadingSpinner"
+import SuggestedResults from "../components/SuggestedResults"
 
 const ALL_PROFILES_QUERY = gql`
   query AllProfiles( $offset: Int ) {
@@ -39,6 +40,14 @@ const SEARCH_PROFILES_QUERY = gql`
   }
 `;
 
+const SUGGESTED_PROFILES_QUERY = gql`
+  query SuggestedPeople( $prefix: String ) {
+    suggestedSearch( prefix: $prefix ) {
+      name
+    }
+  }
+`;
+
 const profiles = ({ homeSearchValue }) => {
     const router = useRouter();
     const [currentOffset, setCurrentOffset] = useState(0);
@@ -47,6 +56,19 @@ const profiles = ({ homeSearchValue }) => {
     const [searchStatus, setSearchStatus] = useState(false);
     const [sortedBy, setSortedBy] = useState("")
     const [dataSet, setDataSet] = useState([]);
+
+    useEffect(() => {
+      console.log('printing when searchtext changes: ', searchText);
+      if(searchText.length >= 0) {
+        if(searchText.length % 2 === 0) {
+          // console.log('perform suggestions')
+        
+          getSuggestedPeople({ variables: { prefix: searchText } });
+
+          // console.log(dataSugg)
+        }
+      }
+    }, [searchText])
 
     useEffect(() => {
       if(homeSearchValue !== undefined) {
@@ -65,6 +87,10 @@ const profiles = ({ homeSearchValue }) => {
 
     const { loading: loadingTemp, error: errorTemp, data: dataTemp } = useQuery(SEARCH_PROFILES_QUERY, {
       variables: { name: homeSearchValue, topic: searchTopic, offset: currentOffset, sorted: sortedBy }
+    });
+
+    const [ getSuggestedPeople, { loading: loadingSugg, error: errorSugg, data: dataSugg } ] = useLazyQuery(SUGGESTED_PROFILES_QUERY, {
+      variables: { prefix: searchText }
     });
 
     function search(event) {
@@ -99,8 +125,8 @@ const profiles = ({ homeSearchValue }) => {
       setCurrentOffset(newOffset);
     }
 
-    console.log('!!: ', dataTemp, searchStatus);
-    console.log('??: ', dataAll);
+    // console.log('!!: ', dataTemp, searchStatus);
+    // console.log('??: ', dataAll);
     const dataSet2 = searchStatus && dataTemp ? dataTemp.authors.authors : dataAll.authors.authors;
     const totalCount = searchStatus && dataTemp ? dataTemp.authors.totalCount : dataAll.authors.totalCount;
 
@@ -140,10 +166,12 @@ const profiles = ({ homeSearchValue }) => {
           <div className="w-4/5">
             <div className="p-4 mr-8 mt-2 overflow-y-auto h-screen">
 
-              <form onSubmit={search}>
-                <Searchbar searchText={searchText} setSearchText={setSearchText}/>
-              </form>
-
+              <div className="relative flex flex-col">
+                <form onSubmit={search}>
+                  <Searchbar searchText={searchText} setSearchText={setSearchText}/>
+                </form>
+                <SuggestedResults suggestedResults={dataSugg} onClickOutside={() => setSearchText("")}/>
+              </div>
               <div className="flex justify-end pr-4 mt-4">
                 <span className="font-semibold italic pr-1">{currentOffset}</span>
                 - 

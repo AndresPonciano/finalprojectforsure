@@ -69,11 +69,15 @@ const publications = ({ homeSearchValue }) => {
 
     // const dataSet = dataSearch ?
 
+    const testString = "Model Checking";
+    console.log('hi1', testString)
+    console.log('hi2', testString.split(' ').join('+'))
+
     return (
         <div className="flex bg-gray-200 w-full">
             <div className="ml-16 w-1/5 h-screen">
                 <h2 className="h-16 mt-4 mr-2 flex items-center text-xl font-semibold border-b-2 border-gray-300"><span>Options</span></h2>
-                side stuff
+            
                 <h3 className="mt-2 font-semibold">by title or abstract? (not yet)</h3>
                 <div>
                     <label>

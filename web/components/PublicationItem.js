@@ -1,12 +1,21 @@
 
-import Link from 'next/link'
+import Link from 'next/link';
+import Image from 'next/image';
 
 const PublicationItem = ({ publication }) => {
     return (
         <div className="mb-6">
             <div className="flex w-full items-center bg-gray-100 p-2 rounded-md shadow">
                 <div className="p-2">
-                    <h2 className="text-blue-600 text-lg">{publication.title}</h2>
+                    <div className='flex justify-between items-center'>
+                        <h2 className="text-blue-600 text-lg">{publication.title}</h2>
+                        <a 
+                            className='hover:animate-pulse cusor-pointer' 
+                            target="_blank" 
+                            href={`https://scholar.google.com/scholar?&q=${publication.title.split(' ').join('+')}`}>
+                            <Image width={25} height={25} src='/images/GSearch.svg'/>
+                        </a>
+                    </div>
                     <div className="flex">
                         <h2>author(s):</h2>
                         <ul className="flex ml-2">

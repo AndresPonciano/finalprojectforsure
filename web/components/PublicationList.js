@@ -1,4 +1,5 @@
 import PublicationItem from "./PublicationItem";
+import ScrollToTopButton from "./ScrollToTopButton";
 
 const PublicationList = ({ publications }) => {
     return (

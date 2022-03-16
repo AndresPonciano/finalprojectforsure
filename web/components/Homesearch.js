@@ -7,7 +7,7 @@ const Homesearch = () => {
     const router = useRouter();
 
     const [searchText, setSearchText] = useState("");
-    const [searchOption, setSearchOption] = useState("Profiles");
+    const [searchOption, setSearchOption] = useState("People");
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -18,21 +18,17 @@ const Homesearch = () => {
             })   
         } else if(searchOption === "Publications") {
             router.push({
-                pathname: '/publications2',
+                pathname: '/publications',
                 query: { homeSearchValue: searchText }
             })
         }
-    }
-
-    function handleRadioChange(event) {
-        setSearchOption(event.target.value)
     }
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
                 <Searchbar searchText={searchText} setSearchText={setSearchText} />
-                <Searchradio handleRadioChange={handleRadioChange} />
+                <Searchradio radioValue={searchOption} handleRadioChange={setSearchOption} />
             </form>
         </div>
     )
