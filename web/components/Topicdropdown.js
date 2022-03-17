@@ -49,8 +49,9 @@ const Topicdropdown = ({ searchTopic, handleTopicChange }) => {
 
                             <Listbox.Options className="">
                                 <Listbox.Option 
-                                    className={({active}) => `py-1 pl-2 bg-white ${active ? 'text-gray-900 bg-gray-100' : 'text-gray-900'}`} 
-                                    key="None" value="None"
+                                    className={({active}) => `flex justify-between py-1 pl-2 bg-white ${active ? 'text-gray-900 bg-gray-100' : 'text-gray-900'}`} 
+                                    key="None" 
+                                    value="None"
                                 >
                                     {({ selected }) => (
                                         <>
@@ -58,7 +59,7 @@ const Topicdropdown = ({ searchTopic, handleTopicChange }) => {
                                                 None
                                             </span>
                                             { selected ? (
-                                                <span className='absolute pr-3 right-0 inset-y-0 flex items-center'>
+                                                <span className='pr-3 right-0 inset-y-0 flex items-center'>
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className='w-5 h-5'>
                                                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                                                     </svg>
@@ -73,8 +74,9 @@ const Topicdropdown = ({ searchTopic, handleTopicChange }) => {
                                 {topics.sort().map((topic, index) => {
                                     return(
                                         <Listbox.Option 
-                                            className={({active}) => `py-1 pl-2 bg-white ${active ? 'text-gray-900 bg-gray-100' : 'text-gray-900'}`} 
-                                            key={index} value={topic}
+                                            className={({active}) => `flex justify-between py-1 pl-2 bg-white ${active ? 'text-gray-900 bg-gray-100' : 'text-gray-900'}`} 
+                                            key={index} 
+                                            value={topic}
                                         >
                                             {({ selected }) => (
                                                 <>
@@ -82,7 +84,7 @@ const Topicdropdown = ({ searchTopic, handleTopicChange }) => {
                                                         {topic}
                                                     </span>
                                                     { selected ? (
-                                                        <span className='absolute pr-3 right-0 inset-y-0 flex items-center'>
+                                                        <span className='pr-3 right-0 inset-y-0 flex items-center'>
                                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className='w-5 h-5'>
                                                                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                                                             </svg>

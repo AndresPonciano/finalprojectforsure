@@ -51,14 +51,14 @@ const SUGGESTED_PROFILES_QUERY = gql`
 const profiles = ({ homeSearchValue }) => {
     const router = useRouter();
     const [currentOffset, setCurrentOffset] = useState(0);
-    const [searchTopic, setSearchTopic] = useState(null);
+    const [searchTopic, setSearchTopic] = useState("None");
     const [searchText, setSearchText] = useState("");
     const [searchStatus, setSearchStatus] = useState(false);
     const [sortedBy, setSortedBy] = useState("")
     const [dataSet, setDataSet] = useState([]);
 
     useEffect(() => {
-      console.log('printing when searchtext changes: ', searchText);
+      // console.log('printing when searchtext changes: ', searchText);
       if( searchText.length >= 0 ) {
         if(searchText.length % 2 === 0) {
           // console.log('perform suggestions')
@@ -107,9 +107,9 @@ const profiles = ({ homeSearchValue }) => {
       return <LoadingSpinner />
 
 
-    function handleTopicChange(event) {
-      setSearchTopic(event.target.value);
-    }
+    // function handleTopicChange(event) {
+    //   setSearchTopic(event.target.value);
+    // }
 
     function handleSortedByChange(event) {
       setSortedBy(event.target.value);
@@ -139,7 +139,7 @@ const profiles = ({ homeSearchValue }) => {
 
             <div className="mt-2">
               <h2 className="font-semibold mb-2">Filter with topics:</h2>
-              <Topicdropdown searchTopic={searchTopic} handleTopicChange={handleTopicChange} />
+              <Topicdropdown searchTopic={searchTopic} handleTopicChange={setSearchTopic} />
             </div>
 
             <div className="mt-4">

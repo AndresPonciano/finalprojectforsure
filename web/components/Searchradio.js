@@ -15,7 +15,7 @@ const Searchradio = ({ radioValue, handleRadioChange }) => {
                                 <div className={`
                                     ${ checked ? 'bg-gray-900' : 'bg-gray-700' }
                                     ${ active ? 'ring-2 ring-blue-500' : '' }
-                                    h-full flex rounded py-2 px-3 items-center justify-center
+                                    h-full flex rounded py-2 px-3 items-center justify-center hover:cursor-pointer
                                 `}>
                                     <p className=''>
                                     People
@@ -41,7 +41,7 @@ const Searchradio = ({ radioValue, handleRadioChange }) => {
                                 <div className={`
                                     ${ checked ? 'bg-gray-900' : 'bg-gray-700' }
                                     ${ active ? 'ring-2 ring-blue-500' : '' }
-                                    h-full flex rounded py-2 px-3 items-center justify-center
+                                    h-full flex rounded py-2 px-3 items-center justify-center hover:cursor-pointer
                                 `}>
                                     <p className=''>
                                     Publications
