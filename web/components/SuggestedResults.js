@@ -24,13 +24,13 @@ const SuggestedResults = ({ suggestedResults, onClickOutside }) => {
     if(suggestedResults === undefined) 
         return <></>
 
-    if(suggestedResults && suggestedResults.suggestedSearch.length === 0)
+    if(suggestedResults && suggestedResults.peopleSuggestedSearch.length === 0)
         return <></>
 
     return (
         <div ref={ref} className="self-end mt-16 absolute bg-white w-11/12 z-10">
             <ul>
-                {suggestedResults.suggestedSearch.map((element) => {
+                {suggestedResults.peopleSuggestedSearch.map((element) => {
                     return (
                         <li key={element.name} className="py-2 pl-2 border border-bt"><button onClick={() => {router.push({ pathname: '/profiles', query: { homeSearchValue: element.name} })}} >{element.name}</button></li>
                     )

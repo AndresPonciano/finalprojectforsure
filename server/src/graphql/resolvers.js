@@ -439,6 +439,56 @@ module.exports = {
         
                 resolve(_source);
             });
+        }),
+        peopleSuggestedSearch: (_, { prefix = "" }) => new Promise((resolve, reject) => {
+            let schema;
+
+            schema = {
+                "sort": [
+                    { "name.raw": { "order": "asc" } }
+                ],
+                "query": {
+                    "match_phrase_prefix": {
+                        "name": { "query": prefix }
+                    }
+                }
+            }
+
+            ElasticSearchClient({...schema})
+                .then(r => {
+                total = r['hits']['total']['value'];
+                let _source = r['hits']['hits'];
+                    _source.map((item, i) => _source[i] = item._source);
+        
+                console.log(_source, 'AAAAAAAAA', total)
+                resolve(_source);
+                // resolve({"totalCount": total, "authors": _source});
+            });
+        }),
+        pubSuggestedSearch: (_, { prefix = "" }) => new Promise((resolve, reject) => {
+            let schema;
+
+            schema = {
+                "sort": [
+                    { "title.raw": { "order": "asc" } }
+                ],
+                "query": {
+                    "match_phrase_prefix": {
+                        "title": { "query": prefix }
+                    }
+                }
+            }
+
+            PublicationsElasticSearchClient({...schema})
+                .then(r => {
+                total = r['hits']['total']['value'];
+                let _source = r['hits']['hits'];
+                    _source.map((item, i) => _source[i] = item._source);
+        
+                console.log(_source, 'AAAAAAAAA', total)
+                resolve(_source);
+                // resolve({"totalCount": total, "authors": _source});
+            });
         })
     }
 }

@@ -36,7 +36,7 @@ const Topicdropdown = ({ searchTopic, handleTopicChange }) => {
             <div className=''>
                 <Listbox value={searchTopic} onChange={handleTopicChange}>
 
-                    <div className='flex flex-col items-start'>
+                    <div className='flex flex-col items-start relative'>
 
                         <Listbox.Button className='flex bg-white w-full justify-between rounded p-2'>
                             {searchTopic}
@@ -47,9 +47,9 @@ const Topicdropdown = ({ searchTopic, handleTopicChange }) => {
 
                         <div className='absolute mt-12 rounded overflow-y-auto h-56'>
 
-                            <Listbox.Options>
+                            <Listbox.Options className="">
                                 <Listbox.Option 
-                                    className={({active}) => `relative py-1 pl-2 bg-white ${active ? 'text-gray-900 bg-gray-100' : 'text-gray-900'}`} 
+                                    className={({active}) => `py-1 pl-2 bg-white ${active ? 'text-gray-900 bg-gray-100' : 'text-gray-900'}`} 
                                     key="None" value="None"
                                 >
                                     {({ selected }) => (
@@ -73,12 +73,12 @@ const Topicdropdown = ({ searchTopic, handleTopicChange }) => {
                                 {topics.sort().map((topic, index) => {
                                     return(
                                         <Listbox.Option 
-                                            className={({active}) => `relative py-1 pl-2 bg-white ${active ? 'text-gray-900 bg-gray-100' : 'text-gray-900'}`} 
+                                            className={({active}) => `py-1 pl-2 bg-white ${active ? 'text-gray-900 bg-gray-100' : 'text-gray-900'}`} 
                                             key={index} value={topic}
                                         >
                                             {({ selected }) => (
                                                 <>
-                                                    <span className={`block truncate ${selected ? 'font-medium' : 'font-normal'}`}>                                           
+                                                    <span className={`${selected ? 'font-medium' : 'font-normal'}`}>                                           
                                                         {topic}
                                                     </span>
                                                     { selected ? (

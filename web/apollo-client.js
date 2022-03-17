@@ -12,7 +12,7 @@ const client = new ApolloClient({
                         authors: offsetLimitPagination()
                     },
                     publications: {
-                        keyArgs: false,
+                        keyArgs: ["searchTerm"],
                         merge(existing, incoming, { args: { offset = 0 } }) {
                             // slicing is necessary because data is immutable in dev
                             const merged = existing ? existing.slice(0) : []

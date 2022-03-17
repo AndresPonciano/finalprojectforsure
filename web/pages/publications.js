@@ -5,6 +5,7 @@ import PublicationList from "../components/PublicationList";
 import Searchbar from "../components/Searchbar";
 import Pagination from "../components/Pagination";
 import LoadingSpinner from "../components/LoadingSpinner";
+import AutocompleteSearch from "../components/AutocompleteSearch";
 
 const SEARCH_PUBLICATIONS_QUERY = gql`
 query NewPubsPag( $searchTerm: String, $offset: Int, $limit: Int, $sorted: String ) {
@@ -20,34 +21,59 @@ query NewPubsPag( $searchTerm: String, $offset: Int, $limit: Int, $sorted: Strin
 }
 `;
 
+const SUGGESTED_PUBLICATIONS_QUERY = gql`
+  query SuggestedPubs( $prefix: String ) {
+    pubSuggestedSearch( prefix: $prefix ) {
+      title
+    }
+  }
+`;
+
 const publications = ({ homeSearchValue }) => {
     const router = useRouter();
     const [searchText, setSearchText] = useState("");
     const [sortedBy, setSortedBy] = useState("");
+    const [searchStatus, setSearchStatus] = useState(false);
 
-    console.log('homesearchval: ', homeSearchValue, 'are we sorting: ', sortedBy);
 
-    const [ getSearchPublications, { loading: loadingSearch, error: errorSearch, data: dataSearch, fetchMore } ] = useLazyQuery(SEARCH_PUBLICATIONS_QUERY, {
-        variables: { searchTerm: searchText }
+    // const [ getSearchPublications, { loading: loadingSearch, error: errorSearch, data: dataSearch, fetchMore } ] = useLazyQuery(SEARCH_PUBLICATIONS_QUERY, {
+    //     variables: { searchTerm: searchText }
+    // });
+
+    console.log('homesearval: ', homeSearchValue)
+
+    const { loading: loadingSearch, error: errorSearch, data: dataSearch, fetchMore } = useQuery(SEARCH_PUBLICATIONS_QUERY, {
+        variables: { searchTerm: homeSearchValue }
     });
 
-    // const { loading: loadingSearch, error: errorSearch, data: dataSearch, fetchMore } = useQuery(SEARCH_PUBLICATIONS_QUERY, {
-    //     variables: { title: searchText, offset: 0 }
-    // })
-
+    const [ getSuggestedPubs, { loading: loadingSugg, error: errorSugg, data: dataSugg } ] = useLazyQuery(SUGGESTED_PUBLICATIONS_QUERY, {
+        variables: { prefix: searchText }
+    });
 
     useEffect(() => {
-        // if(homeSearchValue !== undefined) {
-        //     setSearchStatus(true) 
-        // }
+        // getSearchPublications({ variables: { searchTerm: homeSearchValue, offset: 0 } })
+        console.log('here what', homeSearchValue)
 
-        getSearchPublications({ variables: { searchTerm: homeSearchValue, offset: 0 } })
+        if(homeSearchValue !== undefined) {
+            setSearchStatus(true);
+        }
+
     }, [homeSearchValue])
+
+    useEffect(() => {
+        // console.log('printing when searchtext changes: ', searchText);
+        if( searchText && searchText.length >= 0 ) {
+          if(searchText.length % 2 === 0) {
+            getSuggestedPubs({ variables: { prefix: searchText } });
+          }
+        }
+    }, [searchText])
 
     function search(event) {
         console.log('trying to search: ', searchText)
         event.preventDefault();
 
+        // setSearchStatus(true);
         router.push(`/publications?homeSearchValue=${searchText}`, undefined);
     }
 
@@ -65,13 +91,7 @@ const publications = ({ homeSearchValue }) => {
     // console.log('we got results: ', dataSearch)
     // const dataSet = dataSearch ? dataSearch.publications.publications : [];
     const dataSet = dataSearch ? dataSearch.publications : [];
-    console.log('dataSet is: ', dataSearch)
-
-    // const dataSet = dataSearch ?
-
-    const testString = "Model Checking";
-    console.log('hi1', testString)
-    console.log('hi2', testString.split(' ').join('+'))
+    // console.log('dataSet is: ', dataSearch)
 
     return (
         <div className="flex bg-gray-200 w-full">
@@ -114,14 +134,16 @@ const publications = ({ homeSearchValue }) => {
 
                 <button 
                     className="bg-blue-700 mt-2 p-2 text-white rounded-md border border-3 border-blue-300 hover:bg-blue-300 hover:text-slate-800 hover:border-blue-600"
-                    onClick={() => getSearchPublications({ variables: { searchTerm: homeSearchValue, offset: 0, sorted: sortedBy } })}
+                    // onClick={() => getSearchPublications({ variables: { searchTerm: homeSearchValue, offset: 0, sorted: sortedBy } })}
                 >
+                    CHECK THIS BUTTON FUNCTION LOL
                     refetch search
                 </button>
             </div>
 
             <div className="w-4/5">
                 <form className="sticky p-4 mr-8" onSubmit={search}>
+                    {/* <AutocompleteSearch searchText={searchText} setSearchText={setSearchText} suggestedResults={dataSugg} search={search}/> */}
                     <Searchbar searchText={searchText} setSearchText={setSearchText}/>
                 </form>
 

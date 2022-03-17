@@ -42,7 +42,7 @@ const SEARCH_PROFILES_QUERY = gql`
 
 const SUGGESTED_PROFILES_QUERY = gql`
   query SuggestedPeople( $prefix: String ) {
-    suggestedSearch( prefix: $prefix ) {
+    peopleSuggestedSearch( prefix: $prefix ) {
       name
     }
   }
@@ -59,7 +59,7 @@ const profiles = ({ homeSearchValue }) => {
 
     useEffect(() => {
       console.log('printing when searchtext changes: ', searchText);
-      if(searchText.length >= 0) {
+      if( searchText.length >= 0 ) {
         if(searchText.length % 2 === 0) {
           // console.log('perform suggestions')
         
@@ -168,7 +168,7 @@ const profiles = ({ homeSearchValue }) => {
 
               <div className="relative flex flex-col">
                 <form onSubmit={search}>
-                  <Searchbar searchText={searchText} setSearchText={setSearchText}/>
+                  <Searchbar searchText={searchText} setSearchText={setSearchText} />
                 </form>
                 <SuggestedResults suggestedResults={dataSugg} onClickOutside={() => setSearchText("")}/>
               </div>

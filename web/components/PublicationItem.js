@@ -5,7 +5,7 @@ import Image from 'next/image';
 const PublicationItem = ({ publication }) => {
     return (
         <div className="mb-6">
-            <div className="flex w-full items-center bg-gray-100 p-2 rounded-md shadow">
+            <div className="flex w-full items-center bg-white p-2 rounded-md shadow">
                 <div className="p-2">
                     <div className='flex justify-between items-center'>
                         <h2 className="text-blue-600 text-lg">{publication.title}</h2>
