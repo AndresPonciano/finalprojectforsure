@@ -1,4 +1,4 @@
-import { Listbox, Menu } from '@headlessui/react'
+import { Listbox } from '@headlessui/react'
 
 const topics = [
     "Verification", "Software tools", "Automated Software Engineering",
@@ -45,11 +45,11 @@ const Topicdropdown = ({ searchTopic, handleTopicChange }) => {
                             </svg>
                         </Listbox.Button>
 
-                        <div className='absolute mt-12 rounded overflow-y-auto h-56'>
+                        <div className='absolute mt-12 rounded overflow-y-auto h-56 z-10'>
 
                             <Listbox.Options className="">
                                 <Listbox.Option 
-                                    className={({active}) => `flex justify-between py-1 pl-2 bg-white ${active ? 'text-gray-900 bg-gray-100' : 'text-gray-900'}`} 
+                                    className={({active}) => `flex justify-between py-1 pl-2 bg-white hover:cursor-pointer ${active ? 'text-gray-900 bg-gray-100' : 'text-gray-900'}`} 
                                     key="None" 
                                     value="None"
                                 >
@@ -74,7 +74,7 @@ const Topicdropdown = ({ searchTopic, handleTopicChange }) => {
                                 {topics.sort().map((topic, index) => {
                                     return(
                                         <Listbox.Option 
-                                            className={({active}) => `flex justify-between py-1 pl-2 bg-white ${active ? 'text-gray-900 bg-gray-100' : 'text-gray-900'}`} 
+                                            className={({active}) => `flex justify-between py-1 pl-2 bg-white hover:cursor-pointer ${active ? 'text-gray-900 bg-gray-100' : 'text-gray-900'}`} 
                                             key={index} 
                                             value={topic}
                                         >

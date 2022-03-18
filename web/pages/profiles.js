@@ -7,6 +7,8 @@ import Searchbar from "../components/Searchbar"
 import Topicdropdown from "../components/Topicdropdown"
 import LoadingSpinner from "../components/LoadingSpinner"
 import SuggestedResults from "../components/SuggestedResults"
+import Sortingdropdown from "../components/Sortingdropdown"
+import AutocompleteSearch from "../components/AutocompleteSearch"
 
 const ALL_PROFILES_QUERY = gql`
   query AllProfiles( $offset: Int ) {
@@ -48,45 +50,42 @@ const SUGGESTED_PROFILES_QUERY = gql`
   }
 `;
 
+const sortingOptions = [
+  {"value": "", "text": "None"},
+  {"value": "name_asc", "text": "Names A-Z"},
+  {"value": "name_desc", "text": "Names Z-A"}
+]
+
 const profiles = ({ homeSearchValue }) => {
     const router = useRouter();
     const [currentOffset, setCurrentOffset] = useState(0);
     const [searchTopic, setSearchTopic] = useState("None");
     const [searchText, setSearchText] = useState("");
     const [searchStatus, setSearchStatus] = useState(false);
-    const [sortedBy, setSortedBy] = useState("")
+    const [sortedBy, setSortedBy] = useState(sortingOptions[0])
     const [dataSet, setDataSet] = useState([]);
 
     useEffect(() => {
-      // console.log('printing when searchtext changes: ', searchText);
       if( searchText.length >= 0 ) {
         if(searchText.length % 2 === 0) {
-          // console.log('perform suggestions')
-        
           getSuggestedPeople({ variables: { prefix: searchText } });
-
-          // console.log(dataSugg)
         }
       }
     }, [searchText])
 
     useEffect(() => {
-      if(homeSearchValue !== undefined) {
+      if(homeSearchValue !== undefined || searchTopic !== "None" || sortedBy.text !== "None") {
         setSearchStatus(true);
       }
 
-    }, [homeSearchValue])
+    }, [homeSearchValue, searchTopic, sortedBy])
 
     const { loading: loadingAll, error: errorAll, data: dataAll, refetch } = useQuery(ALL_PROFILES_QUERY, {
       variables: { offset: currentOffset }
     });
 
-    // const [ getSearchProfiles, { loading: loadingSearch, error: errorSearch, data: dataSearch } ] = useLazyQuery(SEARCH_PROFILES_QUERY, {
-    //   variables: { name: searchText, topic: searchTopic }
-    // });
-
     const { loading: loadingTemp, error: errorTemp, data: dataTemp } = useQuery(SEARCH_PROFILES_QUERY, {
-      variables: { name: homeSearchValue, topic: searchTopic, offset: currentOffset, sorted: sortedBy }
+      variables: { name: homeSearchValue, topic: searchTopic, offset: currentOffset, sorted: sortedBy.value }
     });
 
     const [ getSuggestedPeople, { loading: loadingSugg, error: errorSugg, data: dataSugg } ] = useLazyQuery(SUGGESTED_PROFILES_QUERY, {
@@ -105,7 +104,6 @@ const profiles = ({ homeSearchValue }) => {
 
     if(loadingAll || loadingTemp)
       return <LoadingSpinner />
-
 
     // function handleTopicChange(event) {
     //   setSearchTopic(event.target.value);
@@ -132,7 +130,7 @@ const profiles = ({ homeSearchValue }) => {
 
     return (
         <div className="flex bg-gray-200 h-screen w-full">
-          <div className="ml-16 w-1/5">
+          <div className="flex flex-col ml-16 w-1/5">
             <div className="h-32">
               <h2 className="h-16 mt-4 mr-2 flex items-center text-xl font-bold border-b-2 border-gray-300"><span>Options</span></h2>
             </div>
@@ -142,25 +140,20 @@ const profiles = ({ homeSearchValue }) => {
               <Topicdropdown searchTopic={searchTopic} handleTopicChange={setSearchTopic} />
             </div>
 
-            <div className="mt-4">
-              <h3 className="font-semibold mb-2">Sorting</h3>
-              <select className="w-full p-2 rounded-md" value={sortedBy} onChange={handleSortedByChange}>
-                <option value="">None</option>
-                <option value="name_asc">
-                    Names A-Z
-                </option>
-                <option value="name_desc">
-                    Names Z-A
-                </option>
-              </select>
+            <div className="mt-2">
+              <h2 className="font-semibold mb-2">Sort by:</h2>
+              <Sortingdropdown sortedBy={sortedBy} setSortedBy={setSortedBy} sortingOptions={sortingOptions} />
             </div>
 
-            <button
-              className="bg-blue-700 mt-2 p-2 text-white rounded-md border border-3 border-blue-300 hover:bg-blue-300 hover:text-slate-800 hover:border-blue-600"
-              onClick={search}
-            >
-              refetch search
-            </button>
+            <div className="flex items-end h-1/2">
+              <button
+                className="bg-blue-700 mb-8 p-2 text-white rounded-md border border-3 border-blue-300 hover:bg-blue-300 hover:text-slate-800 hover:border-blue-600"
+                onClick={search}
+              >
+                refetch search
+              </button>
+            </div>
+
           </div>
           
           <div className="w-4/5">
@@ -168,9 +161,10 @@ const profiles = ({ homeSearchValue }) => {
 
               <div className="relative flex flex-col">
                 <form onSubmit={search}>
-                  <Searchbar searchText={searchText} setSearchText={setSearchText} />
+                  {/* <Searchbar searchText={searchText} setSearchText={setSearchText} /> */}
+                  <AutocompleteSearch searchText={searchText} setSearchText={setSearchText} suggestedResults={dataSugg}/>
                 </form>
-                <SuggestedResults suggestedResults={dataSugg} onClickOutside={() => setSearchText("")}/>
+                {/* <SuggestedResults suggestedResults={dataSugg} onClickOutside={() => setSearchText("")}/> */}
               </div>
               <div className="flex justify-end pr-4 mt-4">
                 <span className="font-semibold italic pr-1">{currentOffset}</span>

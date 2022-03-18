@@ -35,6 +35,9 @@ const client = new ApolloClient({
                             return merged;
                         }
                     },
+                    peopleSuggestedSearch: {
+                        keyArgs: ["name"],
+                    }
                 },
             },
         },

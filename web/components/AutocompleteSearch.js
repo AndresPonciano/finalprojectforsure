@@ -1,17 +1,15 @@
 import { Combobox } from "@headlessui/react";
 import { useState } from "react";
+import { useRouter } from "next/router"
 
 const AutocompleteSearch = ({ searchText, setSearchText, suggestedResults, search }) => {
     const [ selected, setSelected ] = useState("");
-    // console.log('sugg results is:', suggestedResults);
-    // console.log('select:', selected);
+    const router = useRouter();
     
     function changingSelect(value) {
         console.log('PLEASE', value);
-        setSearchText(value);
         setSelected(value);
-        // search();
-
+        router.push(`/profiles?homeSearchValue=${value}`, undefined);
     }
 
     return (
@@ -40,17 +38,17 @@ const AutocompleteSearch = ({ searchText, setSearchText, suggestedResults, searc
 
                 <div className="rounded-md z-10">
                     <Combobox.Options className='w-full mt-2 rounded'>
-                        {suggestedResults && suggestedResults.pubSuggestedSearch.map((result, index) => {
+                        {suggestedResults && suggestedResults.peopleSuggestedSearch.map((result, index) => {
                             return(
                                 <Combobox.Option 
                                     className={({ active }) => `relative py-2 pl-2 bg-gray-700 ${active ? 'text-gray-900 bg-gray-100' : 'text-white'}`}
                                     key={index}
-                                    value={result.title}
+                                    value={result.name}
                                 >
                                     {({ selected }) => (
                                         <>
                                             <span>
-                                                {result.title}
+                                                {result.name}
                                             </span>
                                         </>
                                     )}

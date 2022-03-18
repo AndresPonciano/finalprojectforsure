@@ -44,7 +44,7 @@ const Searchradio = ({ radioValue, handleRadioChange }) => {
                                     h-full flex rounded py-2 px-3 items-center justify-center hover:cursor-pointer
                                 `}>
                                     <p className=''>
-                                    Publications
+                                        Publications
                                     </p>
                                     { checked ? (
                                         <div>

@@ -7,7 +7,10 @@ module.exports = {
     Query: {
         authors: (_, { name = null, topic = null, offset = 0, limit = 10, sorted = "" }) => new Promise((resolve, reject) => {
             // console.log('limit is: ', limit);    
-            console.log('name: ', name, "sorted: ", sorted);
+            console.log('name: ', name, "sorted: ", sorted, "topic: ", topic);
+
+            if(topic === "None") 
+                topic = null;
 
             let schema;
             let total;
@@ -229,8 +232,6 @@ module.exports = {
                 // name && topic && sorted
                 // 
 
-            console.log('shcema is: ', schema)
-
             ElasticSearchClient({...schema})
                 .then(r => {
                 total = r['hits']['total']['value'];
@@ -239,6 +240,7 @@ module.exports = {
         
                 // console.log(_source.length, 'AAAAAAAAA', total)
                 // resolve(_source);
+                console.log('please restul: ', _source[0])
                 resolve({"totalCount": total, "authors": _source});
             });
         }),
