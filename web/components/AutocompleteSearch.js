@@ -50,7 +50,7 @@ const AutocompleteSearch = ({ searchText, setSearchText, suggestedResults, searc
                                         {({ selected }) => (
                                             <>
                                                 <span>
-                                                    {result.name} please
+                                                    {result.name}
                                                 </span>
                                             </>
                                         )}
@@ -70,7 +70,7 @@ const AutocompleteSearch = ({ searchText, setSearchText, suggestedResults, searc
                                         {({ selected }) => (
                                             <>
                                                 <span>
-                                                    {result.title} why
+                                                    {result.title}
                                                 </span>
                                             </>
                                         )}

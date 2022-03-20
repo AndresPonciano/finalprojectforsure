@@ -163,7 +163,7 @@ const profiles = ({ homeSearchValue }) => {
           
           <div className="w-4/5 mr-16 ml-3">
 
-            <div className="h-1/5 flex flex-col justify-between pt-6">
+            <div className="h-1/5 pt-6">
 
               <div className="relative flex flex-col">
                 <form onSubmit={search}>

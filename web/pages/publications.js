@@ -54,7 +54,7 @@ const publications = ({ homeSearchValue }) => {
 
     useEffect(() => {
         if(homeSearchValue !== undefined || sortedBy.text !== "None") {
-            console.log('pls search: ', sortedBy)
+            // console.log('pls search: ', sortedBy)
             setSearchStatus(true);
         }
 
@@ -92,25 +92,27 @@ const publications = ({ homeSearchValue }) => {
     // console.log('dataSet is: ', dataSearch)
 
     return (
-        <div className="flex bg-gray-200 w-full">
+        <div className="flex bg-gray-200 h-screen w-full">
             <div className="flex flex-col ml-16 w-1/5">
-                <div className="h-32">
+                <div className="h-1/5">
                     <h2 className="h-16 mt-4 mr-2 flex items-center text-xl font-bold border-b-2 border-gray-300">
                         <span>Search options</span>
                     </h2>
                 </div>
 
 
-                <div className="mt-2">
-                    <h2 className="font-semibold mb-2 text-gray-900">Sort by:</h2>
-                    <Sortingdropdown sortedBy={sortedBy} setSortedBy={setSortedBy} sortingOptions={sortingOptions}/>
+                <div className="h-3/5">
+                    <div className="">
+                        <h2 className="font-semibold mb-2 text-gray-900">Sort by:</h2>
+                        <Sortingdropdown sortedBy={sortedBy} setSortedBy={setSortedBy} sortingOptions={sortingOptions}/>
+                    </div>
+
+                    <div className="mt-2">
+                        <h3>picking range of citations (pending)</h3>
+                    </div>
                 </div>
 
-                <div className="mt-2">
-                    <h3>picking range of citations (pending)</h3>
-                </div>
-
-                <div className="flex items-end h-1/2">
+                <div className="flex items-end">
                     <button 
                         className="bg-blue-700 mb-8 p-2 text-white rounded-md border border-2 border-blue-300 hover:bg-blue-300 hover:text-slate-800 hover:border-blue-600"
                         onClick={search}
@@ -121,47 +123,46 @@ const publications = ({ homeSearchValue }) => {
 
             </div>
 
-            <div className="w-4/5">
+            <div className="w-4/5 mr-16 ml-3">
 
-                <div className="relative flex flex-col p-4 mt-2 mr-10">
-                    <form className="" onSubmit={search}>
-                        <AutocompleteSearch searchText={searchText} setSearchText={setSearchText} suggestedResults={dataSugg} search={search}/>
-                        {/* <Searchbar searchText={searchText} setSearchText={setSearchText}/> */}
-                    </form>
+                <div className="h-1/5 pt-6">
+                    <div className="relative flex flex-col">
+                        <form className="" onSubmit={search}>
+                            <AutocompleteSearch searchText={searchText} setSearchText={setSearchText} suggestedResults={dataSugg} search={search}/>
+                            {/* <Searchbar searchText={searchText} setSearchText={setSearchText}/> */}
+                        </form>
+                    </div>
                 </div>
 
-                <div className="p-4 mr-8 mt-2 overflow-y-auto h-screen">
+                <div className="h-4/5 overflow-y-scroll">
 
-                    <div className="">
+                    <div className="flex justify-end mb-2">
+                        <h2>showing 1 - {dataSet.length} results for: <span className="font-semibold italic">{homeSearchValue}</span></h2>
+                    </div>
 
-                        <div className="flex justify-end py-2">
-                            <h2>showing 1 - {dataSet.length} results for: <span className="font-semibold italic">{homeSearchValue}</span></h2>
-                        </div>
-
-                        <div>
-                            {dataSet.length === 0 ?
-                                <div>we have no data</div>
-                            :
-                                <>
-                                    <PublicationList publications={dataSet} />
-                                    <div className="flex flex-col items-center justify-center w-full mt-4">
-                                        <h2>showing: 1 - {dataSet.length}</h2>
-                                        <button 
-                                            onClick={() => fetchMore({
-                                                variables: {
-                                                    offset: dataSet.length
-                                                }
-                                            })} 
-                                            className="hover:animate-bounce flex items-center justify-center m-4 w-12 h-8 rounded-md bg-gray-300 text-gray-900 hover:bg-gray-700 hover:text-gray-300"
-                                        >
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </>
-                            }
-                        </div>
+                    <div>
+                        {dataSet.length === 0 ?
+                            <div>we have no data</div>
+                        :
+                            <>
+                                <PublicationList publications={dataSet} />
+                                <div className="flex flex-col items-center justify-center w-full">
+                                    <h2>showing: 1 - {dataSet.length}</h2>
+                                    <button 
+                                        onClick={() => fetchMore({
+                                            variables: {
+                                                offset: dataSet.length
+                                            }
+                                        })} 
+                                        className="hover:animate-bounce flex items-center justify-center m-4 w-12 h-8 rounded-md bg-gray-300 text-gray-900 hover:bg-gray-700 hover:text-gray-300"
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </>
+                        }
                     </div>
 
                 </div>
