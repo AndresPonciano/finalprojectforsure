@@ -129,35 +129,41 @@ const profiles = ({ homeSearchValue }) => {
     const totalCount = searchStatus && dataTemp ? dataTemp.authors.totalCount : dataAll.authors.totalCount;
 
     return (
-        <div className="flex bg-gray-200 h-screen w-full">
+        <div className="flex bg-gray-200 h-screen w-full text-gray-900">
           <div className="flex flex-col ml-16 w-1/5">
-            <div className="h-32">
-              <h2 className="h-16 mt-4 mr-2 flex items-center text-xl font-bold border-b-2 border-gray-300"><span>Options</span></h2>
+
+            <div className="h-1/5">
+              <h2 className="h-16 mt-4 mr-2 flex items-center text-xl font-bold border-b-2 border-gray-300">
+                <span>Search options</span>
+              </h2>
             </div>
 
-            <div className="mt-2">
-              <h2 className="font-semibold mb-2">Filter with topics:</h2>
-              <Topicdropdown searchTopic={searchTopic} handleTopicChange={setSearchTopic} />
+            <div className="h-3/5">
+              <div className="">
+                <h2 className="font-semibold mb-2">Filter with topics:</h2>
+                <Topicdropdown searchTopic={searchTopic} handleTopicChange={setSearchTopic} />
+              </div>
+
+              <div className="mt-2">
+                <h2 className="font-semibold mb-2">Sort by:</h2>
+                <Sortingdropdown sortedBy={sortedBy} setSortedBy={setSortedBy} sortingOptions={sortingOptions} />
+              </div>
             </div>
 
-            <div className="mt-2">
-              <h2 className="font-semibold mb-2">Sort by:</h2>
-              <Sortingdropdown sortedBy={sortedBy} setSortedBy={setSortedBy} sortingOptions={sortingOptions} />
-            </div>
-
-            <div className="flex items-end h-1/2">
+            <div className="flex items-end">
               <button
-                className="bg-blue-700 mb-8 p-2 text-white rounded-md border border-3 border-blue-300 hover:bg-blue-300 hover:text-slate-800 hover:border-blue-600"
+                className="bg-blue-700 p-2 text-white rounded-md border border-2 border-blue-300 hover:bg-blue-300 hover:text-slate-800 hover:border-blue-600"
                 onClick={search}
               >
-                refetch search
+                Refetch
               </button>
             </div>
 
           </div>
           
-          <div className="w-4/5">
-            <div className="p-4 mr-8 mt-2 overflow-y-auto h-screen">
+          <div className="w-4/5 mr-16 ml-3">
+
+            <div className="h-1/5 flex flex-col justify-between pt-6">
 
               <div className="relative flex flex-col">
                 <form onSubmit={search}>
@@ -166,7 +172,12 @@ const profiles = ({ homeSearchValue }) => {
                 </form>
                 {/* <SuggestedResults suggestedResults={dataSugg} onClickOutside={() => setSearchText("")}/> */}
               </div>
-              <div className="flex justify-end pr-4 mt-4">
+
+            </div>
+
+            <div className="overflow-y-scroll h-4/5">
+              
+              <div className="flex justify-end text-gray-900 mb-2">
                 <span className="font-semibold italic pr-1">{currentOffset}</span>
                 - 
                 <span className="font-semibold px-1">
@@ -178,7 +189,7 @@ const profiles = ({ homeSearchValue }) => {
                 </span>
                 of <span className="font-semibold px-1">{totalCount}</span> results shown
               </div>
-              
+
               <ProfileList profiles={dataSet2}/>
               <Pagination totalCount={totalCount} offset={currentOffset} handlePaginationChange={handlePaginationChange} />
 

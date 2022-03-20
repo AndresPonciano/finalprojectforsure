@@ -6,6 +6,7 @@ import Searchbar from "../components/Searchbar";
 import Pagination from "../components/Pagination";
 import LoadingSpinner from "../components/LoadingSpinner";
 import AutocompleteSearch from "../components/AutocompleteSearch";
+import Sortingdropdown from "../components/Sortingdropdown";
 
 const SEARCH_PUBLICATIONS_QUERY = gql`
 query NewPubsPag( $searchTerm: String, $offset: Int, $limit: Int, $sorted: String ) {
@@ -29,21 +30,22 @@ const SUGGESTED_PUBLICATIONS_QUERY = gql`
   }
 `;
 
+const sortingOptions = [
+    {"value": "", "text": "None"},
+    {"value": "num_citations_asc", "text": "Number of citations LOW-HI"},
+    {"value": "num_citations_desc", "text": "Number of citations HI-LOW"},
+    {"value": "title_asc", "text": "Titles A-Z"},
+    {"value": "title_desc", "text": "Titles Z-A"},
+]
+
 const publications = ({ homeSearchValue }) => {
     const router = useRouter();
     const [searchText, setSearchText] = useState("");
-    const [sortedBy, setSortedBy] = useState("");
+    const [sortedBy, setSortedBy] = useState(sortingOptions[0]);
     const [searchStatus, setSearchStatus] = useState(false);
 
-
-    // const [ getSearchPublications, { loading: loadingSearch, error: errorSearch, data: dataSearch, fetchMore } ] = useLazyQuery(SEARCH_PUBLICATIONS_QUERY, {
-    //     variables: { searchTerm: searchText }
-    // });
-
-    console.log('homesearval: ', homeSearchValue)
-
     const { loading: loadingSearch, error: errorSearch, data: dataSearch, fetchMore } = useQuery(SEARCH_PUBLICATIONS_QUERY, {
-        variables: { searchTerm: homeSearchValue }
+        variables: { searchTerm: homeSearchValue, sorted: sortedBy.value }
     });
 
     const [ getSuggestedPubs, { loading: loadingSugg, error: errorSugg, data: dataSugg } ] = useLazyQuery(SUGGESTED_PUBLICATIONS_QUERY, {
@@ -51,17 +53,14 @@ const publications = ({ homeSearchValue }) => {
     });
 
     useEffect(() => {
-        // getSearchPublications({ variables: { searchTerm: homeSearchValue, offset: 0 } })
-        console.log('here what', homeSearchValue)
-
-        if(homeSearchValue !== undefined) {
+        if(homeSearchValue !== undefined || sortedBy.text !== "None") {
+            console.log('pls search: ', sortedBy)
             setSearchStatus(true);
         }
 
-    }, [homeSearchValue])
+    }, [homeSearchValue, sortedBy])
 
     useEffect(() => {
-        // console.log('printing when searchtext changes: ', searchText);
         if( searchText && searchText.length >= 0 ) {
           if(searchText.length % 2 === 0) {
             getSuggestedPubs({ variables: { prefix: searchText } });
@@ -70,10 +69,9 @@ const publications = ({ homeSearchValue }) => {
     }, [searchText])
 
     function search(event) {
-        console.log('trying to search: ', searchText)
         event.preventDefault();
 
-        // setSearchStatus(true);
+        setSearchStatus(true);
         router.push(`/publications?homeSearchValue=${searchText}`, undefined);
     }
 
@@ -95,88 +93,79 @@ const publications = ({ homeSearchValue }) => {
 
     return (
         <div className="flex bg-gray-200 w-full">
-            <div className="ml-16 w-1/5 h-screen">
-                <h2 className="h-16 mt-4 mr-2 flex items-center text-xl font-semibold border-b-2 border-gray-300"><span>Options</span></h2>
-            
-                <h3 className="mt-2 font-semibold">by title or abstract? (not yet)</h3>
-                <div>
-                    <label>
-                        <input className="mr-2" type="radio" name="searchPubsOption" value="title" />
-                        <span>Title</span>
-                    </label>
-                    <label className="ml-2">
-                        <input className="mr-2" type="radio" name="searchPubsOption" value="abstract" />
-                        <span>Abstract</span>
-                    </label>
+            <div className="flex flex-col ml-16 w-1/5">
+                <div className="h-32">
+                    <h2 className="h-16 mt-4 mr-2 flex items-center text-xl font-bold border-b-2 border-gray-300">
+                        <span>Search options</span>
+                    </h2>
                 </div>
 
 
-                <h3 className="mt-2 font-semibold">sorting</h3>
-                <div>
-                    <select className="w-full p-2 rounded-md" value={sortedBy} onChange={handleSortedByChange}>
-                        <option value="">None</option>
-                        <option value="num_citations_asc">
-                            Number of citations low-hi
-                        </option>
-                        <option value="num_citations_desc">
-                            Number of citations hi-low
-                        </option>
-                        <option value="title_asc">
-                            Number of citations A-Z
-                        </option>
-                        <option value="title_desc">
-                            Number of citations Z-A
-                        </option>
-                    </select>
+                <div className="mt-2">
+                    <h2 className="font-semibold mb-2 text-gray-900">Sort by:</h2>
+                    <Sortingdropdown sortedBy={sortedBy} setSortedBy={setSortedBy} sortingOptions={sortingOptions}/>
                 </div>
 
-                <h3>picking range of citations</h3>
+                <div className="mt-2">
+                    <h3>picking range of citations (pending)</h3>
+                </div>
 
-                <button 
-                    className="bg-blue-700 mt-2 p-2 text-white rounded-md border border-3 border-blue-300 hover:bg-blue-300 hover:text-slate-800 hover:border-blue-600"
-                    // onClick={() => getSearchPublications({ variables: { searchTerm: homeSearchValue, offset: 0, sorted: sortedBy } })}
-                >
-                    CHECK THIS BUTTON FUNCTION LOL
-                    refetch search
-                </button>
+                <div className="flex items-end h-1/2">
+                    <button 
+                        className="bg-blue-700 mb-8 p-2 text-white rounded-md border border-2 border-blue-300 hover:bg-blue-300 hover:text-slate-800 hover:border-blue-600"
+                        onClick={search}
+                    >
+                        Refetch
+                    </button>
+                </div>
+
             </div>
 
             <div className="w-4/5">
-                <form className="sticky p-4 mr-8" onSubmit={search}>
-                    {/* <AutocompleteSearch searchText={searchText} setSearchText={setSearchText} suggestedResults={dataSugg} search={search}/> */}
-                    <Searchbar searchText={searchText} setSearchText={setSearchText}/>
-                </form>
+
+                <div className="relative flex flex-col p-4 mt-2 mr-10">
+                    <form className="" onSubmit={search}>
+                        <AutocompleteSearch searchText={searchText} setSearchText={setSearchText} suggestedResults={dataSugg} search={search}/>
+                        {/* <Searchbar searchText={searchText} setSearchText={setSearchText}/> */}
+                    </form>
+                </div>
 
                 <div className="p-4 mr-8 mt-2 overflow-y-auto h-screen">
 
-                    <div className="flex justify-end py-4 mt-4">
-                        <h2>showing 1 - {dataSet.length} results for: <span className="font-semibold italic">{homeSearchValue}</span></h2>
+                    <div className="">
+
+                        <div className="flex justify-end py-2">
+                            <h2>showing 1 - {dataSet.length} results for: <span className="font-semibold italic">{homeSearchValue}</span></h2>
+                        </div>
+
+                        <div>
+                            {dataSet.length === 0 ?
+                                <div>we have no data</div>
+                            :
+                                <>
+                                    <PublicationList publications={dataSet} />
+                                    <div className="flex flex-col items-center justify-center w-full mt-4">
+                                        <h2>showing: 1 - {dataSet.length}</h2>
+                                        <button 
+                                            onClick={() => fetchMore({
+                                                variables: {
+                                                    offset: dataSet.length
+                                                }
+                                            })} 
+                                            className="hover:animate-bounce flex items-center justify-center m-4 w-12 h-8 rounded-md bg-gray-300 text-gray-900 hover:bg-gray-700 hover:text-gray-300"
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </>
+                            }
+                        </div>
                     </div>
-                    <div>
-                        {dataSet.length === 0 ?
-                            <div>we have no data</div>
-                        :
-                            <>
-                                <PublicationList publications={dataSet} />
-                                <div className="flex flex-col items-center justify-center w-full mt-4">
-                                    <h2>showing: 1 - {dataSet.length}</h2>
-                                    <button 
-                                        onClick={() => fetchMore({
-                                            variables: {
-                                                offset: dataSet.length
-                                            }
-                                        })} 
-                                        className="hover:animate-bounce flex items-center justify-center m-4 w-12 h-8 rounded-md bg-gray-300 text-gray-900 hover:bg-gray-700 hover:text-gray-300"
-                                    >
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </>
-                        }
-                    </div>
+
                 </div>
+
             </div>
         </div>
     )

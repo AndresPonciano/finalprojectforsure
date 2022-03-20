@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const ProfileItem = ({ profile }) => {
     return (
-        <div className="mt-6">
+        <div className="mb-6">
             <div className="flex w-full items-center bg-gray-100 p-4 rounded-md shadow">
                 <div className="flex items-center">
                     <Image className="rounded-full" src={profile.url_picture} alt="profile picture" width={90} height={90} />
@@ -14,14 +14,14 @@ const ProfileItem = ({ profile }) => {
                             }} 
                             as={`/profile/${profile.id}`}
                         >
-                            <h2 className="pl-6 font-semibold text-lg cursor-pointer">{profile.name}</h2>
+                            <h2 className="pl-6 font-semibold text-lg cursor-pointer hover:text-blue-500">{profile.name}</h2>
                         </Link>
                         <div className="pl-6 flex mt-2">
                             <h2 className='font-semibold text-blue-500 mr-2'>topics: </h2>
                             <ul className="flex">
                                 {profile.topics.map((topic, index) => {
                                     return (
-                                        <li className="mr-2 text-blue-500 hover:underline" key={index}>{topic}</li>
+                                        <li className="mr-2 text-blue-500" key={index}>{topic}</li>
                                     )
                                 })}
                             </ul>

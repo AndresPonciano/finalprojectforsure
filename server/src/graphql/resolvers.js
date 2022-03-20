@@ -240,7 +240,7 @@ module.exports = {
         
                 // console.log(_source.length, 'AAAAAAAAA', total)
                 // resolve(_source);
-                console.log('please restul: ', _source[0])
+                // console.log('please restul: ', _source[0])
                 resolve({"totalCount": total, "authors": _source});
             });
         }),
@@ -305,10 +305,13 @@ module.exports = {
             });
         }),
         publications: (_, { searchTerm = null, offset = 0, limit = 10, sorted = "" }) => new Promise((resolve, reject) => {
+            console.log('searchterm: ', searchTerm, "sorted by: ", sorted);
+            
             let schema;
             let total;
 
             if(searchTerm && sorted === "") {
+                console.log('case1')
                 schema = {
                     "from": offset,
                     "size": limit,
@@ -320,7 +323,7 @@ module.exports = {
                     }
                 }
             } else if (searchTerm && sorted === "num_citations_asc") {
-                console.log('did we get here');
+                console.log('case2')
                 schema = {
                     "from": offset,
                     "size": limit, 
@@ -339,7 +342,7 @@ module.exports = {
                    }
                 }
             } else if (searchTerm && sorted === "num_citations_desc") {
-                console.log('did we get here');
+                console.log('case3')
                 schema = {
                     "from": offset,
                     "size": limit, 
@@ -358,7 +361,7 @@ module.exports = {
                    }
                 }
             } else if (searchTerm && sorted === "title_asc") {
-                console.log('did we get here');
+                console.log('case4')
                 schema = {
                     "from": offset,
                     "size": limit, 
@@ -377,7 +380,7 @@ module.exports = {
                    }
                 }
             } else if (searchTerm && sorted === "title_desc") {
-                console.log('did we get here');
+                console.log('case5')
                 schema = {
                     "from": offset,
                     "size": limit, 
@@ -395,7 +398,10 @@ module.exports = {
                         }
                    }
                 }
+            } else {
+                console.log('case6')
             }
+
 
             PublicationsElasticSearchClient({...schema})
                 .then(r => {
