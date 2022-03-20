@@ -42,8 +42,10 @@ const profile = ({ profile }) => {
     return (
         <div className="bg-gray-200">
             <div className="bg-gray-100 flex-col">
-                <div className="bg-gray-800 flex h-64 w-full">
+
+                <div className="bg-gray-900 flex h-64 w-full">
                 </div>
+
                 <div className="-mt-32 mx-16 text-gray-200 flex">
                     <Image className="rounded-full" src={profile.url_picture} alt="profile picture" width={160} height={160} />
                     <h1 className="ml-8 font-bold text-4xl self-center">{profile.name}</h1>
@@ -60,7 +62,7 @@ const profile = ({ profile }) => {
                                 <ul className="flex flex-wrap">
                                     {profile.topics.map((topic, index) => {
                                         return (
-                                            <li className="mr-6 text-blue-500 hover:underline" key={index}>{topic}</li>
+                                            <li className="mr-6 text-blue-500" key={index}>{topic}</li>
                                         )
                                     })}
                                 </ul>
@@ -76,11 +78,12 @@ const profile = ({ profile }) => {
                         </div>
                         <div className="bg-gray-200 p-4 rounded">
                             <h2>
-                                total citations: <span>{profile.total_citations}</span>
+                                total citations: <span className="font-bold">{profile.total_citations}</span>
                             </h2>
                             <h2>
-                                h-index: <span>{profile.h_index}</span>
+                                h-index: <span className="font-bold">{profile.h_index}</span>
                             </h2>
+
                         </div>
                     </div>
 

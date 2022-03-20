@@ -1,14 +1,19 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
 
 const PublicationItem = ({ publication }) => {
+    const [readMore, setReadMore] = useState(false);
+
+
+
     return (
         <div className="mb-6">
             <div className="flex w-full items-center bg-white p-2 rounded-md shadow">
-                <div className="p-2">
+                <div className="p-2 w-full">
                     <div className='flex justify-between items-center'>
-                        <h2 className="text-blue-600 text-lg">{publication.title}</h2>
+                        <h2 className="text-gray-900 text-lg">{publication.title}</h2>
                         <a 
                             className='hover:animate-pulse cusor-pointer' 
                             target="_blank" 
@@ -36,8 +41,23 @@ const PublicationItem = ({ publication }) => {
                         </ul>
                     </div>
                     <h2 className="text-gray-500 italic">
-                        {publication.abstract.slice(0, 200)}...
+                        {readMore ? 
+                            <>
+                                {publication.abstract}
+                                <button className="text-blue-500 px-2 hover:underline" onClick={() => setReadMore(false)}>
+                                    hide
+                                </button>
+                            </>
+                        :
+                            <>
+                                {publication.abstract.slice(0, 200)}...
+                                <button className="text-blue-500 px-2 hover:underline" onClick={() => setReadMore(true)}>
+                                    show                              
+                                </button>
+                            </>
+                        }
                     </h2>
+
                     <h2 className="text-blue-400">cited by: <span>{publication.num_citations}</span></h2>
                 </div>
             </div>
