@@ -2,11 +2,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import { useRouter } from "next/router"
 
 const PublicationItem = ({ publication }) => {
+    const router = useRouter();
     const [readMore, setReadMore] = useState(false);
-
-
 
     return (
         <div className="mb-6">
@@ -27,14 +27,9 @@ const PublicationItem = ({ publication }) => {
                             {publication.pub_authors.map((author) => {
                                 return (
                                     <li className="mr-2 text-blue-500 hover:underline" key={author.id}>
-                                        <Link
-                                            href={{
-                                                pathname: "/profile/[id]",
-                                            }}
-                                            as={`profile/${author.id}`}
-                                        >
+                                        <button onClick={() => router.push(`/profile/${author.id}`, undefined)}>
                                             {author.name}
-                                        </Link>
+                                        </button>
                                     </li>
                                 )
                             })}

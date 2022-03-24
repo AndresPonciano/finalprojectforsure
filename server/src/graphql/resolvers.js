@@ -1,7 +1,4 @@
-const { paginateResults, edgesToReturn } = require("./utils");
-const elasticSearchSchema = require("../elasticsearch/schema");
 const { ElasticSearchClient, PublicationsElasticSearchClient } = require("../elasticsearch/server");
-const { size } = require("../elasticsearch/schema");
 
 module.exports = {
     Query: {
@@ -245,7 +242,6 @@ module.exports = {
             });
         }),
         author: (_, { id = 3 }) => new Promise((resolve, reject) => {
-            console.log('IM IN RESOLVER: ', id)
             let schema;
             if(id === null) {
                 schema = {

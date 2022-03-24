@@ -6,7 +6,8 @@ const ProfileItem = ({ profile }) => {
         <div className="mb-6">
             <div className="flex w-full items-center bg-gray-100 p-4 rounded-md shadow">
                 <div className="flex items-center">
-                    <Image className="rounded-full" src={profile.url_picture} alt="profile picture" width={90} height={90} />
+                    {/* <Image className="rounded-full" src={profile.url_picture} alt="profile picture" width={90} height={90} /> */}
+                    <Image className="rounded-full" src='/images/GSearch.svg' alt="profile picture" width={90} height={90} />
                     <div>
                         <Link 
                             href={{

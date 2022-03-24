@@ -28,13 +28,12 @@ const GET_AUTHOR_PUBLICATIONS = gql`
 `;
 
 const profile = ({ profile }) => {
-    const [ getAuthorPublications, { loading: loadingPubs, error: errorPubs, data: dataPubs, fetchMore } ] = useLazyQuery(GET_AUTHOR_PUBLICATIONS, {
+    const {loading: loadingPubs, error: errorPubs, data: dataPubs, fetchMore } = useQuery(GET_AUTHOR_PUBLICATIONS, {
         variables: { id: parseInt(profile.id), offset: 0 }
     });
-
-    useEffect(() => {
-        getAuthorPublications({ variables: { id: parseInt(profile.id), offset: 0 } })
-    }, [])
+ 
+    if(errorPubs) 
+        return <div>Error loading publications for author</div>
 
     if(loadingPubs)
         return <LoadingSpinner />
@@ -47,7 +46,8 @@ const profile = ({ profile }) => {
                 </div>
 
                 <div className="-mt-32 mx-16 text-gray-200 flex">
-                    <Image className="rounded-full" src={profile.url_picture} alt="profile picture" width={160} height={160} />
+                    {/* <Image className="rounded-full" src={profile.url_picture} alt="profile picture" width={160} height={160} /> */}
+                    <Image className="rounded-full bg-blue-200" src='/images/GSearch.svg' alt="profile picture" width={160} height={160} />
                     <h1 className="ml-8 font-bold text-4xl self-center">{profile.name}</h1>
                 </div>
                 
@@ -187,7 +187,6 @@ export async function getStaticProps({ params }) {
     return {
         props: {
             profile: data.author,
-            // publications: dataPubs.authorPublications.publications
         }
     }
 }
