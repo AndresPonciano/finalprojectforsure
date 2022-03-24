@@ -42,7 +42,7 @@ const profile = ({ profile }) => {
         <div className="bg-gray-200">
             <div className="bg-gray-100 flex-col">
 
-                <div className="bg-gray-900 flex h-64 w-full">
+                <div id="personHeader" className="bg-gray-900 flex h-64 w-full">
                 </div>
 
                 <div className="-mt-32 mx-16 text-gray-200 flex">
@@ -127,7 +127,18 @@ const profile = ({ profile }) => {
                     </>
                 }
             </div>
-            <ScrollToTopButton />
+            {/* <ScrollToTopButton /> */}
+            <Link href={`/profile/${profile.id}/#personHeader`}>
+                <div 
+                    className='w-10 h-10 flex items-center justify-center fixed bg-sky-300 rounded bottom-16 right-8 text-gray-700 hover:bg-sky-800 hover:text-white'
+                >
+                    <button>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M4.293 15.707a1 1 0 010-1.414l5-5a1 1 0 011.414 0l5 5a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414 0zm0-6a1 1 0 010-1.414l5-5a1 1 0 011.414 0l5 5a1 1 0 01-1.414 1.414L10 5.414 5.707 9.707a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+            </Link>
 
         </div>
     )
