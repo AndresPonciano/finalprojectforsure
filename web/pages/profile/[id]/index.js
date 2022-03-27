@@ -6,7 +6,6 @@ import client from "../../../apollo-client"
 import { TagCloud } from "react-tagcloud"
 import PublicationList from "../../../components/PublicationList";
 import LoadingSpinner from "../../../components/LoadingSpinner"
-import ScrollToTopButton from "../../../components/ScrollToTopButton"
  
 const options = {
     luminosity: 'dark',
@@ -127,7 +126,7 @@ const profile = ({ profile }) => {
                     </>
                 }
             </div>
-            {/* <ScrollToTopButton /> */}
+
             <Link href={`/profile/${profile.id}/#personHeader`}>
                 <div 
                     className='w-10 h-10 flex items-center justify-center fixed bg-sky-300 rounded bottom-16 right-8 text-gray-700 hover:bg-sky-800 hover:text-white'
@@ -149,7 +148,7 @@ export async function getStaticPaths() {
     const { data } = await client.query({
         query: gql`
             query AllProfiles {
-                authors(limit: 2274) {
+                authors(limit: 10000) {
                     totalCount
                     authors {
                         id
