@@ -148,9 +148,9 @@ export async function getStaticPaths() {
     const { data } = await client.query({
         query: gql`
             query AllProfiles {
-                authors(limit: 10000) {
+                people(limit: 10000) {
                     totalCount
-                    authors {
+                    people {
                         id
                         name
                         url_picture
@@ -163,7 +163,7 @@ export async function getStaticPaths() {
         `
     })
 
-    const paths = data.authors.authors.map((author) => ({
+    const paths = data.people.people.map((author) => ({
         params: { id: author.id  }
     }))
 

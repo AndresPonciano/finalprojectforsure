@@ -2,7 +2,7 @@ const { ElasticSearchClient, PublicationsElasticSearchClient } = require("../ela
 
 module.exports = {
     Query: {
-        authors: (_, { name = null, topic = null, offset = 0, limit = 10, sorted = "" }) => new Promise((resolve, reject) => {
+        people: (_, { name = null, topic = null, offset = 0, limit = 10, sorted = "" }) => new Promise((resolve, reject) => {
             // console.log('limit is: ', limit);    
             console.log('name: ', name, "sorted: ", sorted, "topic: ", topic);
 
@@ -12,7 +12,7 @@ module.exports = {
             let schema;
             let total;
 
-            if(!name && topic && sorted === "") {
+            if( !name && topic && sorted === "" ) {
                 console.log('case1')
                 schema = {
                     "from": offset,
@@ -23,7 +23,7 @@ module.exports = {
                         }
                     }
                 }
-            } else if(!name && topic && ( sorted === "name_asc" || sorted === "name_desc" )) {
+            } else if( !name && topic && ( sorted === "name_asc" || sorted === "name_desc" )) {
                 console.log('case2')
                 if( sorted == "name_asc" ) {
                     schema = {
@@ -60,7 +60,7 @@ module.exports = {
                         }
                     }
                 }
-            } else if(name && !topic && sorted === "") {
+            } else if( name && !topic && sorted === "" ) {
                 console.log('case3', name, topic)
                 
                 schema = {
@@ -69,6 +69,11 @@ module.exports = {
                     "query": {
                         "match": {
                             "name": name
+                        }
+                    },
+                    "highlight": {
+                        "fields": {
+                            "name": {}
                         }
                     }
                 }
@@ -110,7 +115,7 @@ module.exports = {
                         }
                     }
                 }
-            } else if(name && topic && sorted === "") {
+            } else if( name && topic && sorted === "" ) {
                 console.log('case5')
                 schema = {
                     "from": offset,
@@ -126,7 +131,7 @@ module.exports = {
                       }
                     }
                 }
-            } else if(name && topic && ( sorted === "name_asc" || sorted === "name_desc" )) {
+            } else if( name && topic && ( sorted === "name_asc" || sorted === "name_desc" ) ) {
                 console.log('case6')
 
                 if ( sorted == "name_asc" ) {
@@ -174,7 +179,7 @@ module.exports = {
                         }
                     }
                 }
-            } else if(!name && !topic && ( sorted === "name_asc" || sorted === "name_desc" )) {
+            } else if( !name && !topic && ( sorted === "name_asc" || sorted === "name_desc" ) ) {
                 console.log('case7')
 
                 if ( sorted === "name_asc" ) {
@@ -233,12 +238,17 @@ module.exports = {
                 .then(r => {
                 total = r['hits']['total']['value'];
                 let _source = r['hits']['hits'];
-                    _source.map((item, i) => _source[i] = item._source);
+                    _source.map((item, i) => _source[i] = 
+                        item.highlight ? 
+                        { ...item._source, highlight: item.highlight.name } 
+                        : 
+                        { ...item._source, highlight: null }
+                        );
         
                 // console.log(_source.length, 'AAAAAAAAA', total)
                 // resolve(_source);
-                // console.log('please restul: ', _source[0])
-                resolve({"totalCount": total, "authors": _source});
+                console.log('please restul: ', _source[0])
+                resolve({"totalCount": total, "people": _source});
             });
         }),
         author: (_, { id = 3 }) => new Promise((resolve, reject) => {

@@ -2,7 +2,7 @@ const { gql } = require('apollo-server');
 
 const typeDefs = gql`
     type Query {
-        authors(name: String, topic: String, offset: Int, limit: Int, sorted: String): AuthorConnection!
+        people(name: String, topic: String, offset: Int, limit: Int, sorted: String): AuthorConnection!
         author(id: Int): Author!
         authorPublications(id: Int, offset: Int, limit: Int): [Publication!]
         publications(searchTerm: String, offset: Int, limit: Int, sorted: String): [Publication!]
@@ -22,11 +22,16 @@ const typeDefs = gql`
         total_citations: Int
         h_index: Int
         tag_cloud: [String]
+        highlight: [String]
     }
 
     type AuthorConnection {
-        authors: [Author]!
+        people: [Author]!
         totalCount: Int!
+    }
+
+    type personHighlight {
+        name: [String]
     }
 
     type Publication {

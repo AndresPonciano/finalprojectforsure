@@ -12,9 +12,9 @@ import AutocompleteSearch from "../components/AutocompleteSearch"
 
 const ALL_PROFILES_QUERY = gql`
   query AllProfiles( $offset: Int ) {
-    authors(offset: $offset) {
+    people(offset: $offset) {
         totalCount
-        authors {
+        people {
             id
             name
             url_picture
@@ -28,15 +28,16 @@ const ALL_PROFILES_QUERY = gql`
 
 const SEARCH_PROFILES_QUERY = gql`
   query SearchProfiles( $name: String, $topic: String, $offset: Int, $sorted: String ) {
-    authors( name: $name, topic: $topic, offset: $offset, sorted: $sorted ) {
+    people( name: $name, topic: $topic, offset: $offset, sorted: $sorted ) {
       totalCount
-      authors {
+      people {
         id
         name
         url_picture
         affiliation
         topics
         other_topics
+        highlight
       }
     }
   }
@@ -125,8 +126,8 @@ const profiles = ({ homeSearchValue }) => {
 
     // console.log('!!: ', dataTemp, searchStatus);
     // console.log('??: ', dataAll);
-    const dataSet2 = searchStatus && dataTemp ? dataTemp.authors.authors : dataAll.authors.authors;
-    const totalCount = searchStatus && dataTemp ? dataTemp.authors.totalCount : dataAll.authors.totalCount;
+    const dataSet2 = searchStatus && dataTemp ? dataTemp.people.people : dataAll.people.people;
+    const totalCount = searchStatus && dataTemp ? dataTemp.people.totalCount : dataAll.people.totalCount;
 
     return (
         <div className="flex bg-gray-200 h-screen w-full text-gray-900">
