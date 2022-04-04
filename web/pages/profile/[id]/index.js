@@ -12,9 +12,9 @@ const options = {
     hue: 'orange',
 }
 
-const GET_AUTHOR_PUBLICATIONS = gql`
-    query AuthorPubs( $id: Int, $offset: Int ) {
-        authorPublications( id: $id, offset: $offset ) {
+const GET_PERSON_PUBLICATIONS = gql`
+    query PersonPubs( $id: Int, $offset: Int ) {
+        personPublications( id: $id, offset: $offset ) {
             title
             abstract
             num_citations
@@ -27,7 +27,7 @@ const GET_AUTHOR_PUBLICATIONS = gql`
 `;
 
 const profile = ({ profile }) => {
-    const {loading: loadingPubs, error: errorPubs, data: dataPubs, fetchMore } = useQuery(GET_AUTHOR_PUBLICATIONS, {
+    const {loading: loadingPubs, error: errorPubs, data: dataPubs, fetchMore } = useQuery(GET_PERSON_PUBLICATIONS, {
         variables: { id: parseInt(profile.id), offset: 0 }
     });
  
@@ -41,7 +41,7 @@ const profile = ({ profile }) => {
         <div className="bg-gray-200">
             <div className="bg-gray-100 flex-col">
 
-                <div id="personHeader" className="bg-gray-900 flex h-64 w-full">
+                <div id="personHeader" className="bg-gray-700 flex h-64 w-full">
                 </div>
 
                 <div className="-mt-32 mx-16 text-gray-200 flex">
@@ -57,11 +57,11 @@ const profile = ({ profile }) => {
                                 {profile.affiliation}
                             </h2>
                             <div className="flex mt-4 text-lg">
-                                <h2 className='font-semibold text-blue-500 mr-2'>topics: </h2>
-                                <ul className="flex flex-wrap">
+                                <h2 className='font-semibold text-gray-900 mr-2'>topics: </h2>
+                                <ul className="flex flex-wrap text-gray-900">
                                     {profile.topics.map((topic, index) => {
                                         return (
-                                            <li className="mr-6 text-blue-500" key={index}>{topic}</li>
+                                            <li className="mr-6" key={index}>{topic}</li>
                                         )
                                     })}
                                 </ul>
@@ -106,15 +106,15 @@ const profile = ({ profile }) => {
                     <>
                         <div className="mt-8 mb-2">
                             <h2 className="text-gray-900 text-lg font-semibold">Author's Publications: </h2>
-                            <h2>showing: 1 - {dataPubs.authorPublications.length}</h2>
+                            <h2>showing: 1 - {dataPubs.personPublications.length}</h2>
                         </div>
-                        <PublicationList publications={dataPubs.authorPublications} />
+                        <PublicationList publications={dataPubs.personPublications} />
                         
                         <div className="flex flex-col items-center justify-center w-full mt-4">
-                            <h2>showing: 1 - {dataPubs.authorPublications.length}</h2>
+                            <h2>showing: 1 - {dataPubs.personPublications.length}</h2>
                             <button
                                 onClick={() => fetchMore({
-                                    variables: { offset: dataPubs.authorPublications.length }
+                                    variables: { offset: dataPubs.personPublications.length }
                                 })}
                                 className="hover:animate-bounce flex items-center justify-center m-4 w-12 h-8 rounded-md bg-gray-300 text-gray-900 hover:bg-gray-700 hover:text-gray-300"
                             >
@@ -147,7 +147,7 @@ export async function getStaticPaths() {
     // TODO: change this to fetch all id's
     const { data } = await client.query({
         query: gql`
-            query AllProfiles {
+            query AllPeople {
                 people(limit: 10000) {
                     totalCount
                     people {
@@ -163,8 +163,8 @@ export async function getStaticPaths() {
         `
     })
 
-    const paths = data.people.people.map((author) => ({
-        params: { id: author.id  }
+    const paths = data.people.people.map((person) => ({
+        params: { id: person.id  }
     }))
 
     return {
@@ -176,9 +176,9 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
     let id = parseInt(params.id)
 
-    const GET_AUTHOR_INFO = gql`
+    const GET_PERSON_INFO = gql`
         query($id: Int!) {
-            author(id: $id) {
+            person(id: $id) {
                 id
                 name
                 url_picture
@@ -192,11 +192,11 @@ export async function getStaticProps({ params }) {
         }
     `;
 
-    const { loading, error, data } = await client.query({ query: GET_AUTHOR_INFO, variables: { id: id }})
+    const { loading, error, data } = await client.query({ query: GET_PERSON_INFO, variables: { id: id }})
 
     return {
         props: {
-            profile: data.author,
+            profile: data.person,
         }
     }
 }

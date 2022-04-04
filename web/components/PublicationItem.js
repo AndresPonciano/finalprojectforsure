@@ -13,7 +13,23 @@ const PublicationItem = ({ publication }) => {
             <div className="flex w-full items-center bg-white p-2 rounded-md shadow">
                 <div className="p-2 w-full">
                     <div className='flex justify-between items-center'>
-                        <h2 className="text-gray-900 text-lg">{publication.title}</h2>
+                        <h2 className="text-gray-900 text-lg">
+                            {publication.highlight ?
+                                publication.highlight[0].split(' ').map((item) => {
+                                    return(
+                                        <>
+                                        { item.includes("<em>") ?
+                                            <span className='bg-yellow-400 mr-2'>{item.replaceAll("<em>", "").replaceAll("</em>", "")}</span>
+                                        :
+                                            <span className='mr-2'>{item}</span>
+                                        }
+                                        </>
+                                    )
+                                })
+                                :
+                                publication.title
+                            }
+                        </h2>
                         <a 
                             className='hover:animate-pulse cusor-pointer' 
                             target="_blank" 
@@ -27,7 +43,7 @@ const PublicationItem = ({ publication }) => {
                             {publication.pub_authors.map((author) => {
                                 return (
                                     <li className="mr-2 text-blue-500 hover:underline" key={author.id}>
-                                        <button onClick={() => router.push(`/profile/${author.id}`, undefined)}>
+                                        <button className="hover:underline" onClick={() => router.push(`/profile/${author.id}`, undefined)}>
                                             {author.name}
                                         </button>
                                     </li>

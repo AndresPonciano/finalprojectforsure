@@ -64,7 +64,6 @@ const profiles = ({ homeSearchValue }) => {
     const [searchText, setSearchText] = useState("");
     const [searchStatus, setSearchStatus] = useState(false);
     const [sortedBy, setSortedBy] = useState(sortingOptions[0])
-    const [dataSet, setDataSet] = useState([]);
 
     useEffect(() => {
       if( searchText.length >= 0 ) {
@@ -106,14 +105,6 @@ const profiles = ({ homeSearchValue }) => {
     if(loadingAll || loadingTemp)
       return <LoadingSpinner />
 
-    // function handleTopicChange(event) {
-    //   setSearchTopic(event.target.value);
-    // }
-
-    function handleSortedByChange(event) {
-      setSortedBy(event.target.value);
-    }
-
     function handlePaginationChange(num) {
       let newOffset = (num-1)*10
       
@@ -153,7 +144,7 @@ const profiles = ({ homeSearchValue }) => {
 
             <div className="flex items-end">
               <button
-                className="bg-blue-700 p-2 text-white rounded-md border border-2 border-blue-300 hover:bg-blue-300 hover:text-slate-800 hover:border-blue-600"
+                className="bg-blue-500 p-2 text-white rounded-md border border-2 border-blue-300 hover:bg-blue-300 hover:border-blue-500"
                 onClick={search}
               >
                 Refetch
@@ -168,10 +159,8 @@ const profiles = ({ homeSearchValue }) => {
 
               <div className="relative flex flex-col">
                 <form onSubmit={search}>
-                  {/* <Searchbar searchText={searchText} setSearchText={setSearchText} /> */}
                   <AutocompleteSearch searchText={searchText} setSearchText={setSearchText} suggestedResults={dataSugg}/>
                 </form>
-                {/* <SuggestedResults suggestedResults={dataSugg} onClickOutside={() => setSearchText("")}/> */}
               </div>
 
             </div>

@@ -9,7 +9,7 @@ const client = new ApolloClient({
             Query: {
                 fields: {
                     people: {
-                        authors: offsetLimitPagination()
+                        people: offsetLimitPagination()
                     },
                     publications: {
                         keyArgs: ["searchTerm", "sorted"],
@@ -23,7 +23,7 @@ const client = new ApolloClient({
                             return merged;
                         }
                     },
-                    authorPublications: {
+                    personPublications: {
                         keyArgs: ["id"],
                         merge(existing, incoming, { args: { offset = 0 } }) {
                             // slicing is necessary because data is immutable in dev

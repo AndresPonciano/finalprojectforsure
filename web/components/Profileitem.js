@@ -2,17 +2,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 const ProfileItem = ({ profile }) => {
-    console.log('in profile', profile.highlight)
-
-    if(profile.highlight) {
-        profile.highlight[0].split(' ').map((item) => {
-            if(item.substr(0,4) === "<em>") {
-                console.log('pee', item)
-            } else {
-                console.log('hey', item)
-            }
-        })
-    }
 
     return (
         <div className="mb-6">
@@ -20,16 +9,16 @@ const ProfileItem = ({ profile }) => {
                 <div className="flex items-center w-full">
                     {/* <Image className="rounded-full" src={profile.url_picture} alt="profile picture" width={90} height={90} /> */}
                     <Image className="rounded-full w-1/4" src='/images/GSearch.svg' alt="profile picture" width={90} height={90} />
-                    <div className='w-3/4'>
+                    <div className='w-3/4 ml-2'>
                         <Link 
                             href={{
                                 pathname: "/profile/[id]",
                             }} 
                             as={`/profile/${profile.id}`}
                         >
-                            <div className="font-semibold text-lg cursor-pointer text-blue-500 hover:text-blue-700">
+                            <div className="font-semibold text-lg cursor-pointer text-blue-500 hover:text-blue-300">
                                 {profile.highlight ? 
-                                    profile.highlight[0].split(' '). map((item) => {
+                                    profile.highlight[0].split(' ').map((item) => {
                                         return(
                                             <>
                                             { item.substr(0,4) === "<em>" ?

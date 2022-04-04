@@ -62,13 +62,12 @@ export default function Home() {
 
           <div className='flex flex-col items-center justify-center h-2/6 w-full justify-self-end'>
             <Link href="/#peopleData">
-              <button className="py-2 px-4 bg-gray-200 text-gray-900 rounded hover:animate-bounce hover:bg-white hover:text-blue-500">
+              <button className="py-2 px-4 text-gray-700 bg-gray-200 rounded hover:animate-bounce">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
             </Link>
-            <h2 className="p-2 font-semibold">Learn more</h2>
           </div>
         </div>
 

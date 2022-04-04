@@ -95,6 +95,11 @@ module.exports = {
                             "match": {
                                 "name": name
                             }
+                        },
+                        "highlight": {
+                            "fields": {
+                                "name": {}
+                            }
                         }
                     }
                 } else if ( sorted === "name_desc" ) {
@@ -112,6 +117,11 @@ module.exports = {
                             "match": {
                                 "name": name
                             }
+                        },
+                        "highlight": {
+                            "fields": {
+                                "name": {}
+                            }
                         }
                     }
                 }
@@ -125,10 +135,15 @@ module.exports = {
                         "tie_breaker": 0.7,
                         "boost": 1.2,
                         "queries": [
-                          { "term": { "name": {"value": name} } },
-                          { "terms": { "topics": [topic]} }
+                          { "match": { "name": name } },
+                          { "terms": { "topics": [topic] } }
                         ]
                       }
+                    },
+                    "highlight": {
+                        "fields": {
+                            "name": {}
+                        }
                     }
                 }
             } else if( name && topic && ( sorted === "name_asc" || sorted === "name_desc" ) ) {
@@ -146,14 +161,19 @@ module.exports = {
                             }
                         ],
                         "query": {
-                        "dis_max": {
-                            "tie_breaker": 0.7,
-                            "boost": 1.2,
-                            "queries": [
-                            { "term": { "name": {"value": name} } },
-                            { "terms": { "topics": [topic] } }
-                            ]
-                        }
+                            "dis_max": {
+                                "tie_breaker": 0.7,
+                                "boost": 1.2,
+                                "queries": [
+                                { "match": { "name": name } },
+                                { "terms": { "topics": [topic] } }
+                                ]
+                            }
+                        },
+                        "highlight": {
+                            "fields": {
+                                "name": {}
+                            }
                         }
                     }
                 } else if ( sorted == "name_desc" ) {
@@ -168,20 +188,24 @@ module.exports = {
                             }
                         ],
                         "query": {
-                        "dis_max": {
-                            "tie_breaker": 0.7,
-                            "boost": 1.2,
-                            "queries": [
-                            { "term": { "name": {"value": name} } },
-                            { "terms": { "topics": [topic] } }
-                            ]
-                        }
+                            "dis_max": {
+                                "tie_breaker": 0.7,
+                                "boost": 1.2,
+                                "queries": [
+                                { "match": { "name": name } },
+                                { "terms": { "topics": [topic] } }
+                                ]
+                            }
+                        },
+                        "highlight": {
+                            "fields": {
+                                "name": {}
+                            }
                         }
                     }
                 }
             } else if( !name && !topic && ( sorted === "name_asc" || sorted === "name_desc" ) ) {
                 console.log('case7')
-
                 if ( sorted === "name_asc" ) {
                     schema = { 
                         "from": offset,
@@ -224,16 +248,6 @@ module.exports = {
                 }
             }
 
-            // TODO: MISSING CASE WHERE no name and no topic and sorted!!!
-
-            // name, topic, sorted:
-                // !name && topic && !sorted
-                // !name && topic && sorted
-                // name && !topic && !sorted
-                // name && topic && !sorted
-                // name && topic && sorted
-                // 
-
             ElasticSearchClient({...schema})
                 .then(r => {
                 total = r['hits']['total']['value'];
@@ -245,13 +259,10 @@ module.exports = {
                         { ...item._source, highlight: null }
                         );
         
-                // console.log(_source.length, 'AAAAAAAAA', total)
-                // resolve(_source);
-                console.log('please restul: ', _source[0])
                 resolve({"totalCount": total, "people": _source});
             });
         }),
-        author: (_, { id = 3 }) => new Promise((resolve, reject) => {
+        person: (_, { id = 3 }) => new Promise((resolve, reject) => {
             let schema;
             if(id === null) {
                 schema = {
@@ -283,7 +294,7 @@ module.exports = {
                 resolve(author);
             });
         }),
-        authorPublications: (_, { id = 979, offset = 0, limit = 10 }) => new Promise((resolve, reject) => {        
+        personPublications: (_, { id = 979, offset = 0, limit = 10 }) => new Promise((resolve, reject) => {        
             console.log('im here: ', typeof(id), id);
             
             const schema = {
@@ -326,6 +337,11 @@ module.exports = {
                             "query": searchTerm,
                             "fields": ["title", "abstract"]
                         }
+                    },
+                    "highlight": {
+                        "fields": {
+                            "title": {},
+                        }
                     }
                 }
             } else if (searchTerm && sorted === "num_citations_asc") {
@@ -345,6 +361,11 @@ module.exports = {
                             "query": searchTerm,
                             "fields": ["title", "abstract"]
                         }
+                   },
+                   "highlight": {
+                       "fields": {
+                           "title": {},
+                       }
                    }
                 }
             } else if (searchTerm && sorted === "num_citations_desc") {
@@ -364,6 +385,11 @@ module.exports = {
                             "query": searchTerm,
                             "fields": ["title", "abstract"]
                         }
+                   },
+                   "highlight": {
+                       "fields": {
+                           "title": {},
+                       }
                    }
                 }
             } else if (searchTerm && sorted === "title_asc") {
@@ -383,6 +409,11 @@ module.exports = {
                             "query": searchTerm,
                             "fields": ["title", "abstract"]
                         }
+                   },
+                   "highlight": {
+                       "fields": {
+                           "title": {},
+                       }
                    }
                 }
             } else if (searchTerm && sorted === "title_desc") {
@@ -402,6 +433,11 @@ module.exports = {
                             "query": searchTerm,
                             "fields": ["title", "abstract"]
                         }
+                   },
+                   "highlight": {
+                       "fields": {
+                           "title": {},
+                       }
                    }
                 }
             } else {
@@ -413,7 +449,12 @@ module.exports = {
                 .then(r => {
                 total = r['hits']['total']['value'];
                 let _source = r['hits']['hits'];
-                    _source.map((item, i) => _source[i] = item._source);
+                    _source.map((item, i) => _source[i] = 
+                    item.highlight ?
+                    { ...item._source, highlight: item.highlight.title }
+                    :
+                    { ...item._source, highlight: null }
+                    );
         
                 resolve(_source);
             });

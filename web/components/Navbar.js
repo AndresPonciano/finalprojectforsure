@@ -20,7 +20,7 @@ const Navbar = () => {
     const router = useRouter();
 
     return (
-        <Disclosure as="nav" className="bg-gray-700">
+        <Disclosure as="nav" className="bg-gray-700 border-b border-gray-200">
             {({open}) => (
                 <>
                     <div className='mx-16'>
@@ -46,7 +46,7 @@ const Navbar = () => {
                                         {navigation.map((item) => (
                                             <Link key={item.name} href={item.href}>
                                                 <a className={classNames(
-                                                    router.pathname == item.href ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white',
+                                                    router.pathname == item.href ? 'bg-gray-200 text-gray-700' : 'text-gray-300 hover:text-blue-500',
                                                     'px-3 py-2 rounded-md text-sm font-medium'
                                                 )}
                                                 >

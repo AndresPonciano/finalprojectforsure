@@ -34,6 +34,7 @@ const AutocompleteSearch = ({ searchText, setSearchText, suggestedResults, searc
                         displayValue={selected} 
                         onChange={(event) => setSearchText(event.target.value)} 
                         placeholder="Enter search term: "
+                        onSubmit={() => {console.log('HIIIIII')}}
                     />
                 </div>
 

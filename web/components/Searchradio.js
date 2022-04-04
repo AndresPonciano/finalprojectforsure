@@ -3,17 +3,17 @@ import { RadioGroup } from "@headlessui/react";
 
 const Searchradio = ({ radioValue, handleRadioChange }) => {
     return (
-        <RadioGroup value={radioValue} onChange={handleRadioChange}>
-            <div className="flex items-center justify-end text-gray-900">
-                <div className="flex bg-gray-400 rounded-b-md">
-                    <RadioGroup.Label className='mx-4 self-center font-medium text-base'>Search by: </RadioGroup.Label>
+        <RadioGroup className="" value={radioValue} onChange={handleRadioChange}>
+            <div className="flex items-center justify-end">
+                <div className="flex bg-gray-300 rounded-b-md">
+                    <RadioGroup.Label className='mx-4 self-center font-medium text-base text-gray-700'>Search by: </RadioGroup.Label>
 
-                    <div className="flex items-center justify-center space-x-2 text-white">
+                    <div className="flex items-center justify-center space-x-2 text-gray-900">
                         <RadioGroup.Option value="People">
                             {({ active, checked }) => (
                                 // <div className='w-24 flex'>
                                 <div className={`
-                                    ${ checked ? 'bg-gray-900' : 'bg-gray-700' }
+                                    ${ checked ? 'bg-gray-200 text-gray-700 border-2 border-gray-700' : 'bg-gray-700 hover:text-blue-500 border border-gray-700 text-gray-200' }
                                     ${ active ? 'ring-2 ring-blue-500' : '' }
                                     h-full flex rounded py-2 px-3 items-center justify-center hover:cursor-pointer
                                 `}>
@@ -39,7 +39,7 @@ const Searchradio = ({ radioValue, handleRadioChange }) => {
                             {({ active, checked }) => (
                                 // <div className='w-24 flex'>
                                 <div className={`
-                                    ${ checked ? 'bg-gray-900' : 'bg-gray-700' }
+                                    ${ checked ? 'bg-gray-200 text-gray-700 border-2 border-gray-700' : 'bg-gray-700 hover:text-blue-500 border border-gray-700 text-gray-200' }
                                     ${ active ? 'ring-2 ring-blue-500' : '' }
                                     h-full flex rounded py-2 px-3 items-center justify-center hover:cursor-pointer
                                 `}>

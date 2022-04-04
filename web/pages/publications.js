@@ -18,6 +18,7 @@ query NewPubsPag( $searchTerm: String, $offset: Int, $limit: Int, $sorted: Strin
             id
             name
         }
+        highlight
     }
 }
 `;
@@ -114,7 +115,7 @@ const publications = ({ homeSearchValue }) => {
 
                 <div className="flex items-end">
                     <button 
-                        className="bg-blue-700 mb-8 p-2 text-white rounded-md border border-2 border-blue-300 hover:bg-blue-300 hover:text-slate-800 hover:border-blue-600"
+                        className="bg-blue-500 mb-8 p-2 text-white rounded-md border border-2 border-blue-300 hover:bg-blue-300 hover:border-blue-500"
                         onClick={search}
                     >
                         Refetch
@@ -154,7 +155,7 @@ const publications = ({ homeSearchValue }) => {
                                                 offset: dataSet.length
                                             }
                                         })} 
-                                        className="hover:animate-bounce flex items-center justify-center m-4 w-12 h-8 rounded-md bg-gray-300 text-gray-900 hover:bg-gray-700 hover:text-gray-300"
+                                        className="hover:animate-bounce flex items-center justify-center m-4 w-12 h-8 rounded-md bg-gray-700 text-gray-200"
                                     >
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />

@@ -65,17 +65,17 @@ const TopProfileData = ({ topPeople, topic, handleTopicChange }) => {
     };
 
     return (
-        <div className="flex flex-col items-center mx-16">
-          <div className="flex items-center justify-between w-full bg-gray-600 rounded h-32 px-6">
-            <h2 className="text-3xl font-bold text-white">Our most prominent authors</h2>
-            <div className="w-72">
-              <h2 className="text-white mb-2">Filter by topic:</h2>
+        <div className="flex flex-col items-center mx-16 bg-gray-700 text-gray-200 rounded">
+          <div className="flex items-center justify-between w-full h-32 px-6 rounded border-3 border-gray-700">
+            <h2 className="text-3xl font-bold">Our most prominent authors</h2>
+            <div className="w-72 bg-gray-200 p-2 rounded">
+              <h2 className="mb-2 text-gray-700">Filter by topic:</h2>
               <Topicdropdown searchTopic={topic} handleTopicChange={handleTopicChange}/>
             </div>
           </div>
 
-          <div className="flex flex-col items-center h-1/2 w-full bg-gray-100 rounded">
-            <div className="mt-8 border-4 rounded p-4 w-9/12">
+          <div className="flex flex-col items-center h-1/2 w-full bg-gray-200">
+            <div className="mt-8 p-4 w-9/12 border-4 border-gray-300 rounded">
               <Bar options={options} data={graphData} />
             </div>
 
