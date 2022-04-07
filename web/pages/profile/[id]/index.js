@@ -1,11 +1,12 @@
-import { useEffect } from "react"
-import { gql, useQuery, useLazyQuery } from "@apollo/client"
+import { useEffect, useState } from "react"
+import { gql, useQuery } from "@apollo/client"
 import Link from "next/link"
 import Image from 'next/image'
 import client from "../../../apollo-client"
 import { TagCloud } from "react-tagcloud"
 import PublicationList from "../../../components/PublicationList";
 import LoadingSpinner from "../../../components/LoadingSpinner"
+import Sortingdropdown from "../../../components/Sortingdropdown"
  
 const options = {
     luminosity: 'dark',
@@ -13,8 +14,8 @@ const options = {
 }
 
 const GET_PERSON_PUBLICATIONS = gql`
-    query PersonPubs( $id: Int, $offset: Int ) {
-        personPublications( id: $id, offset: $offset ) {
+    query PersonPubs( $id: Int, $offset: Int, $sorted: String ) {
+        personPublications( id: $id, offset: $offset, sorted: $sorted ) {
             title
             abstract
             num_citations
@@ -26,10 +27,24 @@ const GET_PERSON_PUBLICATIONS = gql`
     }
 `;
 
+const sortingOptions = [
+    {"value": "", "text": "None"},
+    {"value": "num_citations_asc", "text": "Number of citations LOW-HI"},
+    {"value": "num_citations_desc", "text": "Number of citations HI-LOW"},
+    {"value": "title_asc", "text": "Titles A-Z"},
+    {"value": "title_desc", "text": "Titles Z-A"},
+]
+
 const profile = ({ profile }) => {
+    const [sortedBy, setSortedBy] = useState(sortingOptions[0]);
+
     const {loading: loadingPubs, error: errorPubs, data: dataPubs, fetchMore } = useQuery(GET_PERSON_PUBLICATIONS, {
-        variables: { id: parseInt(profile.id), offset: 0 }
+        variables: { id: parseInt(profile.id), offset: 0, sorted: sortedBy.value }
     });
+
+    useEffect(() => {
+        console.log('sorted by changed: ', sortedBy);
+    }, [sortedBy])
  
     if(errorPubs) 
         return <div>Error loading publications for author</div>
@@ -104,9 +119,14 @@ const profile = ({ profile }) => {
                 {
                     dataPubs &&
                     <>
-                        <div className="mt-8 mb-2">
-                            <h2 className="text-gray-900 text-lg font-semibold">Author's Publications: </h2>
-                            <h2>showing: 1 - {dataPubs.personPublications.length}</h2>
+                        <div className="mt-8 mb-2 flex justify-between w-full">
+                            <div>
+                                <h2 className="text-gray-900 text-lg font-semibold">Author's Publications: </h2>
+                                <h2>showing: 1 - {dataPubs.personPublications.length}</h2>
+                            </div>
+                            <div>
+                                <Sortingdropdown sortedBy={sortedBy} setSortedBy={setSortedBy} sortingOptions={sortingOptions}/>  
+                            </div>
                         </div>
                         <PublicationList publications={dataPubs.personPublications} />
                         

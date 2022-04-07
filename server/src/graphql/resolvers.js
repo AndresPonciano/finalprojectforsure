@@ -3,7 +3,8 @@ const { ElasticSearchClient, PublicationsElasticSearchClient } = require("../ela
 module.exports = {
     Query: {
         people: (_, { name = null, topic = null, offset = 0, limit = 10, sorted = "" }) => new Promise((resolve, reject) => {
-            // console.log('limit is: ', limit);    
+            // console.log('limit is: ', limit);  
+            // name will now also search through tag_cloud  
             console.log('name: ', name, "sorted: ", sorted, "topic: ", topic);
 
             if(topic === "None") 
@@ -73,7 +74,7 @@ module.exports = {
                     },
                     "highlight": {
                         "fields": {
-                            "name": {}
+                            "name": { "number_of_fragments": 0 }
                         }
                     }
                 }
@@ -98,7 +99,7 @@ module.exports = {
                         },
                         "highlight": {
                             "fields": {
-                                "name": {}
+                                "name": { "number_of_fragments": 0 }
                             }
                         }
                     }
@@ -120,7 +121,7 @@ module.exports = {
                         },
                         "highlight": {
                             "fields": {
-                                "name": {}
+                                "name": { "number_of_fragments": 0 }
                             }
                         }
                     }
@@ -142,7 +143,7 @@ module.exports = {
                     },
                     "highlight": {
                         "fields": {
-                            "name": {}
+                            "name": { "number_of_fragments": 0 }
                         }
                     }
                 }
@@ -172,7 +173,7 @@ module.exports = {
                         },
                         "highlight": {
                             "fields": {
-                                "name": {}
+                                "name": { "number_of_fragments": 0 }
                             }
                         }
                     }
@@ -199,7 +200,7 @@ module.exports = {
                         },
                         "highlight": {
                             "fields": {
-                                "name": {}
+                                "name": { "number_of_fragments": 0 }
                             }
                         }
                     }
@@ -294,20 +295,112 @@ module.exports = {
                 resolve(author);
             });
         }),
-        personPublications: (_, { id = 979, offset = 0, limit = 10 }) => new Promise((resolve, reject) => {        
+        personPublications: (_, { id = 979, offset = 0, limit = 10 , sorted = "" }) => new Promise((resolve, reject) => {        
             console.log('im here: ', typeof(id), id);
             
-            const schema = {
-                "from": offset,
-                "size": limit,
-                "query": {
-                    "nested": {
-                      "path": "pub_authors",
-                      "query": {
-                        "match": {
-                          "pub_authors.id": id
+            let schema;
+
+            if( sorted === "" ) {
+                schema = {
+                    "from": offset,
+                    "size": limit,
+                    "query": {
+                        "nested": {
+                          "path": "pub_authors",
+                          "query": {
+                            "match": {
+                              "pub_authors.id": id
+                            }
+                          }
                         }
-                      }
+                    }
+                }
+            } else if( sorted === "num_citations_asc" ) {
+                schema = {
+                    "from": offset,
+                    "size": limit,
+                    "sort": [
+                        {
+                           "num_citations": {
+                             "order": "asc"
+                           }
+                        }
+                    ],
+                    "query": {
+                        "nested": {
+                          "path": "pub_authors",
+                          "query": {
+                            "match": {
+                              "pub_authors.id": id
+                            }
+                          }
+                        }
+                    }
+                }
+            } else if( sorted === "num_citations_desc" ) {
+                schema = {
+                    "from": offset,
+                    "size": limit,
+                    "sort": [
+                        {
+                           "num_citations": {
+                             "order": "desc"
+                           }
+                        }
+                    ],
+                    "query": {
+                        "nested": {
+                          "path": "pub_authors",
+                          "query": {
+                            "match": {
+                              "pub_authors.id": id
+                            }
+                          }
+                        }
+                    }
+                }
+            } else if( sorted === "title_asc" ) {
+                schema = {
+                    "from": offset,
+                    "size": limit,
+                    "sort": [
+                        {
+                           "title.raw": {
+                             "order": "asc"
+                           }
+                        }
+                    ],
+                    "query": {
+                        "nested": {
+                          "path": "pub_authors",
+                          "query": {
+                            "match": {
+                              "pub_authors.id": id
+                            }
+                          }
+                        }
+                    }
+                }
+            } else if( sorted === "title_desc" ) {
+                schema = {
+                    "from": offset,
+                    "size": limit,
+                    "sort": [
+                        {
+                           "title.raw": {
+                             "order": "desc"
+                           }
+                        }
+                    ],
+                    "query": {
+                        "nested": {
+                          "path": "pub_authors",
+                          "query": {
+                            "match": {
+                              "pub_authors.id": id
+                            }
+                          }
+                        }
                     }
                 }
             }

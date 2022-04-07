@@ -4,7 +4,7 @@ const typeDefs = gql`
     type Query {
         people(name: String, topic: String, offset: Int, limit: Int, sorted: String): PersonConnection!
         person(id: Int): Person!
-        personPublications(id: Int, offset: Int, limit: Int): [Publication!]
+        personPublications(id: Int, offset: Int, limit: Int, sorted: String): [Publication!]
         publications(searchTerm: String, offset: Int, limit: Int, sorted: String): [Publication!]
         topPeople(topic: String): [Person]!
         peopleSuggestedSearch(prefix: String): [Person]

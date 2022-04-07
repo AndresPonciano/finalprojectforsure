@@ -3,6 +3,8 @@ import Image from 'next/image'
 
 const ProfileItem = ({ profile }) => {
 
+    console.log('highlight: ', profile.highlight)
+
     return (
         <div className="mb-6">
             <div className="flex w-full items-center bg-gray-100 p-4 rounded-md shadow">
@@ -21,10 +23,10 @@ const ProfileItem = ({ profile }) => {
                                     profile.highlight[0].split(' ').map((item) => {
                                         return(
                                             <>
-                                            { item.substr(0,4) === "<em>" ?
-                                                <span className='bg-yellow-400 mr-2'>{item.substr(4, item.length-9)}</span>
+                                            { item.includes("<em>") ?
+                                                <span key={item} className='bg-yellow-400 mr-2'>{item.replaceAll("<em>", ""). replaceAll("</em>", "")}</span>
                                             :
-                                                <span className='mr-2'>{item}</span>
+                                                <span key={item} className='mr-2'>{item}</span>
                                             }
                                             </>
                                         )
