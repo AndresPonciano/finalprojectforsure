@@ -18,7 +18,10 @@ query NewPubsPag( $searchTerm: String, $offset: Int, $limit: Int, $sorted: Strin
             id
             name
         }
-        highlight
+        highlight {
+            title
+            abstract
+        }
     }
 }
 `;

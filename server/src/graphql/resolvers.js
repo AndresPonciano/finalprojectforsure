@@ -433,7 +433,8 @@ module.exports = {
                     },
                     "highlight": {
                         "fields": {
-                            "title": {},
+                            "title": { number_of_fragments: 0 },
+                            "abstract": { number_of_fragments: 0 },
                         }
                     }
                 }
@@ -457,7 +458,8 @@ module.exports = {
                    },
                    "highlight": {
                        "fields": {
-                           "title": {},
+                            "title": { number_of_fragments: 0 },
+                            "abstract": { number_of_fragments: 0 },
                        }
                    }
                 }
@@ -481,7 +483,8 @@ module.exports = {
                    },
                    "highlight": {
                        "fields": {
-                           "title": {},
+                            "title": { number_of_fragments: 0 },
+                            "abstract": { number_of_fragments: 0 },
                        }
                    }
                 }
@@ -505,7 +508,8 @@ module.exports = {
                    },
                    "highlight": {
                        "fields": {
-                           "title": {},
+                            "title": { number_of_fragments: 0 },
+                            "abstract": { number_of_fragments: 0 },
                        }
                    }
                 }
@@ -529,7 +533,8 @@ module.exports = {
                    },
                    "highlight": {
                        "fields": {
-                           "title": {},
+                            "title": { number_of_fragments: 0 },
+                            "abstract": { number_of_fragments: 0 },
                        }
                    }
                 }
@@ -544,7 +549,7 @@ module.exports = {
                 let _source = r['hits']['hits'];
                     _source.map((item, i) => _source[i] = 
                     item.highlight ?
-                    { ...item._source, highlight: item.highlight.title }
+                    { ...item._source, highlight: item.highlight }
                     :
                     { ...item._source, highlight: null }
                     );

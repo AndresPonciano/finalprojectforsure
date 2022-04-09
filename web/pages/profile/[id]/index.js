@@ -41,10 +41,6 @@ const profile = ({ profile }) => {
     const {loading: loadingPubs, error: errorPubs, data: dataPubs, fetchMore } = useQuery(GET_PERSON_PUBLICATIONS, {
         variables: { id: parseInt(profile.id), offset: 0, sorted: sortedBy.value }
     });
-
-    useEffect(() => {
-        console.log('sorted by changed: ', sortedBy);
-    }, [sortedBy])
  
     if(errorPubs) 
         return <div>Error loading publications for author</div>
@@ -102,7 +98,7 @@ const profile = ({ profile }) => {
                     </div>
 
                     <div className="w-full flex justify-center">
-                        <div className="w-1/2 p-8">
+                        <div className="w-3/4 p-8">
                             <TagCloud
                                 minSize={12}
                                 maxSize={35}
@@ -124,7 +120,7 @@ const profile = ({ profile }) => {
                                 <h2 className="text-gray-900 text-lg font-semibold">Author's Publications: </h2>
                                 <h2>showing: 1 - {dataPubs.personPublications.length}</h2>
                             </div>
-                            <div>
+                            <div className="w-64">
                                 <Sortingdropdown sortedBy={sortedBy} setSortedBy={setSortedBy} sortingOptions={sortingOptions}/>  
                             </div>
                         </div>
@@ -136,7 +132,7 @@ const profile = ({ profile }) => {
                                 onClick={() => fetchMore({
                                     variables: { offset: dataPubs.personPublications.length }
                                 })}
-                                className="hover:animate-bounce flex items-center justify-center m-4 w-12 h-8 rounded-md bg-gray-300 text-gray-900 hover:bg-gray-700 hover:text-gray-300"
+                                className="hover:animate-bounce flex items-center justify-center m-4 w-12 h-8 rounded-md bg-gray-700 text-white"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />

@@ -14,14 +14,14 @@ const PublicationItem = ({ publication }) => {
                 <div className="p-2 w-full">
                     <div className='flex justify-between items-center'>
                         <h2 className="text-gray-900 text-lg">
-                            {publication.highlight ?
-                                publication.highlight[0].split(' ').map((item) => {
+                            {publication.highlight && publication.highlight.title ?
+                                publication.highlight.title[0].split(' ').map((item, index) => {
                                     return(
                                         <>
                                         { item.includes("<em>") ?
-                                            <span className='bg-yellow-400 mr-2'>{item.replaceAll("<em>", "").replaceAll("</em>", "")}</span>
+                                            <span key={index} className='bg-yellow-400 mr-2'>{item.replaceAll("<em>", "").replaceAll("</em>", "")}</span>
                                         :
-                                            <span className='mr-2'>{item}</span>
+                                            <span key={index} className='mr-2'>{item}</span>
                                         }
                                         </>
                                     )
@@ -51,25 +51,63 @@ const PublicationItem = ({ publication }) => {
                             })}
                         </ul>
                     </div>
-                    <h2 className="text-gray-500 italic">
+                    <p className="flex flex-wrap text-gray-500 italic">
                         {readMore ? 
                             <>
-                                {publication.abstract}
+                                {/* showing full abstract */}
+                                { publication.highlight && publication.highlight.abstract ?
+                                    <>
+                                    {publication.highlight.abstract[0].split(' ').map((item, index) => {
+                                        return(
+                                            <>
+                                                { item.includes("<em>") ?
+                                                    <span key={index} className='bg-yellow-400 mr-2'>{item.replaceAll("<em>", "").replaceAll("</em>", "")}</span>
+                                                :
+                                                    <span key={index} className='mr-2'>{item}</span>
+                                                }
+                                            </>
+                                        )
+                                    })}
+                                    </>
+                                    :
+                                    <>
+                                    {publication.abstract}                                        
+                                    </>
+                                }
                                 <button className="text-blue-500 px-2 hover:underline" onClick={() => setReadMore(false)}>
                                     hide
                                 </button>
                             </>
                         :
                             <>
-                                {publication.abstract.slice(0, 200)}...
+                            {/* showing less abstract */}
+                                { publication.highlight && publication.highlight.abstract ?
+                                    <>
+                                        {publication.highlight.abstract[0].slice(0, 200).split(' ').map((item, index) => {
+                                            return(
+                                                <>
+                                                    { item.includes("<em>") ?
+                                                        <span key={index} className='bg-yellow-400 mr-2'>{item.replaceAll("<em>", "").replaceAll("</em>", "")}</span>
+                                                    :
+                                                        <span key={index} className='mr-2'>{item}</span>
+                                                    } 
+                                                </>
+                                            )
+                                        })}...
+                                    </>
+                                    :
+                                    <>
+                                        {publication.abstract.slice(0, 200)}...
+                                    </>
+                                }
                                 <button className="text-blue-500 px-2 hover:underline" onClick={() => setReadMore(true)}>
                                     show                              
                                 </button>
                             </>
                         }
-                    </h2>
+                    </p>
 
-                    <h2 className="text-blue-400">cited by: <span>{publication.num_citations}</span></h2>
+                    <h2 className="text-gray-700">cited by: < span className=''>{publication.num_citations}</span></h2>
                 </div>
             </div>
         </div>

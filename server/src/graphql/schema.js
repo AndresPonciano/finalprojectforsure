@@ -35,7 +35,12 @@ const typeDefs = gql`
         abstract: String!
         num_citations: Int
         pub_authors: [PubAuthor]!
-        highlight: [String]
+        highlight: PubHighlight
+    }
+
+    type PubHighlight {
+        title: [String]
+        abstract: [String]
     }
 
     type PubAuthor {
