@@ -21,8 +21,6 @@ const about = () => {
           return person.name.toLowerCase().includes(query.toLowerCase())
     })
 
-    console.log('plan is: ', plan)
-
     return (
         <div className='h-screen'>
             <h2>this is the about page. LOL</h2>

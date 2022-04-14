@@ -115,8 +115,6 @@ const profiles = ({ homeSearchValue }) => {
       setCurrentOffset(newOffset);
     }
 
-    // console.log('!!: ', dataTemp, searchStatus);
-    // console.log('??: ', dataAll);
     const dataSet2 = searchStatus && dataTemp ? dataTemp.people.people : dataAll.people.people;
     const totalCount = searchStatus && dataTemp ? dataTemp.people.totalCount : dataAll.people.totalCount;
 

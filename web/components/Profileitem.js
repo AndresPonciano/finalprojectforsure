@@ -2,9 +2,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 const ProfileItem = ({ profile }) => {
-
-    console.log('highlight: ', profile.highlight)
-
     return (
         <div className="mb-6">
             <div className="flex w-full items-center bg-gray-100 p-4 rounded-md shadow">
@@ -20,15 +17,15 @@ const ProfileItem = ({ profile }) => {
                         >
                             <div className="font-semibold text-lg cursor-pointer text-blue-500 hover:text-blue-300">
                                 {profile.highlight ? 
-                                    profile.highlight[0].split(' ').map((item) => {
+                                    profile.highlight[0].split(' ').map((item, index) => {
                                         return(
-                                            <>
+                                            <span key={index}>
                                             { item.includes("<em>") ?
-                                                <span key={item} className='bg-yellow-400 mr-2'>{item.replaceAll("<em>", ""). replaceAll("</em>", "")}</span>
+                                                <span className='bg-yellow-400 mr-2'>{item.replaceAll("<em>", ""). replaceAll("</em>", "")}</span>
                                             :
-                                                <span key={item} className='mr-2'>{item}</span>
+                                                <span className='mr-2'>{item}</span>
                                             }
-                                            </>
+                                            </span>
                                         )
                                     })
                                     : 

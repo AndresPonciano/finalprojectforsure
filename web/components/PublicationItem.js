@@ -17,13 +17,13 @@ const PublicationItem = ({ publication }) => {
                             {publication.highlight && publication.highlight.title ?
                                 publication.highlight.title[0].split(' ').map((item, index) => {
                                     return(
-                                        <>
+                                        <span key={index}>
                                         { item.includes("<em>") ?
-                                            <span key={index} className='bg-yellow-400 mr-2'>{item.replaceAll("<em>", "").replaceAll("</em>", "")}</span>
+                                            <span className='bg-yellow-400 mr-2'>{item.replaceAll("<em>", "").replaceAll("</em>", "")}</span>
                                         :
-                                            <span key={index} className='mr-2'>{item}</span>
+                                            <span className='mr-2'>{item}</span>
                                         }
-                                        </>
+                                        </span>
                                     )
                                 })
                                 :
@@ -59,13 +59,13 @@ const PublicationItem = ({ publication }) => {
                                     <>
                                     {publication.highlight.abstract[0].split(' ').map((item, index) => {
                                         return(
-                                            <>
+                                            <span key={index}>
                                                 { item.includes("<em>") ?
-                                                    <span key={index} className='bg-yellow-400 mr-2'>{item.replaceAll("<em>", "").replaceAll("</em>", "")}</span>
+                                                    <span className='bg-yellow-400 mr-2'>{item.replaceAll("<em>", "").replaceAll("</em>", "")}</span>
                                                 :
-                                                    <span key={index} className='mr-2'>{item}</span>
+                                                    <span className='mr-2'>{item}</span>
                                                 }
-                                            </>
+                                            </span>
                                         )
                                     })}
                                     </>
@@ -85,13 +85,13 @@ const PublicationItem = ({ publication }) => {
                                     <>
                                         {publication.highlight.abstract[0].slice(0, 200).split(' ').map((item, index) => {
                                             return(
-                                                <>
+                                                <span key={index}>
                                                     { item.includes("<em>") ?
-                                                        <span key={index} className='bg-yellow-400 mr-2'>{item.replaceAll("<em>", "").replaceAll("</em>", "")}</span>
+                                                        <span className='bg-yellow-400 mr-2'>{item.replaceAll("<em>", "").replaceAll("</em>", "")}</span>
                                                     :
-                                                        <span key={index} className='mr-2'>{item}</span>
+                                                        <span className='mr-2'>{item}</span>
                                                     } 
-                                                </>
+                                                </span>
                                             )
                                         })}...
                                     </>

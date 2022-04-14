@@ -58,7 +58,6 @@ const publications = ({ homeSearchValue }) => {
 
     useEffect(() => {
         if(homeSearchValue !== undefined || sortedBy.text !== "None") {
-            // console.log('pls search: ', sortedBy)
             setSearchStatus(true);
         }
 
@@ -89,11 +88,7 @@ const publications = ({ homeSearchValue }) => {
     if(loadingSearch)
       return <LoadingSpinner />
 
-
-    // console.log('we got results: ', dataSearch)
-    // const dataSet = dataSearch ? dataSearch.publications.publications : [];
     const dataSet = dataSearch ? dataSearch.publications : [];
-    // console.log('dataSet is: ', dataSearch)
 
     return (
         <div className="flex bg-gray-200 h-screen w-full">

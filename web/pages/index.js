@@ -50,9 +50,8 @@ export default function Home() {
           <div className="flex items-center justify-center h-4/6 w-full">
             <div className='w-2/5 h-auto flex flex-col mt-12'>
               <div className='w-2/5'>
-                <div className='flex mb-4 w-full h-16'>
-                  <h2 className="flex items-center justify-center font-semibold text-base sm:text-2xl bg-yellow-500 p-2 w-3/4 rounded-l-md">CS Scholar .</h2>
-                  <h2 className="flex items-center justify-center font-semibold text-2xl text-gray-100 bg-green-500 p-2 w-1/4 rounded-r-md">IO</h2>
+                <div className='flex items-start mb-4 w-full h-16'>
+                  <Image width={90} height={70} src='/images/newLogo.svg'/>
                 </div>
               </div>
               <Homesearch />

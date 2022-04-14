@@ -3,10 +3,6 @@ const { ElasticSearchClient, PublicationsElasticSearchClient } = require("../ela
 module.exports = {
     Query: {
         people: (_, { name = null, topic = null, offset = 0, limit = 10, sorted = "" }) => new Promise((resolve, reject) => {
-            // console.log('limit is: ', limit);  
-            // name will now also search through tag_cloud  
-            console.log('name: ', name, "sorted: ", sorted, "topic: ", topic);
-
             if(topic === "None") 
                 topic = null;
 
@@ -14,7 +10,6 @@ module.exports = {
             let total;
 
             if( !name && topic && sorted === "" ) {
-                console.log('case1')
                 schema = {
                     "from": offset,
                     "size": limit,
@@ -25,7 +20,6 @@ module.exports = {
                     }
                 }
             } else if( !name && topic && ( sorted === "name_asc" || sorted === "name_desc" )) {
-                console.log('case2')
                 if( sorted == "name_asc" ) {
                     schema = {
                         "from": offset,
@@ -62,15 +56,19 @@ module.exports = {
                     }
                 }
             } else if( name && !topic && sorted === "" ) {
-                console.log('case3', name, topic)
                 
                 schema = {
                     "from": offset,
                     "size": limit,
                     "query": {
-                        "match": {
-                            "name": name
-                        }
+                        "dis_max": {
+                            "tie_breaker": 0.7,
+                            "boost": 1.2,
+                            "queries": [
+                                { "match": { "name": name } },
+                                { "terms": { "tag_cloud": [name] } }
+                            ]
+                        },
                     },
                     "highlight": {
                         "fields": {
@@ -80,7 +78,6 @@ module.exports = {
                 }
             
             } else if( name && !topic && ( sorted === "name_asc" || sorted === "name_desc" ) ) {
-                console.log('case4')
                 if( sorted === "name_asc" ) {
                     schema = {
                         "from": offset,
@@ -93,9 +90,14 @@ module.exports = {
                             }
                         ],
                         "query": {
-                            "match": {
-                                "name": name
-                            }
+                            "dis_max": {
+                                "tie_breaker": 0.7,
+                                "boost": 1.2,
+                                "queries": [
+                                    { "match": { "name": name } },
+                                    { "terms": { "tag_cloud": [name] } }
+                                ]
+                            },
                         },
                         "highlight": {
                             "fields": {
@@ -115,9 +117,14 @@ module.exports = {
                             }
                         ],
                         "query": {
-                            "match": {
-                                "name": name
-                            }
+                            "dis_max": {
+                                "tie_breaker": 0.7,
+                                "boost": 1.2,
+                                "queries": [
+                                    { "match": { "name": name } },
+                                    { "terms": { "tag_cloud": [name] } }
+                                ]
+                            },
                         },
                         "highlight": {
                             "fields": {
@@ -127,7 +134,6 @@ module.exports = {
                     }
                 }
             } else if( name && topic && sorted === "" ) {
-                console.log('case5')
                 schema = {
                     "from": offset,
                     "size": limit,
@@ -137,6 +143,7 @@ module.exports = {
                         "boost": 1.2,
                         "queries": [
                           { "match": { "name": name } },
+                          { "terms": { "tag_cloud": [name] } },
                           { "terms": { "topics": [topic] } }
                         ]
                       }
@@ -148,7 +155,6 @@ module.exports = {
                     }
                 }
             } else if( name && topic && ( sorted === "name_asc" || sorted === "name_desc" ) ) {
-                console.log('case6')
 
                 if ( sorted == "name_asc" ) {
                     schema = {
@@ -166,8 +172,9 @@ module.exports = {
                                 "tie_breaker": 0.7,
                                 "boost": 1.2,
                                 "queries": [
-                                { "match": { "name": name } },
-                                { "terms": { "topics": [topic] } }
+                                    { "match": { "name": name } },
+                                    { "terms": { "tag_cloud": [name] } },
+                                    { "terms": { "topics": [topic] } }
                                 ]
                             }
                         },
@@ -193,8 +200,9 @@ module.exports = {
                                 "tie_breaker": 0.7,
                                 "boost": 1.2,
                                 "queries": [
-                                { "match": { "name": name } },
-                                { "terms": { "topics": [topic] } }
+                                    { "match": { "name": name } },
+                                    { "terms": { "tag_cloud": [name] } }, 
+                                    { "terms": { "topics": [topic] } }
                                 ]
                             }
                         },
@@ -206,7 +214,6 @@ module.exports = {
                     }
                 }
             } else if( !name && !topic && ( sorted === "name_asc" || sorted === "name_desc" ) ) {
-                console.log('case7')
                 if ( sorted === "name_asc" ) {
                     schema = { 
                         "from": offset,
@@ -239,7 +246,6 @@ module.exports = {
                     }
                 }
             } else {
-                console.log('case8')
                 schema = { 
                     "from": offset,
                     "size": limit,
@@ -290,14 +296,12 @@ module.exports = {
             ElasticSearchClient({...schema})
                 .then(r => {
                 let _source = r['hits']['hits'];
-                let author = _source[0]._source;    
+                let person = _source[0]._source;    
 
-                resolve(author);
+                resolve(person);
             });
         }),
-        personPublications: (_, { id = 979, offset = 0, limit = 10 , sorted = "" }) => new Promise((resolve, reject) => {        
-            console.log('im here: ', typeof(id), id);
-            
+        personPublications: (_, { id = 979, offset = 0, limit = 10 , sorted = "" }) => new Promise((resolve, reject) => {                    
             let schema;
 
             if( sorted === "" ) {
@@ -415,13 +419,11 @@ module.exports = {
             });
         }),
         publications: (_, { searchTerm = null, offset = 0, limit = 10, sorted = "" }) => new Promise((resolve, reject) => {
-            console.log('searchterm: ', searchTerm, "sorted by: ", sorted);
             
             let schema;
             let total;
 
             if(searchTerm && sorted === "") {
-                console.log('case1')
                 schema = {
                     "from": offset,
                     "size": limit,
@@ -439,7 +441,6 @@ module.exports = {
                     }
                 }
             } else if (searchTerm && sorted === "num_citations_asc") {
-                console.log('case2')
                 schema = {
                     "from": offset,
                     "size": limit, 
@@ -464,7 +465,6 @@ module.exports = {
                    }
                 }
             } else if (searchTerm && sorted === "num_citations_desc") {
-                console.log('case3')
                 schema = {
                     "from": offset,
                     "size": limit, 
@@ -489,7 +489,6 @@ module.exports = {
                    }
                 }
             } else if (searchTerm && sorted === "title_asc") {
-                console.log('case4')
                 schema = {
                     "from": offset,
                     "size": limit, 
@@ -514,7 +513,6 @@ module.exports = {
                    }
                 }
             } else if (searchTerm && sorted === "title_desc") {
-                console.log('case5')
                 schema = {
                     "from": offset,
                     "size": limit, 
@@ -538,8 +536,6 @@ module.exports = {
                        }
                    }
                 }
-            } else {
-                console.log('case6')
             }
 
 
@@ -613,9 +609,7 @@ module.exports = {
                 let _source = r['hits']['hits'];
                     _source.map((item, i) => _source[i] = item._source);
         
-                console.log(_source, 'AAAAAAAAA', total)
                 resolve(_source);
-                // resolve({"totalCount": total, "authors": _source});
             });
         }),
         pubSuggestedSearch: (_, { prefix = "" }) => new Promise((resolve, reject) => {
@@ -638,9 +632,7 @@ module.exports = {
                 let _source = r['hits']['hits'];
                     _source.map((item, i) => _source[i] = item._source);
         
-                console.log(_source, 'AAAAAAAAA', total)
                 resolve(_source);
-                // resolve({"totalCount": total, "authors": _source});
             });
         })
     }

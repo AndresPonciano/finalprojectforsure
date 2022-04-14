@@ -12,7 +12,6 @@ const AutocompleteSearch = ({ searchText, setSearchText, suggestedResults, searc
             router.push(`/profiles?homeSearchValue=${value}`, undefined);
         }
         else {
-            console.log('other search')
             router.push(`/publications?homeSearchValue=${value}`, undefined);
         }
     }
@@ -34,7 +33,6 @@ const AutocompleteSearch = ({ searchText, setSearchText, suggestedResults, searc
                         displayValue={selected} 
                         onChange={(event) => setSearchText(event.target.value)} 
                         placeholder="Enter search term: "
-                        onSubmit={() => {console.log('HIIIIII')}}
                     />
                 </div>
 
