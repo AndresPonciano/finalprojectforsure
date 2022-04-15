@@ -1,0 +1,543 @@
+{"name": "Thomas Doherty", "newTopics": ["Software Engineering"], "newOtherTopics": ["Computational Biology", "HPC", "Physics"]}
+{"name": "Kim Myonghee", "newTopics": ["Software Engineering"], "newOtherTopics": ["Wireless Sensor Network", "e-Learning Systems", "TVET"]}
+{"name": "Barry Boehm", "newTopics": ["Software Engineering", "Software Cost Estimation", "Software Process"], "newOtherTopics": ["Computer Science", "Systems Engineering"]}
+{"name": "Soumitra Sarkar", "newTopics": ["Software Engineering"], "newOtherTopics": ["Cloud Computing", "Text Analytics", "File systems", "Storage"]}
+{"name": "jayanti prasad", "newTopics": ["Software Engineering"], "newOtherTopics": ["Artificial Intelligence", "Data Science", "Astrophysics", "Physics"]}
+{"name": "Robert C. Miller", "newTopics": ["software engineering", "crowdsourcing"], "newOtherTopics": ["HCI"]}
+{"name": "Malik Muhammad Ali-shahid", "newTopics": ["Software Engineering", "Software Reliability Engineering"], "newOtherTopics": ["Digital Image Processing"]}
+{"name": "Barbara  Ann Kitchenham", "newTopics": ["Empirical Software Engineering", "Software Engineering"], "newOtherTopics": ["Empirical Methods", "Statistical methods", "Meta-analysis"]}
+{"name": "Michael R. Lyu", "newTopics": ["software engineering", "software reliability", "fault tolerance"], "newOtherTopics": ["machine learning", "distributed systems"]}
+{"name": "Avinash Kak", "newTopics": ["Software Engineering"], "newOtherTopics": ["Sensor and Camera Networks", "High-Level Programming Languages", "Computer and Network Security"]}
+{"name": "Francisco Jos\u00e9 Garc\u00eda-Pe\u00f1alvo (https://orcid.org/0000-0001-9987-5584)", "newTopics": ["software engineering"], "newOtherTopics": ["eLearning", "web 2.0", "technological ecosystems"]}
+{"name": "Juyuan Yang", "newTopics": ["software engineering"], "newOtherTopics": ["Programming language"]}
+{"name": "David Gavaghan", "newTopics": ["software engineering"], "newOtherTopics": ["Computational science", "physiological and biological modelling"]}
+{"name": "Marlon Dumas", "newTopics": ["Software Engineering"], "newOtherTopics": ["Business Process Management", "Process Mining", "Information Systems", "#unitartucs"]}
+{"name": "Saurabh Sharma", "newTopics": ["Software Testing", "Software Engineering", "Model Driven Development"], "newOtherTopics": []}
+{"name": "Mark Harman", "newTopics": ["SBSE", "Software Testing", "Program Analysis", "Software Engineering"], "newOtherTopics": ["Evolutionary Computation"]}
+{"name": "Lionel Briand", "newTopics": ["software engineering", "software testing", "model-driven software engineering", "SBSE"], "newOtherTopics": ["computer science"]}
+{"name": "Brad A. Myers", "newTopics": ["Software Engineering"], "newOtherTopics": ["Interaction Design", "Human-Computer Interaction", "HCI", "User Interfaces"]}
+{"name": "Ing-Xiang Chen", "newTopics": ["Mining Software Repositories", "Software Engineering"], "newOtherTopics": ["Information Retrieval", "Big Data Analytics", "Information Visualization"]}
+{"name": "Nadim Asif", "newTopics": ["Software Engineering"], "newOtherTopics": ["Databases", "E-Commerce", "Reverse Engineering", "Information Systems"]}
+{"name": "Roy T. Fielding", "newTopics": ["Software Architecture", "Software Engineering"], "newOtherTopics": ["Computer Supported Collaborative Work", "Human-Computer Interaction", "Networking"]}
+{"name": "David Weiss", "newTopics": ["Software Engineering", "Software Product Lines", "Software Measurement", "Software Architecture"], "newOtherTopics": []}
+{"name": "Ravi Sethi", "newTopics": ["Software Engineering"], "newOtherTopics": ["Compilers", "Programming Languages"]}
+{"name": "Richard Taylor", "newTopics": ["software engineering", "software architecture", "analysis and testing", "software environments"], "newOtherTopics": ["decentralized systems"]}
+{"name": "Francesco Lelli", "newTopics": ["Software Engineering"], "newOtherTopics": ["Service Science", "Cloud Computing", "Data Science"]}
+{"name": "Krzysztof Czarnecki", "newTopics": ["Software Engineering", "Software Product Lines"], "newOtherTopics": ["Model-Driven Engineering", "Variability Engineering"]}
+{"name": "James R Larus", "newTopics": ["Software Engineering"], "newOtherTopics": ["Programming Languages", "Compilers", "Computer Architecture"]}
+{"name": "Munindar P Singh", "newTopics": ["Software Engineering", "Social Computing"], "newOtherTopics": ["Multiagent Systems", "Service-Oriented Computing"]}
+{"name": "Alan Hevner", "newTopics": ["software engineering"], "newOtherTopics": ["design science research"]}
+{"name": "Ian Sommerville", "newTopics": ["software engineering"], "newOtherTopics": ["dependability", "cscw", "sociotechnical systems", "responsibility"]}
+{"name": "Jan Mendling", "newTopics": ["software engineering"], "newOtherTopics": ["business process management", "process mining", "information systems", "Wirtschaftsinformatik"]}
+{"name": "Gregor Kiczales", "newTopics": ["Software Engineering"], "newOtherTopics": ["Programming Languages", "Modularity"]}
+{"name": "Steffen Becker", "newTopics": ["Software Engineering"], "newOtherTopics": ["Performance Engineering", "Scalability and Cloud", "Multi-/Many-Cores"]}
+{"name": "Rick Kazman", "newTopics": ["software engineering", "software architecture", "technical debt"], "newOtherTopics": []}
+{"name": "Jeff Kramer", "newTopics": ["Software Engineering", "Requirements Engineering", "Adaptive Software Systems"], "newOtherTopics": []}
+{"name": "Michael Cusumano", "newTopics": ["software engineering"], "newOtherTopics": ["platforms", "software business", "technology management and innovation", "strategy"]}
+{"name": "Len Bass", "newTopics": ["Software Architecture", "software engineering", "DevOps"], "newOtherTopics": ["user interface software", "security architecture"]}
+{"name": "Helmut Veith", "newTopics": ["Formal Methods", "Model Checking", "Software Engineering"], "newOtherTopics": ["Logic in Computer Science", "Computer Security"]}
+{"name": "Jim Herbsleb", "newTopics": ["software engineering", "open source software"], "newOtherTopics": ["collaboration", "CSCW", "computer supported cooperative work"]}
+{"name": "Jeff Offutt", "newTopics": ["Software Engineering", "Software Testing", "Software Maintenance"], "newOtherTopics": ["Web Applications", "Education"]}
+{"name": "St\u00e9phane Ducasse", "newTopics": ["software maintenance", "program analysis"], "newOtherTopics": ["dynamic language", "reflective programming"]}
+{"name": "Giuliano (Giulio) Antoniol", "newTopics": ["software evolution", "software maintenance", "software testing", "SBSE"], "newOtherTopics": ["software engieering"]}
+{"name": "Andrian Marcus", "newTopics": ["Software Engineering", "Program Comprehension", "Software Evolution", "Software Maintenance"], "newOtherTopics": []}
+{"name": "Eleni Stroulia", "newTopics": ["Software Engineering", "Software Maintenance", "Software Evolution"], "newOtherTopics": ["Artificial Intelligence", "Service Oriented Architecture"]}
+{"name": "Jonathan I. Maletic", "newTopics": ["Software Engineering", "Software Evolution", "Software Maintenance"], "newOtherTopics": ["Computer Science"]}
+{"name": "Bram Adams", "newTopics": ["software maintenance"], "newOtherTopics": ["software release engineering", "software integration", "software build systems", "software modularity"]}
+{"name": "V\u00e1clav Rajlich", "newTopics": ["Software engineering", "software evolution", "program comprehension", "software maintenance"], "newOtherTopics": []}
+{"name": "Mika M\u00e4ntyl\u00e4", "newTopics": ["Software Testing", "Software Maintenance", "Software Quality"], "newOtherTopics": ["Software Operations", "Grey Literature Reviews"]}
+{"name": "Alexander Chatzigeorgiou", "newTopics": ["Software Engineering", "Software Maintenance", "Software Evolution", "Technical Debt"], "newOtherTopics": ["Object-Oriented Design"]}
+{"name": "Rudolf Ferenc", "newTopics": ["Software Maintenance", "Software Evolution", "Software Quality", "Software Engineering"], "newOtherTopics": []}
+{"name": "Radu Marinescu", "newTopics": ["software engineering", "software quality", "software evolution", "software maintenance", "software metrics"], "newOtherTopics": []}
+{"name": "Michel Wermelinger", "newTopics": ["software evolution", "software maintenance", "software architecture", "software quality"], "newOtherTopics": []}
+{"name": "Nicolas Anquetil", "newTopics": ["Software Maintenance", "Software quality", "Program comprehension"], "newOtherTopics": ["Reverse engineering", "Software modelling"]}
+{"name": "Qing Xie", "newTopics": ["Software Testing", "Software Engineering", "Software Maintenance"], "newOtherTopics": []}
+{"name": "Mukul R Prasad", "newTopics": ["software engineering", "software analytics", "software testing", "software maintenance"], "newOtherTopics": []}
+{"name": "Giuseppe Di Lucca", "newTopics": ["software engineering", "software maintenance", "software testing"], "newOtherTopics": ["reverse engineering", "software comprehension"]}
+{"name": "Alain April", "newTopics": ["Software Maintenance"], "newOtherTopics": ["SQA", "BPM and Cloud/Bigdata"]}
+{"name": "Florian Deissenboeck", "newTopics": ["Software Quality", "Software Maintenance"], "newOtherTopics": []}
+{"name": "Marco D'Ambros", "newTopics": ["Software engineering", "software maintenance", "software evolution", "software visualization", "mining software repositories"], "newOtherTopics": []}
+{"name": "Xavier Blanc", "newTopics": ["Software Engineering", "Software Maintenance"], "newOtherTopics": ["Model Driven Engineering"]}
+{"name": "Michael L. Collard", "newTopics": ["Software Engineering", "Software Evolution", "Software Maintenance"], "newOtherTopics": ["Computer Science"]}
+{"name": "Zhen Ming (Jack) Jiang", "newTopics": ["Software Engineering"], "newOtherTopics": ["Performance Engineering", "SE4AI", "AIOps"]}
+{"name": "Benjamin Hummel", "newTopics": ["Software Quality", "Software Maintenance"], "newOtherTopics": []}
+{"name": "Joshua Garcia", "newTopics": ["Software Engineering", "Software Architecture", "Software Maintenance"], "newOtherTopics": ["Security", "Software Analysis and Testing"]}
+{"name": "Ahmed Ghoneim", "newTopics": ["Software Engineering", "Software Maintenance"], "newOtherTopics": ["SOA"]}
+{"name": "Shaowei Wang", "newTopics": ["Software Engineering", "Software Analytics", "Software Maintenance"], "newOtherTopics": ["Data mining", "Machine learning"]}
+{"name": "Istvan Siket", "newTopics": ["Software Maintenance", "Software Quality", "Software Engineering"], "newOtherTopics": []}
+{"name": "Mahmoud Elish", "newTopics": ["Software Engineering", "Software Metrics", "Software Maintenance"], "newOtherTopics": ["Software Quality and Security", "Applied Machine Learning"]}
+{"name": "Mao Xiaoguang", "newTopics": ["Software Maintenance", "Program Repair"], "newOtherTopics": ["Fault Localization", "Software Dependability"]}
+{"name": "Lars Heinemann", "newTopics": ["Software Engineering", "Software Maintenance", "Software Quality", "Software Reuse"], "newOtherTopics": []}
+{"name": "Junjie Chen", "newTopics": ["Software Testing", "Software Maintenance"], "newOtherTopics": ["Compiler Testing", "AI Testing", "Automated Debugging"]}
+{"name": "Maur\u00edcio Aniche", "newTopics": ["Software Engineering", "Software Maintenance", "Software Testing", "Empirical Software Engineering"], "newOtherTopics": []}
+{"name": "Marcelo de Almeida Maia", "newTopics": ["Software Engineering", "Software Maintenance"], "newOtherTopics": []}
+{"name": "Chouki Tibermacine", "newTopics": ["Software Engineering", "Software Architecture", "Software Maintenance"], "newOtherTopics": ["Reengineering and Revere Engineering", "Services Computing"]}
+{"name": "Nicolli Rios", "newTopics": ["Technical debt", "Empirical Software Engineering", "Software Maintenance"], "newOtherTopics": []}
+{"name": "Ian Peake", "newTopics": ["Software Engineering", "Software Architecture", "Software Maintenance"], "newOtherTopics": ["Component-Based Software Engineering"]}
+{"name": "Armstrong Takang Ph.D.", "newTopics": ["Software Maintenance", "Program Comprehension"], "newOtherTopics": ["Information and Communication technology", "ICT", "Medical Informatics"]}
+{"name": "Sebastian Baltes", "newTopics": ["empirical software engineering", "software maintenance"], "newOtherTopics": ["human factors", "software documentation", "data mining"]}
+{"name": "Anuradha Chug", "newTopics": ["Software Maintenance"], "newOtherTopics": ["IOT", "Data Mining", "Machine Learning"]}
+{"name": "Hani Abdeen", "newTopics": ["SBSE", "Software Maintenance", "Software metrics", "Program Comprehension", "Empirical Software Engineering"], "newOtherTopics": []}
+{"name": "Massimiliano Di Penta", "newTopics": ["Software Engineering", "Mining Software Repositories", "Software Evolution", "SBSE"], "newOtherTopics": []}
+{"name": "Oscar Nierstrasz", "newTopics": ["Software Engineering", "Software Evolution"], "newOtherTopics": ["Computer Science", "Programming Languages", "Reverse Engineering"]}
+{"name": "Harald Gall", "newTopics": ["software engineering", "software quality", "software evolution"], "newOtherTopics": ["mining software archives", "software engineering and machine learning"]}
+{"name": "Tom Mens", "newTopics": ["software evolution", "software analytics", "software ecosystems", "refactoring"], "newOtherTopics": ["collaborative software development"]}
+{"name": "Serge Demeyer", "newTopics": ["Software Engineering", "Software Evolution"], "newOtherTopics": []}
+{"name": "Martin P. Robillard", "newTopics": ["Software engineering", "software evolution", "software reuse"], "newOtherTopics": ["software architecture and design", "and research methods for empirical s"]}
+{"name": "Gregorio Robles", "newTopics": ["Software Engineering", "Mining software repositories", "Software evolution", "Open Source"], "newOtherTopics": ["Computational Thinking"]}
+{"name": "Michael W. Godfrey", "newTopics": ["Software engineering", "software evolution", "mining software repositories", "software analytics", "empirical software engineering"], "newOtherTopics": []}
+{"name": "Andy Zaidman", "newTopics": ["software engineering", "software evolution", "software testing", "empirical software engineering", "mining software repositories"], "newOtherTopics": []}
+{"name": "Martin Pinzger", "newTopics": ["Software Engineering", "Software Evolution", "Mining Software Repositories", "Program Analysis", "Software Visualization"], "newOtherTopics": []}
+{"name": "Beatriz P\u00e9rez", "newTopics": ["software evolution"], "newOtherTopics": ["Metamodeling", "models reasoning"]}
+{"name": "Marco Aurelio Gerosa", "newTopics": ["Software Engineering", "Software Evolution", "Open Source"], "newOtherTopics": ["CSCW", "Computer Science"]}
+{"name": "Ali Mesbah", "newTopics": ["Software Engineering", "Software Testing", "Software Evolution"], "newOtherTopics": ["Web Engineering"]}
+{"name": "Kostas Kontogiannis", "newTopics": ["Software Engineering", "Software Evolution"], "newOtherTopics": ["Service Oriented Systems", "Cyber Physical Systems", "Intelligent Systems"]}
+{"name": "Laurence Duchien", "newTopics": ["Software engineering", "software evolution", "Software Product Lines"], "newOtherTopics": ["adaptation", "AOSD"]}
+{"name": "Yuanfang Cai", "newTopics": ["Software Architecture", "Refactoring", "Technical debt", "Software Evolution"], "newOtherTopics": ["Software Modularity"]}
+{"name": "Jens Grabowski", "newTopics": ["Software Engineering", "Software Evolution"], "newOtherTopics": ["Quality Assurance"]}
+{"name": "Rafael Capilla", "newTopics": ["Software Architecture", "Software Evolution"], "newOtherTopics": ["Software Product Line Engineering", "Software Variability"]}
+{"name": "nazim madhavji", "newTopics": ["requirements engineering", "software evolution", "software quality", "software process"], "newOtherTopics": ["software architectures"]}
+{"name": "Jean-Marie Favre", "newTopics": ["Software Engineering", "Software Evolution"], "newOtherTopics": ["Software Language Engineering", "Software Linguistics", "Model Driven Engineering"]}
+{"name": "Harvey Siy", "newTopics": ["Software engineering", "software product lines", "software evolution"], "newOtherTopics": ["software inspection", "computing education research"]}
+{"name": "Juergen Rilling", "newTopics": ["Software Evolution", "mining software repositories"], "newOtherTopics": ["global source code analysis", "semantic web enable SE"]}
+{"name": "Thuy-Linh Nguyen", "newTopics": ["Software Evolution"], "newOtherTopics": ["Object-oriented"]}
+{"name": "Andrea Capiluppi", "newTopics": ["Open Source software", "software reuse", "software evolution"], "newOtherTopics": ["online communities"]}
+{"name": "Bo N\u00f8rregaard J\u00f8rgensen", "newTopics": ["Software evolution"], "newOtherTopics": ["Energy Informatics", "Energy-ecosystems", "Multi-agent systems", "Digital Twins"]}
+{"name": "Matthias Riebisch", "newTopics": ["Software Engineering", "Software Evolution"], "newOtherTopics": ["Software Achitectures"]}
+{"name": "Martin Ward", "newTopics": ["Software Evolution", "Formal Methods"], "newOtherTopics": ["Program Transformation", "Program Slicing", "Reverse Engineering"]}
+{"name": "Alexandre Bergel", "newTopics": ["Software Engineering", "Software Visualization", "Software Performance", "Software Evolution"], "newOtherTopics": []}
+{"name": "Matias Martinez", "newTopics": ["Software Evolution", "Mining Software Repositories", "Software Testing"], "newOtherTopics": ["Automatic Software Repair", "Source Code Analysis and Transf"]}
+{"name": "Damien Pollet", "newTopics": ["Software engineering", "Software evolution"], "newOtherTopics": ["Reflective languages", "Dynamic languages"]}
+{"name": "Anthony Cleve", "newTopics": ["software engineering", "software evolution"], "newOtherTopics": ["information systems", "database engineering"]}
+{"name": "Richard Wettel", "newTopics": ["Software Visualization", "Software Evolution"], "newOtherTopics": ["Software Reengineering"]}
+{"name": "Sascha Just", "newTopics": ["Empirical Software Engineering", "Software Evolution"], "newOtherTopics": ["Computer Science", "Software Mining"]}
+{"name": "Aiko Yamashita", "newTopics": ["Software evolution", "Program comprehension", "Empirical Software Engineering"], "newOtherTopics": ["Source code analysis"]}
+{"name": "Anne Etien", "newTopics": ["Software Engineering", "Software Evolution", "Requirements Engineering"], "newOtherTopics": ["Model Driven Engineering"]}
+{"name": "V Basili", "newTopics": ["Empirical Software Engineering"], "newOtherTopics": ["Software"]}
+{"name": "Per Runeson", "newTopics": ["Software engineering", "Empirical software engineering", "Software testing"], "newOtherTopics": ["Open innovation", "Digital Society"]}
+{"name": "Thomas Zimmermann", "newTopics": ["Software Engineering", "Empirical Software Engineering", "Mining Software Repositories"], "newOtherTopics": ["Recommender Systems", "Computer Games"]}
+{"name": "Bjorn Regnell", "newTopics": ["Requirements Engineering", "Software Product Management", "Open Source Software", "Empirical Software Engineering"], "newOtherTopics": ["Software Engineerin"]}
+{"name": "Arie van Deursen", "newTopics": ["Software engineering", "software testing", "empirical software engineering"], "newOtherTopics": ["domain-specific languages", "artificial intelligence"]}
+{"name": "Elaine Weyuker", "newTopics": ["Software Engineering", "Software Testing", "Software Fault Prediction", "Empirical Software Engineering", "Software Metrics"], "newOtherTopics": []}
+{"name": "Tore Dyb\u00e5", "newTopics": ["empirical software engineering", "evidence-based software engineering", "software process improvement", "agile software development"], "newOtherTopics": []}
+{"name": "Dror Feitelson", "newTopics": ["Empirical software engineering", "Program comprehension"], "newOtherTopics": ["Workload modeling", "Performance evaluation", "Scheduling"]}
+{"name": "Sven Apel", "newTopics": ["Software Engineering", "Software Product Lines", "Empirical Software Engineering", "Software Analytics", "Program Comprehension"], "newOtherTopics": []}
+{"name": "Martin Shepperd", "newTopics": ["software engineering", "empirical software engineering"], "newOtherTopics": ["machine learning", "empirical studies."]}
+{"name": "Marjan Mernik", "newTopics": ["Empirical Software Engineering"], "newOtherTopics": ["Domain-Specific Languages", "Evolutionary Computation", "Computational Intelligence"]}
+{"name": "Margaret Burnett", "newTopics": ["empirical software engineering"], "newOtherTopics": ["human computer interaction", "end-user programming", "end-user software engineering", "gender"]}
+{"name": "Magne J\u00f8rgensen", "newTopics": ["Software engineering", "empirical software engineering"], "newOtherTopics": ["project management"]}
+{"name": "Natalia Juristo", "newTopics": ["Empirical Software Engineering", "Requirements Engineering", "Testing"], "newOtherTopics": ["Usability"]}
+{"name": "Eray T\u00fcz\u00fcn", "newTopics": ["Software Analytics", "Empirical Software Engineering"], "newOtherTopics": ["Software Productivity", "Software Product Line Engineering", "Bioinformatics"]}
+{"name": "M. Ali Babar", "newTopics": ["Empirical Software Engineering", "Software Architecture"], "newOtherTopics": ["Software Security & Privacy", "Big Data Platforms & Architectures"]}
+{"name": "Lutz Prechelt", "newTopics": ["Software engineering", "empirical software engineering"], "newOtherTopics": ["agile methods", "pair programming"]}
+{"name": "Dag IK Sj\u00f8berg", "newTopics": ["empirical software engineering", "software quality", "software process improvement", "agile software development"], "newOtherTopics": []}
+{"name": "Walter F. Tichy", "newTopics": ["Software engineering", "empirical software engineering"], "newOtherTopics": ["parallelism", "configuration management", "AI and NLP in Software Engineering"]}
+{"name": "Robert Feldt", "newTopics": ["Software Engineering", "Empirical Software Engineering", "SBSE"], "newOtherTopics": ["Behavioral Software Engineering", "Artificial Intelligence"]}
+{"name": "Andrea Arcuri", "newTopics": ["Software Testing", "SBSE", "Empirical Software Engineering"], "newOtherTopics": []}
+{"name": "Emilia Mendes", "newTopics": ["Empirical Software Engineering"], "newOtherTopics": ["Evidence-based SE and CS"]}
+{"name": "Fabio Massacci", "newTopics": ["empirical software engineering", "requirements engineering"], "newOtherTopics": ["risk analysis", "security", "security economics"]}
+{"name": "Paris Avgeriou", "newTopics": ["Software Engineering", "Software Architecture", "Empirical Software Engineering", "Software Maintenance and Evolution"], "newOtherTopics": []}
+{"name": "Daniel M. German", "newTopics": ["Software engineering", "empirical software engineering"], "newOtherTopics": ["intellectual property", "computational photography"]}
+{"name": "Guenther Ruhe", "newTopics": ["Empirical software engineering", "SBSE", "requirements engineering"], "newOtherTopics": ["project mana"]}
+{"name": "Jeffrey C. Carver", "newTopics": ["Software Engineering", "Empirical Software Engineering"], "newOtherTopics": []}
+{"name": "Casper Lassenius", "newTopics": ["Software engineering", "empirical software engineering"], "newOtherTopics": []}
+{"name": "Xin Xia", "newTopics": ["Software Engineering", "Software Analytics", "Empirical Software Engineering", "Mining Software Repositories"], "newOtherTopics": []}
+{"name": "Lefteris (Eleftherios) Angelis", "newTopics": ["Empirical Software Engineering"], "newOtherTopics": ["Statistics", "Information Systems"]}
+{"name": "Stefan Wagner", "newTopics": ["Software Engineering", "Empirical Software Engineering", "Software Quality", "Requirements Engineering"], "newOtherTopics": ["Safety Engineering"]}
+{"name": "Stephen G. MacDonell", "newTopics": ["Empirical Software Engineering", "Software Analytics", "Evidence-Based Software Engineering"], "newOtherTopics": ["Information Systems Development"]}
+{"name": "Heiko Koziolek", "newTopics": ["Software Architecture", "Empirical Software Engineering"], "newOtherTopics": ["Performance Engineering", "Industrial Automation"]}
+{"name": "Romain Robbes", "newTopics": ["Software Engineering", "Empirical Software Engineering", "Mining Software Repositories"], "newOtherTopics": []}
+{"name": "Rafael Prikladnicki", "newTopics": ["Software Engineering", "Global Software Engineering", "Empirical Software Engineering", "Agile Software Development", "Software Process"], "newOtherTopics": []}
+{"name": "Emad Shihab", "newTopics": ["Software Engineering", "Mining Software Repositories", "Software Analytics"], "newOtherTopics": ["SE4AI"]}
+{"name": "Arilo Claudio Dias-Neto", "newTopics": ["Software Engineering", "Software Testing", "SBSE", "Empirical Software Engineering"], "newOtherTopics": []}
+{"name": "Dietmar Pfahl", "newTopics": ["Empirical Software Engineering", "Software Analytics", "Software Quality", "Software Testing"], "newOtherTopics": ["#unitartucs"]}
+{"name": "Amit Kumar", "newTopics": ["Mining Software Repositories"], "newOtherTopics": ["Machine Learning", "Data Mining"]}
+{"name": "Katsuro Inoue", "newTopics": ["Software Engineering", "Mining Software Repositories", "Software Analytics", "Software Ecosystem", "Code Clone"], "newOtherTopics": []}
+{"name": "Hongyu Zhang", "newTopics": ["Software Engineering", "Mining Software Repositories", "Data-driven Software Engineering", "Software Analytics"], "newOtherTopics": []}
+{"name": "Abram Hindle", "newTopics": ["Mining Software Repositories", "Software Engineering", "Software Power Consumption"], "newOtherTopics": ["Software Energy Consumption"]}
+{"name": "Philipp Leitner", "newTopics": ["Software Engineering", "Mining Software Repositories", "Software Performance"], "newOtherTopics": ["Cloud Computing"]}
+{"name": "Alberto Bacchelli", "newTopics": ["empirical software engineering", "mining software repositories", "code review"], "newOtherTopics": []}
+{"name": "Leandro Minku", "newTopics": ["Concept Drift", "Mining Software Repositories", "SBSE"], "newOtherTopics": ["Data Stream Mining", "Ensembles of Learning Machines"]}
+{"name": "Shane McIntosh", "newTopics": ["Release Engineering", "Build Systems", "Empirical Software Engineering", "Mining Software Repositories", "Software Quality"], "newOtherTopics": []}
+{"name": "Bogdan Vasilescu", "newTopics": ["Empirical Software Engineering", "Social Computing", "Mining Software Repositories"], "newOtherTopics": ["Complex Socio-Technical Systems"]}
+{"name": "Yasutaka Kamei", "newTopics": ["Software Engineering", "Empirical Software Engineering", "Mining Software Repositories", "Software Quality Assurance"], "newOtherTopics": []}
+{"name": "Meiyappan Nagappan", "newTopics": ["Software Engineering", "App Market Analytics", "Mining Software Repositories", "Software Metrics", "Log File Analysis"], "newOtherTopics": []}
+{"name": "Luigi Cerulo", "newTopics": ["Software Engineering", "Mining Software Repositories"], "newOtherTopics": ["Bioinformatics"]}
+{"name": "Huzefa Kagdi", "newTopics": ["Software Engineering", "Software Maintenance and Evolution", "Software Analytics", "Mining Software Repositories"], "newOtherTopics": ["Program Comprehensio"]}
+{"name": "Vibha Singhal Sinha", "newTopics": ["Software Engineering", "Mining Software Repositories", "Model Driven Development"], "newOtherTopics": ["Computer Supported Collaborative Work"]}
+{"name": "Yoshiki Higo", "newTopics": ["Software Engineering", "Mining Software Repositories", "Refactoring"], "newOtherTopics": ["Software Clones", "Automated Program Repair"]}
+{"name": "Lucas Layman", "newTopics": ["software engineering", "mining software repositories"], "newOtherTopics": ["human factors", "cybersecurity"]}
+{"name": "Jifeng Xuan", "newTopics": ["Software Engineering", "Testing", "Debugging", "Mining Software Repositories", "SBSE"], "newOtherTopics": []}
+{"name": "Igor Steinmacher", "newTopics": ["Software Engineering", "Mining Software Repositories", "Open Source Software"], "newOtherTopics": ["CSCW"]}
+{"name": "Cor-Paul Bezemer", "newTopics": ["software engineering", "mining software repositories"], "newOtherTopics": ["performance engineering", "computer games"]}
+{"name": "Nicole Novielli", "newTopics": ["Mining Software Repositories"], "newOtherTopics": ["Affective Computing", "Sentiment Analysis", "Human aspects of SE", "Natural Language Processing"]}
+{"name": "Michael Unterkalmsteiner", "newTopics": ["software engineering", "empirical software engineering", "mining software repositories"], "newOtherTopics": ["collaboration"]}
+{"name": "Jaechang Nam", "newTopics": ["Software Quality", "Mining Software Repositories"], "newOtherTopics": ["Software Defect Prediction", "Transfer Learning In Software Engineering"]}
+{"name": "Stephen W. Thomas", "newTopics": [], "newOtherTopics": ["NLP", "Machine Learning"]}
+{"name": "Israel Herraiz", "newTopics": ["Empirical Software Engineering", "Mining Software Repositories"], "newOtherTopics": ["Transport research"]}
+{"name": "Fabio Calefato", "newTopics": ["Global Software Engineering", "Social Software Engineering", "Mining Software Repositories"], "newOtherTopics": ["Computer-Mediated Communication", "Emotion"]}
+{"name": "Kelly Blincoe", "newTopics": ["Software Engineering", "Mining Software Repositories", "Software Ecosystems"], "newOtherTopics": ["Collaborative Software Development", "Diversity and Inclu"]}
+{"name": "Christopher Vendome", "newTopics": ["Software Engineering", "Software Evolution and Maintenance", "Mining Software Repositories"], "newOtherTopics": ["Software Licensing"]}
+{"name": "Sarah Nadi", "newTopics": ["Mining Software Repositories"], "newOtherTopics": ["Variability Analysis", "Code Recommenders & API Usage", "Software Merging"]}
+{"name": "Xiang Chen \uff08\u9648\u7fd4\uff09", "newTopics": ["Empirical Software Engineering", "Mining Software Repositories"], "newOtherTopics": ["Software Defect Prediction", "Combinatorial Testing"]}
+{"name": "Olga Baysal", "newTopics": ["Software Engineering", "Mining Software Repositories", "Software Analytics"], "newOtherTopics": []}
+{"name": "David Lo", "newTopics": ["Software Analytics", "Software Engineering"], "newOtherTopics": ["AIOps", "Software Maintenance and Testing", "Data Mining"]}
+{"name": "Tracy Hall", "newTopics": ["Software Analytics", "Testing"], "newOtherTopics": ["Defect Predication", "Automatic Repair", "Developer Human Factors"]}
+{"name": "Shing-Chi Cheung", "newTopics": ["Software Engineering", "Software Testing", "Program Analysis", "Software Analytics"], "newOtherTopics": []}
+{"name": "Leon Moonen", "newTopics": ["software engineering", "software security", "software analytics"], "newOtherTopics": ["data mining & machine learning", "reverse engineering"]}
+{"name": "Yingnong Dang", "newTopics": ["software analytics"], "newOtherTopics": ["Cloud service", "data analytics", "machine learning", "human-computer interaction"]}
+{"name": "Federica Sarro", "newTopics": ["Software Analytics", "Software Cost Estimation", "SBSE", "Software Metrics", "Empirical Software Engineering"], "newOtherTopics": []}
+{"name": "Mircea Filip Lungu", "newTopics": ["Software Ecosystems", "Software Analytics"], "newOtherTopics": ["Software Archaeology", "Software Architecture Recovery", "Personalized Learning"]}
+{"name": "Rudolf Ramler", "newTopics": ["Software Testing", "Software Quality", "Software Analytics"], "newOtherTopics": []}
+{"name": "Chakkrit (Kla) Tantithamthavorn", "newTopics": ["Software Analytics", "Empirical Software Engineering"], "newOtherTopics": ["AI4SE", "SE4AI"]}
+{"name": "Abbas Heydarnoori", "newTopics": ["Software Analytics", "Mining Software Repositories", "Empirical Software Engineering", "Software Evolution"], "newOtherTopics": []}
+{"name": "Nicholas Drivalos Matragkas", "newTopics": ["Software Engineering", "Software Analytics", "Software Quality"], "newOtherTopics": ["Model-Driven Engineering", "Critical Systems"]}
+{"name": "Vibhu S. Sharma", "newTopics": ["Software Analytics", "Software Architecture"], "newOtherTopics": ["Cloud Computing", "Sustainability & Quality", "Extended Reality"]}
+{"name": "Shi Han", "newTopics": ["Software Analytics"], "newOtherTopics": ["Machine Learning", "Data Mining"]}
+{"name": "Song Wang", "newTopics": ["Software Reliability"], "newOtherTopics": ["Crowdsourced Testing", "ML4SE", "Testing Machine Learning"]}
+{"name": "Kunal Taneja", "newTopics": ["Software Engineering", "Program Analysis", "Software Analytics"], "newOtherTopics": ["Data Privacy", "Automated Test Generation"]}
+{"name": "Nikolaos Mittas", "newTopics": ["Empirical Software Engineering", "Software Analytics", "Technical Debt"], "newOtherTopics": ["Statistics", "Project Cost Management"]}
+{"name": "Jochen Quante", "newTopics": ["Software Analytics", "Program Analysis"], "newOtherTopics": ["Software Reengineering"]}
+{"name": "Guerrouj Latifa", "newTopics": ["Empirical Software Engineering", "Mining Software Repositories", "Software Analytics", "Software Maintenance and Evolution"], "newOtherTopics": []}
+{"name": "Elder Cirilo", "newTopics": ["Software Engineering", "Software Analytics"], "newOtherTopics": ["Secure Coding"]}
+{"name": "Deheng Ye", "newTopics": ["Software analytics"], "newOtherTopics": ["Applied machine learning", "Reinforcement learning"]}
+{"name": "Gias Uddin", "newTopics": ["Software Analytics", "Software Security"], "newOtherTopics": ["Natural Language Processing"]}
+{"name": "Eleni Constantinou", "newTopics": ["mining software repositories", "software evolution", "software ecosystems", "software analytics"], "newOtherTopics": ["software health"]}
+{"name": "Silverio Mart\u00ednez-Fern\u00e1ndez", "newTopics": ["Software Engineering", "Empirical Software Engineering", "Software Analytics"], "newOtherTopics": ["AI Engineering", "Reference Architectures"]}
+{"name": "Vivek Nair", "newTopics": ["Software Analytics", "Software Engineering", "SBSE"], "newOtherTopics": []}
+{"name": "Meng Yan (\u9122\u840c)", "newTopics": ["Software Engineering", "Mining Software Repositories", "Software Analytics"], "newOtherTopics": []}
+{"name": "Duksan Ryu", "newTopics": ["Software Analytics", "Software Reliability Engineering"], "newOtherTopics": ["SE4AI", "AI4SE", "Software Defect Prediction"]}
+{"name": "Mohammad Zarour", "newTopics": ["Software Analytics"], "newOtherTopics": ["Software Process Quality", "Software Product Quality", "Secure Software Development"]}
+{"name": "Thomas Ball", "newTopics": ["Program analysis", "verification", "testing"], "newOtherTopics": ["CS education"]}
+{"name": "Vivek Sarkar", "newTopics": ["Program Analysis"], "newOtherTopics": ["Parallel computing", "Programming languages", "Compilers", "Runtime Systems"]}
+{"name": "Andreas Zeller", "newTopics": ["Software Engineering", "Program Analysis", "Software Testing", "Software Security"], "newOtherTopics": ["Automated Debugging"]}
+{"name": "Patrice Godefroid", "newTopics": ["Program Analysis"], "newOtherTopics": ["Testing and Verification"]}
+{"name": "Koushik Sen", "newTopics": ["Testing", "Debugging", "Program Analysis"], "newOtherTopics": ["Computer Science", "Concurrency"]}
+{"name": "Nicolas Halbwachs", "newTopics": ["Program analysis", "Formal methods"], "newOtherTopics": ["Synchronous programming", "Embedded systems"]}
+{"name": "Mooly Sagiv", "newTopics": ["Program Verification", "Program Analysis"], "newOtherTopics": ["Programming Languages", "Software Defined Networks"]}
+{"name": "Gail Kaiser", "newTopics": ["program analysis", "software testing"], "newOtherTopics": ["security"]}
+{"name": "Aarti Gupta", "newTopics": ["Formal methods", "program analysis"], "newOtherTopics": ["system/software verification", "SAT/SMT solvers", "design automation"]}
+{"name": "Mira Mezini", "newTopics": ["Program Analysis", "Software Security"], "newOtherTopics": ["Programming Languages", "Reactive Programming"]}
+{"name": "Mauro Pezz\u00e8", "newTopics": ["Software Engineering", "Software Testing", "Program Analysis"], "newOtherTopics": ["Self-Healing Systems", "Symbolic Execution"]}
+{"name": "Manuel Hermenegildo", "newTopics": ["Program Analysis", "Verification"], "newOtherTopics": ["Abstract Interpretation", "Logic Programming", "Computational Logic"]}
+{"name": "Rainer Koschke", "newTopics": ["Software Engineering", "Program Analysis"], "newOtherTopics": ["Security", "Reengineering", "Evolution"]}
+{"name": "Xiangyu Zhang", "newTopics": ["Program analysis"], "newOtherTopics": ["Security"]}
+{"name": "Jong-Deok Choi", "newTopics": ["Program Analysis"], "newOtherTopics": ["SW Platform", "Compiler", "Optimization", "Parallel Systems"]}
+{"name": "Nikolai Tillmann", "newTopics": ["Software Engineering", "Software Testing", "Program Analysis"], "newOtherTopics": []}
+{"name": "Saumya Debray", "newTopics": ["software security", "program analysis"], "newOtherTopics": ["deobfuscation", "code optimization"]}
+{"name": "Abhik Roychoudhury", "newTopics": ["Program Analysis", "Software Testing", "Software Security", "Program Repair"], "newOtherTopics": ["Real-time Systems"]}
+{"name": "Shan Lu", "newTopics": ["Software Reliability", "Program Analysis"], "newOtherTopics": ["Computer Systems", "Concurrency"]}
+{"name": "Andreas Podelski", "newTopics": ["Program Analysis", "Verification"], "newOtherTopics": ["Requirements Analysis"]}
+{"name": "Markus P\u00fcschel", "newTopics": ["software performance", "program analysis"], "newOtherTopics": ["program generation", "signal processing", "machine learning"]}
+{"name": "Bruno Blanchet", "newTopics": ["formal methods", "program analysis"], "newOtherTopics": ["security protocols"]}
+{"name": "Phil McMinn", "newTopics": ["Software Engineering", "Software Testing", "Search-Based Software Engineering", "Program Analysis"], "newOtherTopics": ["Evolutionary Computation"]}
+{"name": "Dirk Beyer", "newTopics": ["Software Verification", "Model Checking", "Program Analysis", "Formal Verification"], "newOtherTopics": ["Clustering"]}
+{"name": "Chris Hankin", "newTopics": ["Program Analysis"], "newOtherTopics": ["Security", "Programming Language Theory"]}
+{"name": "Stephen Fink", "newTopics": ["Program Analysis"], "newOtherTopics": ["Programming Languages", "Scientific Computing", "Parallel Computing"]}
+{"name": "Ashish Tiwari", "newTopics": ["Formal Methods", "Program Analysis"], "newOtherTopics": ["Hybrid Systems", "Decision Procedures", "Systems Biology"]}
+{"name": "Michael Hind", "newTopics": ["Program Analysis"], "newOtherTopics": ["Programing Languages", "Optimization"]}
+{"name": "Eran Yahav", "newTopics": ["Program Synthesis", "Program Analysis"], "newOtherTopics": ["Machine Learning for Programming", "Abstract Interpretation", "Programming Languages"]}
+{"name": "Byron Cook", "newTopics": ["formal verification", "program analysis"], "newOtherTopics": ["Programming languages", "theory"]}
+{"name": "Suman Jana", "newTopics": ["Program analysis"], "newOtherTopics": ["Computer Security", "Machine Learning"]}
+{"name": "Marco Pistoia", "newTopics": ["Program Analysis"], "newOtherTopics": ["Quantum Computing", "Quantum Communication", "Language-based Security", "Programming Languages"]}
+{"name": "Julian Dolby", "newTopics": ["program analysis", "software testing"], "newOtherTopics": ["programming languages", "semantic Web", "concurrency"]}
+{"name": "Jens Krinke", "newTopics": ["Software Engineering", "Program Analysis", "Clone Detection", "SBSE"], "newOtherTopics": ["Slicing"]}
+{"name": "J\u00fcrgen Giesl", "newTopics": ["Program Analysis", "Verification"], "newOtherTopics": ["Rewriting", "Automated Deduction"]}
+{"name": "Damien Octeau", "newTopics": ["Software Security", "Program Analysis"], "newOtherTopics": ["Mobile Security"]}
+{"name": "Anders M\u00f8ller", "newTopics": ["Software Engineering", "Program Analysis", "Software Testing"], "newOtherTopics": ["Programming Languages", "Static Analysis"]}
+{"name": "Danny Dig", "newTopics": ["Software Engineering", "refactoring", "program analysis"], "newOtherTopics": ["parallel & mobile computing", "SE4ML"]}
+{"name": "Suresh Jagannathan", "newTopics": ["Verification", "Program Analysis"], "newOtherTopics": ["Programming Languages", "Concurrency and Parallelism", "Functional Programming"]}
+{"name": "Satish Chandra", "newTopics": ["software engineering", "program analysis"], "newOtherTopics": ["machine learning", "programming languages"]}
+{"name": "Michael G. Burke", "newTopics": ["Program analysis", "software security"], "newOtherTopics": ["compiling for parallelism", "parallel programming"]}
+{"name": "Juan Caballero", "newTopics": ["Program Analysis"], "newOtherTopics": ["Computer Security", "Security"]}
+{"name": "Linghao Zhang", "newTopics": ["software testing", "self-adaptive systems"], "newOtherTopics": []}
+{"name": "D. Richard (Rick) Kuhn", "newTopics": ["software testing"], "newOtherTopics": ["combinatorial testing", "access control", "cyber security"]}
+{"name": "Andrew V. Jones", "newTopics": ["Verification", "Model Checking", "Formal Methods", "Software Testing"], "newOtherTopics": []}
+{"name": "Atif Memon", "newTopics": ["Software Engineering", "Software Testing", "Software Security"], "newOtherTopics": ["GUI Testing", "Web testing"]}
+{"name": "Andrea De Lucia", "newTopics": ["Software Engineering", "Software Maintenance and Evolution", "Software Testing", "Software Quality", "Refactoring"], "newOtherTopics": []}
+{"name": "Yves Le Traon", "newTopics": ["software engineering", "software testing", "software security"], "newOtherTopics": ["Computer science", "model-driven engineering"]}
+{"name": "Muhammad Saifullah", "newTopics": ["Software testing"], "newOtherTopics": ["Health", "Business", "Education", "IT"]}
+{"name": "David S. Rosenblum", "newTopics": ["Software Testing"], "newOtherTopics": ["Machine Learning", "Ubiquitous Computing", "Distributed Systems", "Probabilistic Verification"]}
+{"name": "John Hughes", "newTopics": ["software testing"], "newOtherTopics": ["Functional programming", "programming languages", "random testing", "property-based testing"]}
+{"name": "James Bieman", "newTopics": ["Software Engineering", "Software Testing"], "newOtherTopics": ["Design & Testing of Scientific Software", "Software Metrics and Measurement", "Evaluation &"]}
+{"name": "Aditya Mathur", "newTopics": ["Software testing", "software reliability"], "newOtherTopics": ["security of cyber physical systems"]}
+{"name": "Tsong Yueh Chen", "newTopics": ["Software Testing", "Debugging"], "newOtherTopics": ["Software Analysis"]}
+{"name": "Paolo Tonella", "newTopics": ["Software Engineering", "Software Testing"], "newOtherTopics": ["Computer Science"]}
+{"name": "Paul Pettersson", "newTopics": ["Software Testing"], "newOtherTopics": ["Embedded Systems", "Real-time Systems", "Model-Checking", "Timed Automata"]}
+{"name": "Darko Marinov", "newTopics": ["Software Engineering", "Software Testing"], "newOtherTopics": []}
+{"name": "Anuraag Srivastava", "newTopics": ["Software Testing"], "newOtherTopics": ["Machine Learning"]}
+{"name": "Rance Cleaveland", "newTopics": ["Formal methods", "software testing"], "newOtherTopics": ["system modeling", "system verification"]}
+{"name": "Antonio Ruiz Cort\u00e9s", "newTopics": ["Software Testing", "Software Product Lines"], "newOtherTopics": ["Service Engineering", "Business Process Management", "Service Computing"]}
+{"name": "Lu Zhang", "newTopics": ["Software Engineering", "Software Testing"], "newOtherTopics": ["Software Analysis"]}
+{"name": "Yvan Labiche", "newTopics": ["software testing", "verification and validation", "model driven development"], "newOtherTopics": []}
+{"name": "Gordon Fraser", "newTopics": ["Software Engineering", "Search-based Software Engineering", "Software Testing", "SBSE"], "newOtherTopics": ["Specification Mining"]}
+{"name": "Benoit Baudry", "newTopics": ["Software Engineering", "Software Testing", "DevOps"], "newOtherTopics": ["Software Diversity", "Easter eggs"]}
+{"name": "Yue Jia", "newTopics": ["Mutation Testing", "Software Testing", "Software Engineering", "SBSE"], "newOtherTopics": []}
+{"name": "Antonia Bertolino", "newTopics": ["Software Engineering", "Software Testing"], "newOtherTopics": []}
+{"name": "Keith W Miller", "newTopics": ["Software Testing"], "newOtherTopics": ["Computer Ethics", "Online Learning"]}
+{"name": "Chin-Yu Huang", "newTopics": ["software engineering", "software reliability", "software testing"], "newOtherTopics": []}
+{"name": "Myra B. Cohen", "newTopics": ["Software Testing", "Software Product Lines", "SBSE"], "newOtherTopics": ["Combinatorial Interaction Testing", "GUI Testing"]}
+{"name": "Tom Ostrand", "newTopics": ["Software testing", "software security", "software fault prediction"], "newOtherTopics": []}
+{"name": "Frank Piessens", "newTopics": ["Software Security", "Formal Methods"], "newOtherTopics": ["Security", "Programming Languages"]}
+{"name": "amir herzberg", "newTopics": ["software security"], "newOtherTopics": ["network security", "cryptography", "Internet security", "dns poisoning"]}
+{"name": "Hao Chen", "newTopics": ["Software Security"], "newOtherTopics": ["AI security", "Fuzzing"]}
+{"name": "Xinran Wang", "newTopics": ["Software Security"], "newOtherTopics": ["Security", "System Security", "Network Security", "Mobile Security"]}
+{"name": "Jacques Klein", "newTopics": ["Software Engineering", "Software Security"], "newOtherTopics": ["Computer Science", "Android Security", "Model-Driven Engineering"]}
+{"name": "Prof. Raees A. Khan", "newTopics": ["Software Security", "Testing"], "newOtherTopics": ["Quality", "Reliability"]}
+{"name": "Sam Malek", "newTopics": ["Software Engineering", "Software Architecture", "Software Security"], "newOtherTopics": ["Mobile Computing", "Testing and Analysis"]}
+{"name": "Angelos Stavrou", "newTopics": ["Software Security"], "newOtherTopics": ["Computer Security", "IoT Security"]}
+{"name": "Lucas Vincenzo Davi", "newTopics": ["Software Security"], "newOtherTopics": ["Embedded System Security", "Smart Contracts"]}
+{"name": "Miguel Correia", "newTopics": ["Software Security"], "newOtherTopics": ["Blockchain and Byzantine Consensus", "Cloud Security and Dependability", "Trusted Computing", "Security Analytics"]}
+{"name": "Sk. Md. Mizanur Rahman, Ph.D.", "newTopics": ["Software Security"], "newOtherTopics": ["Cryptography", "Information Security", "Machine Learning", "Blockchain and Cryptocurrency"]}
+{"name": "Stelios Sidiroglou-Douskos", "newTopics": ["Software Security"], "newOtherTopics": ["Programming Languages", "Reliability"]}
+{"name": "William GJ Halfond", "newTopics": ["Software engineering", "software security"], "newOtherTopics": ["program analysis and software testing", "software energy consumption", "mobile and web apps"]}
+{"name": "Mathias Payer", "newTopics": ["software security"], "newOtherTopics": ["system security", "mitigations", "sanitization", "automated testing"]}
+{"name": "Tegawend\u00e9 F. Bissyand\u00e9", "newTopics": ["Software Security", "Program Repair", "Code Search", "Big Code"], "newOtherTopics": ["Machine Learning"]}
+{"name": "Mario Baldi", "newTopics": ["Software Security"], "newOtherTopics": ["Computer Networks", "Network Analysis", "Big Data Analytic", "Network Security"]}
+{"name": "George Spanoudakis", "newTopics": ["Software engineering", "software security"], "newOtherTopics": ["biomedical computing"]}
+{"name": "Issa Traore", "newTopics": ["Software Security"], "newOtherTopics": ["Biometric Technologies", "Network Security", "Machine Learning", "Software Quality Engineering"]}
+{"name": "Nuno Neves", "newTopics": ["software security"], "newOtherTopics": ["dependable systems", "intrusion tolerance", "cloud security"]}
+{"name": "Jay Ligatti", "newTopics": ["Software Security"], "newOtherTopics": ["Programming Languages"]}
+{"name": "Konstantinos Sagonas", "newTopics": ["Software Testing", "Software Security"], "newOtherTopics": ["Software Technology", "Programming Languages", "Concurrent Programming"]}
+{"name": "Corrado Aaron Visaggio", "newTopics": ["Software Security", "Software Engineering", "Software Testing"], "newOtherTopics": ["Computer Science", "Computer Virology"]}
+{"name": "Thanassis Avgerinos", "newTopics": ["Program Analysis", "Software Security"], "newOtherTopics": ["Programming Languages"]}
+{"name": "Sandeep Bhatkar", "newTopics": ["Software Security", "Program Analysis"], "newOtherTopics": ["Machine Learning"]}
+{"name": "Miriam AM Capretz", "newTopics": ["Software Security"], "newOtherTopics": ["Data Management and Analytics", "Cloud Computing", "Service Oriented Architecture", "Privacy"]}
+{"name": "Gang Tan", "newTopics": ["Software security", "formal methods"], "newOtherTopics": ["programming languages"]}
+{"name": "Robert C. Seacord", "newTopics": ["software security"], "newOtherTopics": ["Secure coding"]}
+{"name": "Dianxiang Xu", "newTopics": ["Software security", "software engineering"], "newOtherTopics": ["access control", "data analytics"]}
+{"name": "Ren\u00e9 Just", "newTopics": ["Software engineering", "Software testing", "Program analysis", "Software security"], "newOtherTopics": ["Data science"]}
+{"name": "Daniele Sgandurra", "newTopics": ["Software Security"], "newOtherTopics": ["Systems Security"]}
+{"name": "Francesco Mercaldo", "newTopics": ["Software Security", "Software Engineering", "Software Testing"], "newOtherTopics": []}
+{"name": "Prof. Dr. Andreas Schaad", "newTopics": ["software security"], "newOtherTopics": ["secure systems & applications"]}
+{"name": "Kazuhiko Kato", "newTopics": ["software security"], "newOtherTopics": ["system software", "operating systems", "distributed systems", "intelligent transportation systems"]}
+{"name": "Mario S\u00fcdholt", "newTopics": ["Software Security"], "newOtherTopics": ["Computer Science", "Programming Languages", "Dsitributed Programming", "E-Health"]}
+{"name": "Martin Gilje Jaatun", "newTopics": ["software security"], "newOtherTopics": ["security", "cloud", "smart grid"]}
+{"name": "Leon Osterweil", "newTopics": ["Software process", "software engineering"], "newOtherTopics": ["medical processes"]}
+{"name": "Rory V. O'Connor", "newTopics": ["Software Process", "Software Process Improvement", "Software Engineering"], "newOtherTopics": ["Process Improvement", "Gamification"]}
+{"name": "Ita Richardson", "newTopics": ["Software Engineering", "Software Process"], "newOtherTopics": ["Global Software Development", "Connected Health", "Health Informatics"]}
+{"name": "Stanley Sutton", "newTopics": ["Software engineering", "software process"], "newOtherTopics": []}
+{"name": "Armin Eberlein", "newTopics": ["Requirements Engineering", "Software Engineering", "Software Architecture", "Software Process"], "newOtherTopics": ["Release Planning"]}
+{"name": "Fernando Brito e Abreu", "newTopics": ["software quality", "software process", "experimental software engineering", "software maintenance"], "newOtherTopics": ["model driven engineering"]}
+{"name": "David Raffo", "newTopics": ["Software Engineering", "Software Process"], "newOtherTopics": ["Software Process Modeling", "Value Based Software Engineering"]}
+{"name": "Marko Bajec", "newTopics": ["Software Engineering", "Software Process"], "newOtherTopics": ["Computer Science", "Information Systems", "Data Analysis"]}
+{"name": "Dae-Kyoo Kim", "newTopics": ["Software Architecture", "Software Process"], "newOtherTopics": ["Design Patterns", "Access Control", "Smart Grid"]}
+{"name": "Faheem Ahmed", "newTopics": ["Software Engineering", "Empirical Software Engineering", "Software Process"], "newOtherTopics": ["Software Process Assessment", "Human Factor"]}
+{"name": "Ray Dawson", "newTopics": ["Software Quality", "Software Process"], "newOtherTopics": ["Knowledge Management", "Information Systems"]}
+{"name": "Shuib Basri", "newTopics": ["software process", "software quality", "software testing", "software engineering"], "newOtherTopics": ["Requirement engineering"]}
+{"name": "Yulin Zhang", "newTopics": ["Software process"], "newOtherTopics": ["Cloud computing", "Robotics", "Software architectures", "Model driven engineering"]}
+{"name": "Graciela Dora Susana Hadad", "newTopics": ["software engineering", "requirements engineering", "software process"], "newOtherTopics": []}
+{"name": "Monalessa Perini Barcellos", "newTopics": ["Software Engineering", "Software Measurement", "Software Process"], "newOtherTopics": ["Ontologies", "Semantic Interoperability"]}
+{"name": "Daniela Rosca", "newTopics": ["software engineering", "requirements engineering", "software process"], "newOtherTopics": ["business rules", "big data analysis"]}
+{"name": "Ian Allison", "newTopics": ["software process"], "newOtherTopics": ["Information systems", "agile methods", "decision support"]}
+{"name": "Ahilton Barreto", "newTopics": ["Software Engineering", "Software Process", "Software Quality"], "newOtherTopics": []}
+{"name": "Mary S\u00e1nchez-Gord\u00f3n, Ph.D.", "newTopics": ["Software Engineering", "Software Process Improvement"], "newOtherTopics": ["Human Factor"]}
+{"name": "Alejandro Calder\u00f3n", "newTopics": ["Software Process", "Software Engineering"], "newOtherTopics": ["Gamification", "Serious Games"]}
+{"name": "Jean-Louis LETOUZEY", "newTopics": ["Software process", "Software quality"], "newOtherTopics": ["CMMI", "SQALE method"]}
+{"name": "Glauco Carneiro", "newTopics": ["Software Visualization", "Software Process"], "newOtherTopics": ["Information Visualization"]}
+{"name": "Vu Lam", "newTopics": ["Software Testing", "Software Process"], "newOtherTopics": ["Multimedia Event Detection"]}
+{"name": "Robert Yacobellis", "newTopics": ["Software Process"], "newOtherTopics": ["Software Quality/Metrics", "Programming Languages"]}
+{"name": "Luis Silvestre", "newTopics": ["Software Engineering", "Software Evolution"], "newOtherTopics": ["Model-driven Engineering", "Domain-specific Languages", "Software Engineering Education"]}
+{"name": "Josiane Kroll", "newTopics": ["Software Engineering", "Software Process", "Software Quality", "Global Software Engineering"], "newOtherTopics": ["Education"]}
+{"name": "Dr. Ani Liza Asnawi", "newTopics": ["Software Engineering", "Software Process"], "newOtherTopics": ["Agile Methods", "Wireless Communication", "Data Analysis"]}
+{"name": "Nasir Mehmood Minhas", "newTopics": ["Software Testing", "Software Process"], "newOtherTopics": ["Requirement Engineering", "Formal Methods in Software Engineering"]}
+{"name": "Xu Bai", "newTopics": ["Software Engineering", "Software Process"], "newOtherTopics": []}
+{"name": "Stephen Lane", "newTopics": ["Software Engineering", "Software Process"], "newOtherTopics": ["Service-Oriented Computing", "SOA"]}
+{"name": "Lachana Ramingwong", "newTopics": ["software engineering", "software process", "software testing"], "newOtherTopics": ["human-computer interatction"]}
+{"name": "Leonardo Bermon-Angarita", "newTopics": ["Software Engineering", "Software Process"], "newOtherTopics": ["Web Development"]}
+{"name": "Reem Alfayez", "newTopics": ["Software Engineering", "Software Cost Estimation", "Software Process", "Software Maintenance and Evolution"], "newOtherTopics": ["Computer Science"]}
+{"name": "Padma Nistala", "newTopics": ["software process"], "newOtherTopics": ["quality engineering", "product quality", "requirements"]}
+{"name": "Dr.Souhaib Besrour", "newTopics": ["software quality", "software testing", "software engineering", "software process"], "newOtherTopics": ["requirement engineering"]}
+{"name": "Moises Gonzalez-Garcia", "newTopics": ["Software engineering", "Software process"], "newOtherTopics": ["Model Driven"]}
+{"name": "Talita Vieira Ribeiro", "newTopics": ["Software Engineering", "Experimental Software Engineering", "Software Process"], "newOtherTopics": []}
+{"name": "Pablo H. Ruiz", "newTopics": ["Software Engineering", "Software Process", "Software Product lines"], "newOtherTopics": ["Software Process Lines"]}
+{"name": "Komlan Akp\u00e9dj\u00e9 KEDJI", "newTopics": ["Software Process"], "newOtherTopics": ["Collaboration", "Computer-supported Software Engineering"]}
+{"name": "Chathura Priyankara", "newTopics": ["Software Engineering", "Software Ecosystems"], "newOtherTopics": ["Software Development", "Teaching Programming", "Human Aspects of Software Engineering"]}
+{"name": "M.Zulfahmi Toh", "newTopics": ["Software Engineering", "Software Process", "DevOps"], "newOtherTopics": ["Programming"]}
+{"name": "Muhammad Asyraf Khairuddin", "newTopics": ["Software engineering", "software process"], "newOtherTopics": ["requirement engineering"]}
+{"name": "Diogo Matheus Costa", "newTopics": ["Software Engineering", "Software Reuse", "Software Process"], "newOtherTopics": []}
+{"name": "Atabak Kheirkhah", "newTopics": ["Software Process"], "newOtherTopics": ["Computational Algorithm", "Artificial Intelligence", "Data Mining"]}
+{"name": "Raymond Madachy", "newTopics": ["Software Engineering", "Software Cost Estimation"], "newOtherTopics": ["Systems Engineering", "System Dynamics"]}
+{"name": "Bradford Clark", "newTopics": ["Software Cost Estimation"], "newOtherTopics": ["Software Engineering Metrics", "Statistical Models", "COCOMO"]}
+{"name": "Maya Daneva", "newTopics": ["Empirical Software Engineering", "Requirements Engineering", "Software Cost Estimation"], "newOtherTopics": ["Enterprise Resource Planning", "Agile Software"]}
+{"name": "Rob J Kusters", "newTopics": ["software cost estimation", "software quality"], "newOtherTopics": []}
+{"name": "Ekrem Kocaguneli", "newTopics": ["software engineering", "software cost estimation"], "newOtherTopics": ["Machine learning", "artificial intelligence"]}
+{"name": "Mohammad Azzeh", "newTopics": ["Software Engineering", "Software Cost Estimation"], "newOtherTopics": ["Data Science", "Machine Learning", "Data Mining"]}
+{"name": "Stamatia Bibi", "newTopics": ["Software Engineering", "Software Cost Estimation"], "newOtherTopics": ["Cloud Computing"]}
+{"name": "Isa Maleki", "newTopics": ["Software Cost Estimation"], "newOtherTopics": ["Artificial Intelligence", "Machine Learning", "Data Mining", "Optimization"]}
+{"name": "Zeinab Abbasi Khalifehlou", "newTopics": ["Software Cost Estimation"], "newOtherTopics": ["Artificial Intelligence. Software Engineering"]}
+{"name": "Ali Afzal Malik", "newTopics": ["Software Cost Estimation", "Empirical Software Engineering"], "newOtherTopics": ["Software Project Management"]}
+{"name": "Zahra Asheghi Dizaji", "newTopics": ["Software Cost Estimation"], "newOtherTopics": ["Machine Learning", "Natural Language Processing", "Data Mining"]}
+{"name": "V. Venkataiah", "newTopics": ["Software Cost Estimation"], "newOtherTopics": ["Machine Learning", "Soft Computing and AI"]}
+{"name": "Preetam Pratap Jena", "newTopics": ["Software Cost Estimation"], "newOtherTopics": ["Use Case Point Method"]}
+{"name": "Muhammad Nadeem S/O Ghulam Nabi (Arifwala)", "newTopics": [], "newOtherTopics": ["Software Change Request", "NLP", "Machine Learning", "Component Based Software Cost Estimation", "Computer Graphics"]}
+{"name": "Stefano Russo", "newTopics": ["Software Reliability Engineering", "Software Testing", "Model-Driven Software Engineering"], "newOtherTopics": ["Software Aging", "Services Computing"]}
+{"name": "Ping Guo", "newTopics": ["Software Reliability Engineering"], "newOtherTopics": ["Image Processing", "Pattern Recognition", "Computational Intelligence"]}
+{"name": "Yilei Zhang", "newTopics": ["Software Reliability Engineering"], "newOtherTopics": ["Cloud Computing", "Data Mining", "Service Computing"]}
+{"name": "Roberto Pietrantuono", "newTopics": ["Software Reliability Engineering", "Software Testing"], "newOtherTopics": []}
+{"name": "SMK Quadri", "newTopics": ["Software Reliability Engineering", "Software Testing"], "newOtherTopics": []}
+{"name": "Daisuke SATOH", "newTopics": ["Software reliability engineering"], "newOtherTopics": ["Forecasting", "Disaster congestion", "Teletraffic", "Integrability"]}
+{"name": "Dr.Padmaja Pulicherla", "newTopics": ["software reliability engineering"], "newOtherTopics": ["IOT", "ml", "networking"]}
+{"name": "Dr. M Anuradha", "newTopics": ["Software Reliability Engineering"], "newOtherTopics": ["IoT", "Data Mining", "Machine Learning", "Patents"]}
+{"name": "Kishor Trivedi", "newTopics": ["Fault Tolerance", "Software Reliability"], "newOtherTopics": ["Reliability", "Availability", "Queuing"]}
+{"name": "Min Xie", "newTopics": ["software reliability"], "newOtherTopics": ["reliability engineering", "quality control", "industrial engineering", "industrial statistics"]}
+{"name": "Zibin Zheng", "newTopics": ["Software Reliability"], "newOtherTopics": ["Blockchain", "Smart Contract", "Services Computing"]}
+{"name": "Yuanyuan Zhou", "newTopics": ["Software Reliability", "Software Engineering"], "newOtherTopics": ["Computer Systems"]}
+{"name": "Lalit Singh", "newTopics": ["Software Reliability", "Software Safety"], "newOtherTopics": ["Dependability Engineering"]}
+{"name": "Hoang Pham", "newTopics": ["Software reliability"], "newOtherTopics": ["Reliability engineering", "reliability modeling", "maintenance"]}
+{"name": "Abhishek Kumar", "newTopics": ["Software Reliability", "Software Engineering"], "newOtherTopics": ["Algorithms", "Artificial Intelligence", "Computer Networks"]}
+{"name": "Bev Littlewood", "newTopics": ["Software engineering", "software reliability"], "newOtherTopics": ["system safety", "software fault tolerance"]}
+{"name": "Amrit Goel", "newTopics": ["Software Engineering", "Software Reliability"], "newOtherTopics": ["Data Mining", "Radial Basis Functions"]}
+{"name": "Yashwant K Malaiya", "newTopics": ["Software reliability"], "newOtherTopics": ["Computer Security", "Vulnerabilities", "Quantitative evaluation", "Security"]}
+{"name": "Lin Tan", "newTopics": ["Software reliability", "software engineering"], "newOtherTopics": ["software bug detection and repair", "software text analytics"]}
+{"name": "Junfeng Yang", "newTopics": ["software reliability"], "newOtherTopics": ["Operating systems", "concurrency", "and security."]}
+{"name": "Tadashi Dohi", "newTopics": ["Software Engineering", "Software Reliability"], "newOtherTopics": ["Reliability", "Reliability Engineering", "Dependable Computing"]}
+{"name": "Katerina Goseva Popstojanova", "newTopics": ["software reliability"], "newOtherTopics": ["cybersecurity", "performance", "data analytics"]}
+{"name": "Cristiano Giuffrida", "newTopics": ["Software Reliability"], "newOtherTopics": ["Computer Security", "Operating Systems"]}
+{"name": "shanshan li", "newTopics": ["software reliability", "software engineering"], "newOtherTopics": ["operating system"]}
+{"name": "Afzel Noore", "newTopics": ["Software Reliability"], "newOtherTopics": ["Biometrics", "Digital Watermarking", "Digital Logic Design", "VLSI Design and Testing"]}
+{"name": "Swapna Gokhale", "newTopics": ["Software engineering", "Software reliability"], "newOtherTopics": ["Social network analysis and mining"]}
+{"name": "Feng Qin", "newTopics": ["Software Reliability"], "newOtherTopics": ["Operating Systems", "High Performance Computing", "Security"]}
+{"name": "Heinrich (Heinz) Wilhelm Schmidt", "newTopics": ["Program verification", "Software reliability"], "newOtherTopics": ["Distributed software", "Software analysis", "Concurrent programming"]}
+{"name": "Vittorio Cortellessa", "newTopics": ["Software Engineering", "Software Performance", "Software Reliability", "Refactoring"], "newOtherTopics": ["Model-Driven Engineering"]}
+{"name": "Behrouz H. Far", "newTopics": ["Software Reliability"], "newOtherTopics": ["Distributed Software Systems", "Artificial Intelligence", "Data Analytics"]}
+{"name": "Ashis Chakraborty", "newTopics": ["Software reliability"], "newOtherTopics": ["Reliability", "Process control", "Hybrid modelling"]}
+{"name": "Joseph Tucek", "newTopics": ["software reliability"], "newOtherTopics": ["operating systems", "storage", "security"]}
+{"name": "Prof. (Dr.) Ompal Singh", "newTopics": ["Software Reliability"], "newOtherTopics": ["Optimization", "Innovation Diffusion Modeling", "Marketing Management", "and Data Analysis"]}
+{"name": "John May", "newTopics": ["Software reliability"], "newOtherTopics": ["organisational safety", "risk", "safety culture"]}
+{"name": "Barbara Russo", "newTopics": ["Software Measurement", "Software Reliability", "Software Testing"], "newOtherTopics": ["Software/Systems Engineering", "Technology Adoption"]}
+{"name": "Fevzi Belli", "newTopics": ["software engineering", "software reliability"], "newOtherTopics": ["programming", "software test", "software fault tolerance"]}
+{"name": "Peter Bishop", "newTopics": ["Software reliability", "fault tolerance", "testing"], "newOtherTopics": ["diversity", "safety"]}
+{"name": "Shinji Inoue", "newTopics": ["Software Reliability"], "newOtherTopics": ["Stochastic Modeling"]}
+{"name": "Pinjia He", "newTopics": ["Testing", "Software Reliability"], "newOtherTopics": ["Robust AI Software", "AIOps", "Log Analysis"]}
+{"name": "\u90d1\u5f81", "newTopics": ["Software Engineering", "Software Reliability"], "newOtherTopics": ["Intelligent Software"]}
+{"name": "Joao Duraes", "newTopics": ["Software Reliability"], "newOtherTopics": ["Fault Injection", "Dependability Evaluation"]}
+{"name": "Robert Merkel", "newTopics": ["Software Testing", "Software Reliability", "Software Engineering"], "newOtherTopics": []}
+{"name": "Omar H Alhazmi", "newTopics": ["Software Reliability"], "newOtherTopics": ["Computer Security", "Disaster Recovery"]}
+{"name": "Allen Nikora", "newTopics": ["Software Reliability", "Software Measurement"], "newOtherTopics": ["Fault Tolerant Computing", "Machine Learning", "Natural Language Processing"]}
+{"name": "N. Malevris", "newTopics": ["Software Quality", "Software Reliability"], "newOtherTopics": ["Software \u03a4esting"]}
+{"name": "Peng Huang", "newTopics": [], "newOtherTopics": ["Feature extraction", "statistical modeling and prediction", "machine learning"]}
+{"name": "Janusz Sosnowski", "newTopics": ["software reliability"], "newOtherTopics": ["dependable computing", "system diagnosrics and fault tolerance", "system monitoring", "computer architecture"]}
+{"name": "Zhiming Liu", "newTopics": ["Software Engineering"], "newOtherTopics": ["Computer Science"]}
+{"name": "Danny Dolev", "newTopics": ["Fault Tolerance"], "newOtherTopics": ["Distributed Computing", "Networking", "Security"]}
+{"name": "Kenneth P. Birman", "newTopics": ["Fault Tolerance"], "newOtherTopics": ["AI/ML for Edge IoT", "Cloud Computing", "Distributed Systems", "Security"]}
+{"name": "Robbert van Renesse", "newTopics": ["fault tolerance"], "newOtherTopics": ["distributed systems"]}
+{"name": "Jacob Abraham", "newTopics": ["formal verification", "fault tolerance"], "newOtherTopics": ["manufacturing test", "security"]}
+{"name": "Andre Schiper", "newTopics": ["Fault Tolerance"], "newOtherTopics": ["Distributed computing"]}
+{"name": "m raynal", "newTopics": [], "newOtherTopics": ["Algorithms", "Distributed computing", "Concurrency", "Fault-tolerance", "Synchronization"]}
+{"name": "Peter M. Chen", "newTopics": ["fault tolerance"], "newOtherTopics": ["operating systems", "virtual machines", "file systems", "security"]}
+{"name": "Dhiraj K Pradhan", "newTopics": ["Fault tolerance"], "newOtherTopics": ["Logic Synthesis", "Computer architecture", "error correcting codes", "Galois Field"]}
+{"name": "Franck Cappello", "newTopics": ["Fault Tolerance"], "newOtherTopics": ["Parallel Processing", "Parallel Computing", "High Performance Computing", "Data Compression"]}
+{"name": "Chita R. Das", "newTopics": ["Fault Tolerance"], "newOtherTopics": ["Computer Architecture", "Interconnection Networks", "Heterogeneous Architectures"]}
+{"name": "patrick lincoln", "newTopics": ["formal methods", "fault tolerance"], "newOtherTopics": ["computer science", "computer security", "computational biology"]}
+{"name": "Michael Ben-Or", "newTopics": ["Fault Tolerance"], "newOtherTopics": ["Quantum Computation", "Distributed Computation", "Computational Complexity", "Cryptography"]}
+{"name": "Matteo SONZA REORDA", "newTopics": ["Fault Tolerance"], "newOtherTopics": ["Test", "Design of Embedded Systems"]}
+{"name": "Nur Touba", "newTopics": ["Fault Tolerance"], "newOtherTopics": ["VLSI Testing", "Reliability"]}
+{"name": "Petros Maniatis", "newTopics": ["Fault Tolerance"], "newOtherTopics": ["Distributed Systems", "Security", "Machine Learning"]}
+{"name": "Xiao Qin", "newTopics": ["fault tolerance"], "newOtherTopics": ["Parallel and distributed systems", "real-time computing", "storage systems", "and performance evaluation."]}
+{"name": "Robert E Strom", "newTopics": [], "newOtherTopics": ["programming languages", "distributed computing", "fault-tolerance"]}
+{"name": "Hans-Joachim Wunderlich", "newTopics": ["Fault Tolerance"], "newOtherTopics": ["Computer  Engineering", "Computer Architecture", "Dependability", "Test"]}
+{"name": "George Bosilca", "newTopics": ["fault tolerance"], "newOtherTopics": ["distributed computing", "programming paradigms", "network", "protocols"]}
+{"name": "Stefan Schmid", "newTopics": [], "newOtherTopics": ["networks", "algorithms", "distributed systems", "fault-tolerance", "incentives"]}
+{"name": "Jie Xu", "newTopics": [], "newOtherTopics": ["Distributed Systems", "Cloud computing", "Dependability", "Systems Engineering", "AI systems"]}
+{"name": "Ozalp Babaoglu", "newTopics": ["fault tolerance"], "newOtherTopics": ["Distributed computing", "self organization", "machine learning applied to High \u2026"]}
+{"name": "Sandeep Kulkarni", "newTopics": ["Formal Methods", "Program Repair"], "newOtherTopics": ["Cloud Computing", "Fault-Tolerance", "Distributed Systems"]}
+{"name": "Shambhu Upadhyaya", "newTopics": ["Fault Tolerance"], "newOtherTopics": ["Computer Security", "VLSI Testing"]}
+{"name": "Idit Keidar", "newTopics": ["Fault Tolerance"], "newOtherTopics": ["Distributed Computing", "Concurrency", "Cloud Storage"]}
+{"name": "Debdeep Mukhopadhyay", "newTopics": ["Fault Tolerance"], "newOtherTopics": ["Side Channel Analysis", "Hardware Security", "Computer Architecture", "Hardware Implementations of Complex \u2026"]}
+{"name": "Priya Narasimhan", "newTopics": [], "newOtherTopics": ["distributed systems", "fault-tolerance", "cloud computing", "failure diagnosis", "embedded systems"]}
+{"name": "Jie Han", "newTopics": ["Fault Tolerance"], "newOtherTopics": ["Approximate Computing", "Stochastic Computing", "Neural Networks", "Gene Networks"]}
+{"name": "Gilles Muller", "newTopics": ["Fault Tolerance"], "newOtherTopics": ["Operating Systems", "Programming Languages"]}
+{"name": "Fernando Gehm Moraes", "newTopics": ["Fault Tolerance"], "newOtherTopics": ["Networks on Chip", "Embedded Systems", "Multicore Architectures", "Security"]}
+{"name": "Sriram Krishnamoorthy", "newTopics": ["fault tolerance"], "newOtherTopics": ["High performance computing", "runtime systems", "parallel programming models"]}
+{"name": "Thomas Herault", "newTopics": ["Fault Tolerance", "Model Checking"], "newOtherTopics": ["High Performance Computing", "Self-Stabilization"]}
+{"name": "Hakan Aydin", "newTopics": ["Fault Tolerance"], "newOtherTopics": ["Sustainable Computing", "Real-Time Embedded Systems", "Internet-of-Things", "Cyber-Physical Systems"]}
+{"name": "Alexander Romanovsky", "newTopics": ["fault tolerance", "formal methods"], "newOtherTopics": ["Dependability", "railway safety"]}
+{"name": "Sukumar Ghosh", "newTopics": [], "newOtherTopics": ["Distributed Systems", "distributed algorithms", "fault-tolerance", "self-stabilization", "game theory"]}
+{"name": "Robert Horst", "newTopics": ["Fault tolerance"], "newOtherTopics": ["Bionics", "Computer Architecture", "Robotics", "Power electronics"]}
+{"name": "Rog\u00e9rio de Lemos", "newTopics": ["software engineering", "self-adaptive software systems", "fault tolerance"], "newOtherTopics": ["dependability", "software architectures"]}
+{"name": "Alysson Bessani", "newTopics": ["Fault Tolerance"], "newOtherTopics": ["Distributed Systems", "Security", "Dependability"]}
+{"name": "Sudhanva Gurumurthi", "newTopics": ["Fault Tolerance"], "newOtherTopics": ["Computer Architecture", "Dependable Computing"]}
+{"name": "Matti Hiltunen", "newTopics": ["fault tolerance"], "newOtherTopics": ["distributed systems", "RAN"]}
+{"name": "Alex Orailoglu", "newTopics": [], "newOtherTopics": ["Computer-Aided Design", "Test", "Fault-Tolerance", "Embedded Processors", "Computer Architecture"]}
+{"name": "Liuba Shrira", "newTopics": [], "newOtherTopics": ["Distributed Systems", "Transactions", "Storage", "Fault-tolerance"]}
+{"name": "Allen Clement", "newTopics": ["fault tolerance"], "newOtherTopics": ["Distributed systems"]}
+{"name": "Alan Finn", "newTopics": ["fault tolerance"], "newOtherTopics": ["compressive sensing", "video analytics", "embedded systems"]}
+{"name": "Achour Mostefaoui", "newTopics": [], "newOtherTopics": ["Distributed Algorithms and Systems", "Fault-Tolerance", "Dependability"]}
+{"name": "Enrique Alba", "newTopics": ["sbse"], "newOtherTopics": ["smart cities", "metaheuristics", "parallelism", "evolutionary algorithms"]}
+{"name": "Betty HC Cheng", "newTopics": ["software engineering", "requirements engineering", "SBSE"], "newOtherTopics": ["model-driven engineering", "autonomic computing"]}
+{"name": "Jean-Marc Jezequel", "newTopics": ["Software Engineering", "Software Product Lines"], "newOtherTopics": ["computer science", "Distributed Systems", "Model Driven Engineering"]}
+{"name": "wb langdon", "newTopics": ["SBSE", "software engineering"], "newOtherTopics": ["genetic programming", "genetic improvement", "evolutionary computation"]}
+{"name": "Dave Binkley", "newTopics": ["SBSE"], "newOtherTopics": ["Semantics based tools", "IR in SE", "Slicing"]}
+{"name": "Robert Hierons", "newTopics": ["mutation testing", "formal methods", "SBSE"], "newOtherTopics": ["Model based testing", "distributed testing"]}
+{"name": "Claire Le Goues", "newTopics": ["Software Engineering", "SBSE", "Program Repair"], "newOtherTopics": ["Programming Languages"]}
+{"name": "Houari Sahraoui", "newTopics": ["Software Engineering", "SBSE", "software visualization"], "newOtherTopics": ["Model-Driven Engineering", "model transformation"]}
+{"name": "Shin Yoo", "newTopics": ["Software Testing", "Software Engineering", "SBSE"], "newOtherTopics": ["Evolutionary Computation", "Genetic Improvement"]}
+{"name": "Sergio Segura", "newTopics": ["Software Testing", "SBSE", "Software Engineering"], "newOtherTopics": []}
+{"name": "Rachel Harrison", "newTopics": ["empirical software engineering", "automated software engineering", "SBSE"], "newOtherTopics": ["metrics"]}
+{"name": "Mike Papadakis", "newTopics": ["Software Engineering", "Mutation Testing", "Software Testing", "Software Evolution", "SBSE"], "newOtherTopics": []}
+{"name": "Yuanyuan Zhang", "newTopics": ["SBSE", "Software Engineering", "Requirements Engineering"], "newOtherTopics": ["Evolutionary Computation"]}
+{"name": "Miqing Li", "newTopics": ["SBSE"], "newOtherTopics": ["Multi-Objective Optimization", "Many-Objective Optimization", "Evolutionary Computation", "Constrained Optimization"]}
+{"name": "Marouane Kessentini", "newTopics": ["Search-based Software Engineering", "SBSE", "Refactoring", "Software Quality"], "newOtherTopics": ["Code-Smells"]}
+{"name": "Angelo Susi", "newTopics": ["Software Engineering", "Requirements Engineering", "sbse"], "newOtherTopics": []}
+{"name": "Ruchika Malhotra", "newTopics": ["Software Engineering", "Empirical Software Engineering", "SBSE"], "newOtherTopics": ["Application of Machine Learning", "Software Quality & Testing"]}
+{"name": "Thomas Vogel", "newTopics": ["Software Engineering", "SBSE", "Self-Adaptive Systems", "Software Verification"], "newOtherTopics": ["Intelligent Systems"]}
+{"name": "Annibale Panichella", "newTopics": ["Software Testing", "SBSE"], "newOtherTopics": ["SE4AI", "Test Generation", "Fuzzing"]}
+{"name": "Shaukat Ali", "newTopics": ["Software Engineering", "SBSE", "Software Testing", "Empirical Software Engineering"], "newOtherTopics": ["Quantum Software"]}
+{"name": "Rami Bahsoon", "newTopics": ["Software Architecture", "Software Engineering", "SBSE"], "newOtherTopics": ["self_adaptive_systems", "Economics and Computation"]}
+{"name": "Ali Ouni", "newTopics": ["SBSE", "Refactoring", "Software Engineering", "Software Maintenance and evolution"], "newOtherTopics": ["Artificial Intelligence"]}
+{"name": "Francisco Chicano", "newTopics": ["SBSE"], "newOtherTopics": ["Computer Science", "Combinatorial Optimization Problems"]}
+{"name": "Anne Koziolek (Martens)", "newTopics": ["Software Architecture", "SBSE"], "newOtherTopics": ["Quality requirements", "Performance Engineering", "Continuous Software Engineering"]}
+{"name": "Gregory M. Kapfhammer", "newTopics": ["Software Engineering", "Software Testing", "Program Analysis", "SBSE"], "newOtherTopics": ["Performance Evaluation"]}
+{"name": "Yuan Yuan (\u8881\u6e90)", "newTopics": ["SBSE"], "newOtherTopics": ["Computational Intelligence", "Evolutionary Computation", "Multiobjective Optimization", "Machine Learning"]}
+{"name": "Javier Tuya", "newTopics": ["Software Engineering", "Software Testing", "SBSE"], "newOtherTopics": []}
+{"name": "Nicolas Gold", "newTopics": ["Software Engineering"], "newOtherTopics": ["Ethics", "Computer Music", "Digital Humanities"]}
+{"name": "Wasif Afzal", "newTopics": ["Software Engineering", "Software Testing", "SBSE"], "newOtherTopics": ["Artificial Intelligence & Machine Learning", "Evidence-Based SE"]}
+{"name": "Des Greer", "newTopics": ["Software Engineering", "SBSE"], "newOtherTopics": ["Software Planning", "Risk Management", "Release Planning"]}
+{"name": "M\u00e1rcio Barros", "newTopics": ["SBSE"], "newOtherTopics": ["Search based Software Engineering", "Project Management", "Software Design"]}
+{"name": "Daniel Rodriguez", "newTopics": ["Software Engineering", "SBSE"], "newOtherTopics": ["Data Mining", "Metaheuristics"]}
+{"name": "Gabor Karsai", "newTopics": ["Software Engineering", "Model-driven Development"], "newOtherTopics": ["Systems Engineering", "Cyber-Physical Systems"]}
+{"name": "Gogolla, Martin", "newTopics": ["Model Driven Development"], "newOtherTopics": ["Informatik", "Model Driven Engineering", "Model Based Engineering", "Model Based Software Engineering"]}
+{"name": "Andrzej W\u0105sowski", "newTopics": ["Software Engineering", "Model-Driven Development", "Open Source"], "newOtherTopics": ["Domain-Specific Languages", "Privacy"]}
+{"name": "Gerd Wagner", "newTopics": ["Model-Driven Development"], "newOtherTopics": ["Conceptual Modeling", "Foundational Ontology", "Modeling and Simulation", "Web Engineering"]}
+{"name": "Dorina Petriu", "newTopics": ["model-driven development"], "newOtherTopics": ["software performance engineering", "performance analysis"]}
+{"name": "Kevin Lano", "newTopics": ["Software Engineering", "Model-driven development"], "newOtherTopics": []}
+{"name": "Jorge Jes\u00fas G\u00f3mez Sanz", "newTopics": ["Software Engineering", "Model Driven Development"], "newOtherTopics": ["Artificial Intelligence", "Agent Oriented Software Engineering"]}
+{"name": "Jose-Norberto Maz\u00f3n", "newTopics": ["model-driven development"], "newOtherTopics": ["open data", "data integration", "business intelligence", "Smart Tourism Destinations"]}
+{"name": "Emilio Insfran", "newTopics": ["requirements engineering", "model-driven development"], "newOtherTopics": ["usability", "quality", "agent"]}
+{"name": "Tomas Bures", "newTopics": ["model-driven development"], "newOtherTopics": ["cyber-physical systems", "component systems", "embedded systems", "real-time"]}
+{"name": "Renata Pontin de Mattos Fortes", "newTopics": ["Model Driven Development"], "newOtherTopics": ["Accessibility", "Open Software Systems"]}
+{"name": "Peter Forbrig", "newTopics": ["Model-driven Development"], "newOtherTopics": ["UML", "Design Patterns", "HCI Patterns", "Model-based Development"]}
+{"name": "Janis Stirna", "newTopics": ["Model Driven Development"], "newOtherTopics": ["Enterprise Modeling", "Model Driven Engineering", "Knowledge Management", "Patterns"]}
+{"name": "Jes\u00fas S\u00e1nchez Cuadrado", "newTopics": ["Model Driven Development"], "newOtherTopics": ["Model Transformation", "Domain Specific Languages"]}
+{"name": "Mohamed Abdelrazek", "newTopics": ["Automated Software Engineering", "Model-driven Development"], "newOtherTopics": ["Visual Languages", "AI Engineering"]}
+{"name": "V\u00edctor L\u00f3pez-Jaquero", "newTopics": ["Model-Driven Development", "Software Engineering"], "newOtherTopics": ["Human-Computer Interaction"]}
+{"name": "Nour Ali", "newTopics": ["Software Engineering", "Software Architecture", "Model Driven Development"], "newOtherTopics": ["Software adaptation", "Distributed and Mobile Computing"]}
+{"name": "Joan Fons", "newTopics": ["Model Driven Development"], "newOtherTopics": ["Software Engineer", "Web Development", "Autonomic Computing", "Internet of Things"]}
+{"name": "Ulrich Reimer", "newTopics": ["Model-Driven Development"], "newOtherTopics": ["Semantic Technologies", "eHealth", "Knowledge Management"]}
+{"name": "Vinay Kulkarni", "newTopics": [], "newOtherTopics": ["Digital Twins", "Adaptive Architecture", "AI in SE", "Model Driven Engineering"]}
+{"name": "Stefan Mitsch", "newTopics": ["Model-Driven Development"], "newOtherTopics": ["Cyber-physical Systems", "Verification-Driven Engineering", "Situation Awareness"]}
+{"name": "Nelly Condori Fernandez", "newTopics": ["Software measurement", "Requirements Engineering", "Model driven development"], "newOtherTopics": ["Software sustainability", "User Experience"]}
+{"name": "Sergio Espa\u00f1a", "newTopics": ["model-driven development"], "newOtherTopics": ["ICT for sustainability", "enterprise modelling", "enterprise modeling", "ict4s"]}
+{"name": "S\u00e9verine Sentilles", "newTopics": ["Model-Driven Development"], "newOtherTopics": ["Component-Based Software Engineering", "Extra-Functional Properties", "Embedded Systems"]}
+{"name": "Estefan\u00eda Serral", "newTopics": ["Model-driven Development"], "newOtherTopics": ["Pervasive/Ubiquitous Computing", "IoT", "Semantic Web", "Business Process Management"]}
+{"name": "petraq papajorgji", "newTopics": ["model driven development"], "newOtherTopics": ["modelling information systems", "UML"]}
+{"name": "Guadalupe Ortiz", "newTopics": ["Model-Driven Development"], "newOtherTopics": ["Internet of Things", "Smart Cities", "Service-Oriented and Event-Driven \u2026", "Context-Awareness"]}
+{"name": "Juliana K\u00fcster Filipe Bowles", "newTopics": ["Formal methods", "Verification", "Model Driven Development"], "newOtherTopics": ["Logics", "Concurrency Theory"]}
+{"name": "Edgar Tello-Leal", "newTopics": ["Model-Driven Development"], "newOtherTopics": ["Process Mining", "Information Systems", "Business Process Management"]}
+{"name": "Matthias Biehl", "newTopics": ["Model Driven Development"], "newOtherTopics": ["APIs", "Web Services", "Tool Integration"]}
+{"name": "Marta Cimitile", "newTopics": ["Model Driven Development"], "newOtherTopics": ["Process Mining", "Business Process Management"]}
+{"name": "Michael Wahler", "newTopics": ["software engineering", "model-driven development", "software architecture"], "newOtherTopics": ["cyber security", "real-time systems"]}
+{"name": "Achilleas Achilleos", "newTopics": ["Software Engineering"], "newOtherTopics": ["Pervasive Computing", "Model Driven Engineering", "Service Oriented and Cloud Computing"]}
+{"name": "Pablo S\u00e1nchez", "newTopics": ["Model-Driven Development", "Software Product Lines"], "newOtherTopics": ["Domain-Specific Languages", "Data Science"]}
+{"name": "Elda Paja", "newTopics": ["model-driven development"], "newOtherTopics": ["security requirements engineering", "designing socio-technical systems", "threat modelling", "trust"]}
+{"name": "Cl\u00e1udio \u00c2ngelo Gon\u00e7alves Gomes", "newTopics": ["Formal Methods", "Model Driven Development"], "newOtherTopics": ["Co-simulation", "Hybrid Systems", "Simulation"]}
+{"name": "Francisco Valverde", "newTopics": ["Software Engineering", "Model-driven development"], "newOtherTopics": ["Domain-specific languages", "Bioinformatics"]}
+{"name": "Jessica Diaz", "newTopics": ["software product lines", "software evolution", "model-driven development"], "newOtherTopics": ["software architectures", "architectural knowledge"]}
+{"name": "Lucia Happe (Kapova)", "newTopics": ["Model-driven Development"], "newOtherTopics": ["Adaptive Learning", "Education Technology", "Computing Education Research", "Component-Based Architectures"]}
+{"name": "Anna Derezi\u0144ska", "newTopics": ["software engineering", "model driven development", "mutation testing", "software testing"], "newOtherTopics": []}
+{"name": "Curtis Rueden", "newTopics": ["Software Architecture"], "newOtherTopics": ["Image Processing", "Visualization", "Computational Biology"]}
+{"name": "Grady Booch", "newTopics": ["software architecture"], "newOtherTopics": ["systems engineering", "artificial intelligence"]}
+{"name": "David Garlan", "newTopics": ["software architecture", "self-adaptive systems"], "newOtherTopics": ["end-user architecting"]}
+{"name": "Jan Bosch", "newTopics": ["Software engineering", "Software architecture"], "newOtherTopics": ["AI engineering"]}
+{"name": "Markus V\u00f6lter", "newTopics": ["Software Architecture"], "newOtherTopics": ["Domain-Specific Languages", "Model-Driven Devleopment", "Product-Line Engineering"]}
