@@ -7,8 +7,9 @@ There are two files inside the puppeteerScript folder:
 For the script to run successfully, a recent version of node is necessary and the puppeteer package needs to be installed by running ```npm install puppeteer```
 
 **fetchEverything.ps1** is a simple powershell script that runs the puppeteer script. This file is not necessary to run the script but it is there for convenience. The script can instead be run by simply typing:
-
-```node fetchEverythingWithPuppeteer.js "linktogooglescholar"```
+```
+node fetchEverythingWithPuppeteer.js "linktogooglescholar"
+```
 
 The elasticsearchScripts folder contains all the data on people and their respective publications. It also contains python scripts that will create the indices in ElasticSearch and files that will index the data into these indices.
 
@@ -26,8 +27,9 @@ To create the indices and store data into them we have:
 **storePubsInES.py**
 
 To run each file:
-
-```python filename```
+```
+python filename
+```
 
 Python3.8 is used to run the python scripts and the pip packages necessary are:
 
